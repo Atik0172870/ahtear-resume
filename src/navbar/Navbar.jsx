@@ -12,6 +12,10 @@ function Navbar() {
     const navigate = useNavigate();
     const [activeBtn, setAtiveBtn] = useState(1);
 
+    useEffect(() => {
+        navigateToRoute('/', 1)
+    }, [])
+
     const navigateToRoute = (url = '/', activeBtn) => {
         setAtiveBtn(activeBtn);
         navigate(url);
@@ -55,7 +59,7 @@ function Navbar() {
                     <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  degree-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/video-interview', 4) }} />
                 </div>
             </div>
-           
+
         </>
 
     )

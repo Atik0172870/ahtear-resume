@@ -43,7 +43,6 @@
   right: 49px;
 }
 
-.firist-page {}
 
 .secoond-page {
   padding-bottom: 3rem !important;
@@ -69,16 +68,8 @@
     margin-left: auto;
   }
 }
-.offcanvas.hiding, .offcanvas.show, .offcanvas.showing {
-  visibility: hidden;
-  @media only screen and (max-width: 768px) {
-    visibility: visible;
-  }
 
-  @media only screen and (max-width: 480px) {
-    visibility: visible;
-  }
-}
+
 .degree-icon {
   width: 20px;
   height: 20px;
@@ -93,18 +84,6 @@
   }
 }
 
-.home {
-  background-image: url('./assets/background-ccxr-car.png');
-  background-size: cover;
-  background-position: center;
-  height: 400px;
-  /* Set height */
-  width: 100%;
-  /* Set width */
-  background-position: center;
-  margin-top: 12rem;
-
-}
 
 .home-profile-pic {
   height: 78vh;
@@ -132,31 +111,6 @@
   top: 4.5rem;
 }
 
-.menu-icon {
-  width: 33px;
-  height: 33px;
-  display: none;
 
-  @media only screen and (max-width: 575px) {
-    display: block;
 
-  }
 
-  @media only screen and (max-width: 480px) {
-    display: block;
-
-  }
-}
-
-.menu-icon-all {
-  width: 40px;
-  height: 40px;
-}
-
-.transparent-div {
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Black background with 50% transparency */
-  color: white;
-  /* Set text color to white for contrast */
-  opacity: 0.5
-}

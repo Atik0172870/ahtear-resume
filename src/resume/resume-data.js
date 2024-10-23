@@ -1,7 +1,7 @@
 
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-export const model = {
+export const data = {
   experience: 'Experience: More than 9 years.',
   firstPage: [
     { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'text-primary name' },

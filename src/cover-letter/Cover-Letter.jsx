@@ -1,16 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import degree from './assets/mortarboard-education-svgrepo-com.svg';
-import profile_pic from './assets/Ahtear_rahman.JPG';
-import print_icon from './assets/icons8-print-16.png';
-import { printPDFCoverLetter } from './cover-letter-data';
+import degree from '../assets/mortarboard-education-svgrepo-com.svg';
+import print_icon from '../assets/icons8-print-16.png';
+import { printPDFCoverLetter, coverLetterData} from './cover-letter-data';
 
 
-function CoverLetter({ data }) {
+function CoverLetter() {
     const [isPrinted, setIsPrinted] = useState(false);
     const printJobsInitial = { jobTitle: '', companyName: '', companyAddress: '', cityState: '' };
     const componentRef = useRef();
     const [isPrint, setPrint] = useState(false);
-    const [letterData, setData] = useState(data);
+    const [letterData, setData] = useState(coverLetterData);
     const [printJobs, setPrintJobs] = useState({ ...printJobsInitial });
 
     const showModal = () => {
@@ -72,7 +71,7 @@ function CoverLetter({ data }) {
                 <div className='card border-0 a4-page h-100 overflow-auto' ref={componentRef}>
                     <div className='card-body d-flex flex-column h-100'>
                         <span className='text-center mb-2 text-secondary d-flex justify-content-between'>
-                            <span className='ms-auto me-auto'>{data.experience}</span>
+                            <span className='ms-auto me-auto'>{coverLetterData.experience}</span>
                         </span>
                         {/* <img src={profile_pic} className='rounded-circle profile-img' /> */}
                         {

@@ -1,0 +1,38 @@
+.navbar-div {
+    .profile_pic {
+        width: 35px;
+    }
+
+    .menu-icon-all {
+        width: 40px;
+        height: 40px;
+    }
+
+    .transparent-div {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with 50% transparency */
+        color: white;
+        /* Set text color to white for contrast */
+        opacity: 0.5
+    }
+
+    .li-btn {
+        //background-color: white;
+        border-bottom: 2px solid transparent;
+        /* Initial border */
+        // border-radius: 8px;
+        //padding: 20px;
+        //width: 300px;
+        transition: border 0.7s ease;
+
+        /* Transition for border */
+        &:hover {
+            border-bottom: 2px solid #3498db;
+            /* Border color on hover */
+        }
+    }
+
+    .li-btn-select {
+        border-bottom: 2px solid white;
+    }
+}

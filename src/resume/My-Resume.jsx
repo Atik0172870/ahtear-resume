@@ -1,12 +1,11 @@
 
-import { model } from './resume-data';
-import { printPDF } from './resume-data';
-import degree from './assets/mortarboard-education-svgrepo-com.svg';
-import profile_pic from './assets/Ahtear_rahman.JPG';
-import print_icon from './assets/icons8-print-16.png';
+import { data, printPDF } from './resume-data';
+import degree from '../assets/mortarboard-education-svgrepo-com.svg';
+import profile_pic from '../assets/Ahtear_rahman.JPG';
+import print_icon from '../assets/icons8-print-16.png';
 import React, { useRef } from 'react';
 
-function Resume({data}) {
+function Resume() {
   const componentRef = useRef();
   return (
     <div className='mt-5 pt-5 d-flex flex-column align-items-center'>
@@ -24,7 +23,7 @@ function Resume({data}) {
             })
           }
         </div>
-        <div className='card-body d-flex flex-column h-100 secoond-page mt-4 pt-4'>
+        <div className='card-body d-flex flex-column h-100 secoond-page mt-5 pt-5'>
           <span className='text-center mb-2 text-secondary d-flex justify-content-between'>
             <span className='common-font-size'>Page : 2</span><span className='ms-auto me-auto'>{data.experience}</span>
           </span>

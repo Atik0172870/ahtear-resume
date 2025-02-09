@@ -1,0 +1,53 @@
+.technology {
+    background-image: url(../assets/back-img-3.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 94.3vh !important;
+    width: 100% !important;
+    background-repeat: no-repeat;
+    overflow: auto;
+    //background: linear-gradient(90deg, rgba(0, 0, 0, 1) 2%, rgba(13, 6, 42, 1) 100%);
+
+    .main-card {
+        height: 100%;
+        overflow: auto;
+        margin-bottom: 3rem;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(20px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        color:whitesmoke;
+        padding: 20px;
+        // min-width: 25%;
+        //width: 25%;
+        opacity: 0.7;
+        height: 60%;
+       //overflow: auto;
+        border: 1px solid darkgoldenrod;
+        color:white;
+
+        ul>li {
+            font-size: small;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+
+            li {
+                margin-bottom: 10px;
+            }
+        }
+
+    }
+}

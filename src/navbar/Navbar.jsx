@@ -6,6 +6,8 @@ import homeIcon from '../assets/home.svg';
 import resumeIcon from '../assets/resume.svg';
 import covverletterIcon from '../assets/covverletter.svg';
 import videointerviewIcon from '../assets/video-interview.svg';
+import Technology from '../assets/technology.png';
+
 import './Navbar.scss';
 
 function Navbar() {
@@ -24,7 +26,7 @@ function Navbar() {
     return (
         // <!-- Navbar -->
         <>
-            <nav className="navbar navbar-expand-sm bg-dark navbar-dark navbar-div p-0">
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark navbar-div p-0 fixed-top">
                 <a className="navbar-brand d-flex align-items-center" >
                     <img src={profile_pic} alt="Avatar Logo" className="rounded-circle profile_pic" />
                 </a>
@@ -33,16 +35,19 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="mynavbar">
                     <ul className="navbar-nav me-auto">
-                        <li className={`nav-item btn btn-sm text-white li-btn ${activeBtn == 1 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/', 1) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 1 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/', 1) }}>
                             Home
                         </li>
-                        <li className={`nav-item btn btn-sm text-white li-btn ${activeBtn == 2 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/resume', 2) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 2 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/technology', 2) }}>
+                            Technolory
+                        </li>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 3 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/resume', 3) }}>
                             Resume
                         </li>
-                        <li className={`nav-item btn btn-sm text-white li-btn ${activeBtn == 3 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 3) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 4 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 4) }}>
                             Cover letter
                         </li>
-                        <li className={`nav-item btn btn-sm text-white li-btn ${activeBtn == 4 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/video-interview', 4) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 5 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/video-interview', 5) }}>
                             Video Interview
                         </li>
                     </ul>
@@ -53,13 +58,28 @@ function Navbar() {
                     <button type="button" className="btn btn-close btn-sm btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div className="offcanvas-body p-0 d-flex align-items-center flex-column gap-4 justify-content-start mt-5">
-                    <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  degree-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/', 1) }} />
-                    <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  degree-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/resume', 2) }} />
-                    <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  degree-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 3) }} />
-                    <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  degree-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/video-interview', 4) }} />
+                    <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/', 1) }} />
+                    <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/technology', 2) }} />
+                    <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/resume', 3) }} />
+                    <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 4) }} />
+                    <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/video-interview', 5) }} />
                 </div>
             </div>
-
+            {/* <nav class="navbar navbar-expand-sm bg-gradient navbar-dark fixed-bottom">
+                <div class="container-fluid d-flex align-items-center justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav> */}
         </>
 
     )

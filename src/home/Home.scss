@@ -1,36 +1,48 @@
 .home {
-    background-image: url(../assets/home-back-img.jpg);
+    background-image: url(../assets/back-img-3.jpg);
     background-size: cover;
     background-position: center;
-    height: 92.5vh !important;
+    height: 94.3vh !important;
     width: 100% !important;
     background-repeat: no-repeat;
     overflow: auto;
+    //background: linear-gradient(90deg, rgba(0, 0, 0, 1) 2%, rgba(13, 6, 42, 1) 100%);
+
 
     .glass-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(20px);
         border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        color: #fff;
+        color: whitesmoke;
         padding: 20px;
-        margin: 15px;
-        min-width: 300px;
+        // min-width: 25%;
+        //width: 25%;
+        opacity: 0.8;
 
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
+
+
+        .p-font-size-degination {
+            font-size: 20px;
         }
 
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .p-font-size-tech {
+            font-size: 16x;
+        }
 
-            li {
-                margin-bottom: 10px;
-            }
+        .p-font-size {
+            font-size: 13px;
+        }
+
+        .profile_pic {
+            height: 300px;
+            width: 300px;
+            background-color: black;
+            z-index: 1000;
         }
 
     }

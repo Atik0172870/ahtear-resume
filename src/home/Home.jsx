@@ -1,51 +1,28 @@
 import React, { Component } from 'react';
 import profile_pic from '../assets/linkedIn-pic.png';
+import Ahtear_rahman from '../assets/linkedIn-pic-small.png';
+
 import './Home.scss';
 
 function Home() {
 
     return (
-        <div className='card home h-100 rounded-0 border-0'>
-            <div className='wel-come card-body d-flex'>
-                <div class="glass-card">
-                    <h3>Back-End Technology</h3>
-                    <ul>
-                        <li>C#.NET, ASP.NET Core</li>
-                        <li>.NET Core Microservices, Ocelot</li>
-                        <li>JWT Token, RabbitMQ</li>
-                        <li>ASP.NET MVC, Web API</li>
-                        <li>LINQ, MS SQL Server, MySQL</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <h3>DevOps Things</h3>
-                    <ul>
-                        <li>Docker, Kubernetes, Minikube</li>
-                        <li>MicroK8s, Azure</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <h3>Client-Side Technology</h3>
-                    <ul>
-                        <li>ReactJs, Angular, Typescript</li>
-                        <li>AngularJS, jQuery</li>
-                        <li>JavaScript, AJAX, SASS</li>
-                        <li>Bootstrap 5, HTML5, CSS3</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <h3>Source Control</h3>
-                    <ul>
-                        <li>GitHub, Bitbucket, SVN</li>
-                        <li>Azure DevOps, TFS</li>
-                        <li>SourceTree</li>
-                    </ul>
-                </div>
-                {/* <span className='text-uppercase text-warning fw-semibold'>Welcome To My Profile</span>
-                <span className='text-uppercase text-dark fw-semibold'>MD AHTEAR RAHMAN</span>
-                <span className='text-uppercase text-info fw-semibold' style={{fontSize:'12px'}}>[ Senior Full-Stack Software Engineer (.NET | React | Angular) ]</span> */}
+        <div className='card home rounded-0 border-0 mt-5 d-flex justify-content-end align-items-end'>
+            <div class="card-body text-white glass-card border-0 rounded-0 shadow-lg">
+                <h4 class="card-title">MD AHTEAR RAHMAN</h4>
+                {/* <p class="card-text m-1">{'[ Senior Full-Stack Software Engineer (.NET | React | Angular) ]'}</p>
+                <p class="card-text m-1">{'[ C# .NET, ASP.NET MVC,.NET Core, Microservice, RabbitMQ , Ocelot, JWT Token |'}</p>
+                <p class="card-text m-1">{'ReactJs, Angular,Typescript, JavaScript | Azure DevOps, Docker, Kubernetes, Minikube, Microk8s ]'}</p>
+                <p class="card-text m-1">[ Senior Full-Stack Software Engineer (.NET | React | Angular) ]</p>
+                <p class="card-text m-1">[ Senior Full-Stack Software Engineer (.NET | React | Angular) ]</p> */}
+                <img class="card-img-bottom rounded-circle profile_pic border-1 border" src={Ahtear_rahman} alt="Card image" />
+                <p class="text-warning m-0 fw-bold p-font-size-degination">{'Senior Full-Stack Software Engineer'}</p>
+                <p class="text-info p-font-size-tech m-0">{'(.NET, .NET CORE | React | Angular)'}</p>
+                <p class="text-white p-font-size m-0">{'[ C# .NET, ASP.NET MVC,.NET Core,Microservice, RabbitMQ ,'}</p>
+                <p class="text-white p-font-size m-0">{' Ocelot, JWT Token | ReactJs, Angular,Typescript ,JavaScript '}</p>
+                <p class="card-text text-white p-font-size m-0">{'| Azure DevOps, Docker, Kubernetes, Minikube, Microk8s ]'}</p>
+                 
             </div>
-            {/* <img src={profile_pic} alt='test' className='mt-5 mx-auto d-flex justify-content-center home-profile-pic' /> */}
         </div>
     )
 }

@@ -6,4 +6,7 @@ export default defineConfig({
   base:"/ahrear-resume/",
   plugins: [react()],
   assetsInclude: ['**/*.JPG'],
+  build: {
+    chunkSizeWarningLimit: 1000 // Set to 1000 kB instead of 500 kB
+  }
 })

@@ -29,8 +29,6 @@ function CoverLetter() {
     }
     useEffect(() => {
         // This effect runs after every render where `count` is updated.
-        console.log("Cover letter data updated:", letterData);
-        console.log("printJobs data updated:", printJobs);
 
     }, [letterData, printJobs]); // Dependency array ensures this runs only when `count` changes
 

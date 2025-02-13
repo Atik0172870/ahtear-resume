@@ -26,7 +26,7 @@ function Navbar() {
     return (
         // <!-- Navbar -->
         <>
-            <nav className="navbar navbar-expand-sm bg-dark navbar-dark navbar-div p-0 fixed-top">
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark navbar-div p-2 fixed-top">
                 <a className="navbar-brand d-flex align-items-center" >
                     <img src={profile_pic} alt="Avatar Logo" className="rounded-circle profile_pic" />
                 </a>
@@ -65,21 +65,6 @@ function Navbar() {
                     <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/video-interview', 5) }} />
                 </div>
             </div>
-            {/* <nav class="navbar navbar-expand-sm bg-gradient navbar-dark fixed-bottom">
-                <div class="container-fluid d-flex align-items-center justify-content-end">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link 3</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav> */}
         </>
 
     )

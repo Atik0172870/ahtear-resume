@@ -5,9 +5,9 @@ import './Technology.scss';
 function Home() {
 
     return (
-        <div className='card technology rounded-0 border-0 mt-5'>
+        <div className='card technology rounded-0 border-0 mt-5 pt-4'>
             <div className='main-card card-body'>
-                <div class="glass-card shadow-lg">
+                <div className="glass-card shadow-lg">
                     <h3 className='text-warning m-0'>Back-End Technology</h3>
                     <hr className='text-warning' />
                     <ul>
@@ -18,7 +18,7 @@ function Home() {
 
                     </ul>
                 </div>
-                <div class="glass-card shadow-lg">
+                <div className="glass-card shadow-lg">
                     <h3 className='text-warning m-0'>Client-Side Technology</h3>
                     <hr className='text-warning' />
                     <ul>
@@ -27,7 +27,7 @@ function Home() {
                         <li>Bootstrap 5, HTML5, CSS3,SASS</li>
                     </ul>
                 </div>
-                <div class="glass-card shadow-lg" >
+                <div className="glass-card shadow-lg" >
                     <h3 className='text-warning m-0'>Data Base</h3>
                     <hr className='text-warning' />
                     <ul>
@@ -36,7 +36,7 @@ function Home() {
                         <li>DynamoDB (AWS-managed NoSQL)</li>
                     </ul>
                 </div>
-                <div class="glass-card shadow-lg">
+                <div className="glass-card shadow-lg">
                     <h3 className='text-warning m-0'>DevOps Things</h3>
                     <hr className='text-warning' />
                     <ul>
@@ -45,7 +45,7 @@ function Home() {
                     </ul>
                 </div>
 
-                <div class="glass-card shadow-lg" >
+                <div className="glass-card shadow-lg" >
                     <h3 className='text-warning m-0'>Source Control</h3>
                     <hr className='text-warning' />
                     <ul>

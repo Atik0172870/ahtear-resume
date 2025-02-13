@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import profile_pic from '../assets/linkedIn-pic.png';
 import Ahtear_rahman from '../assets/ahtear_small_1.jpg';
 
 import './Home.scss';

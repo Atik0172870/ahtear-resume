@@ -1,5 +1,5 @@
 {
-  "name": "ahtear-resume",
+  "name": "react-resume",
   "homepage": "https://Atik0172870/github.io/ahtear-resume",
   "private": true,
   "version": "0.0.0",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "gh-pages": "^6.3.0",
     "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
     "jspdf": "^2.5.2",
@@ -32,7 +33,6 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "sass-loader": "^16.0.4",
     "vite": "^6.1.0"

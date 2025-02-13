@@ -16,7 +16,7 @@ function Home() {
                 {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
                 <p className="text-white p-font-size m-0">{'[ C# .NET, ASP.NET MVC,.NET Core,Microservice, RabbitMQ ,'}</p>
                 <p className="text-white p-font-size m-0">{' Ocelot, JWT Token | ReactJs, Angular,Typescript ,JavaScript '}</p>
-                <p className="card-text text-white p-font-size m-0">{'| Azure DevOps, Docker, Kubernetes, Minikube, Microk8s ]'}</p>
+                <p className="card-text text-white p-font-size m-0">{'| Azure DevOps, Docker, Kubernetes, Minikube, Microk8s, Kafka ]'}</p>
                  
             </div>
         </div>

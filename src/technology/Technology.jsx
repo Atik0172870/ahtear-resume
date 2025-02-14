@@ -28,7 +28,7 @@ function Home() {
                     </ul>
                 </div>
                 <div className="glass-card shadow-lg" >
-                    <h3 className='text-warning m-0'>Data Base</h3>
+                    <h3 className='text-warning m-0'>Database</h3>
                     <hr className='text-warning' />
                     <ul>
                         <li>MS SQL Server, ORACLE 11g, MY SQL,SQLite</li>

@@ -17,11 +17,11 @@ function App() {
   return (
     <div className='container-fluid mt-2 p-0'>
       <Routes>
-        <Route path="/ahtear-resume" element={<Home />} />
-        <Route path="/ahtear-resume/technology" element={<Technology />} />
-        <Route path="/ahtear-resume/resume" element={<Resume />} />
-        <Route path="/ahtear-resume/cover-letter" element={<CoverLetter />} />
-        <Route path="/ahtear-resume/video-interview" element={<VideoInterview />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/technology" element={<Technology />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/cover-letter" element={<CoverLetter />} />
+        <Route path="/video-interview" element={<VideoInterview />} />
         {/* <Route path="/pdf-cv" element={<PdfCv />} /> */}
       </Routes>
     </div>

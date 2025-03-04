@@ -11,10 +11,10 @@ function Home() {
                     <h3 className='text-warning m-0'>Back-End Technology</h3>
                     <hr className='text-warning' />
                     <ul>
-                        <li>C#.NET, ASP.NET Core, .NET Core</li>
-                        <li>Microservices Ocelot, JWT Token, </li>
-                        <li>RabbitMQ, Apache Kafka ASP.NET MVC, </li>
-                        <li>Web API, Redis ,LINQ, Entity framwork</li>
+                        <li>&#9758; C#.NET, ASP.NET Core, .NET Core</li>
+                        <li>&#9758; Microservices Ocelot, JWT Token, </li>
+                        <li>&#9758; RabbitMQ, Apache Kafka ASP.NET MVC, </li>
+                        <li>&#9758; Web API, Redis ,LINQ, Entity framwork</li>
 
                     </ul>
                 </div>
@@ -22,26 +22,27 @@ function Home() {
                     <h3 className='text-warning m-0'>Client-Side Technology</h3>
                     <hr className='text-warning' />
                     <ul>
-                        <li>ReactJs, Angular, Typescript,JavaScript</li>
-                        <li>AngularJS, jQuery, AJAX</li>
-                        <li>Bootstrap 5, HTML5, CSS3,SASS</li>
+                        <li>&#9758; ReactJs, Angular, Typescript,JavaScript</li>
+                        <li>&#9758; AngularJS, jQuery, AJAX</li>
+                        <li>&#9758; Bootstrap 5, HTML5, CSS3,SASS</li>
                     </ul>
                 </div>
                 <div className="glass-card shadow-lg" >
                     <h3 className='text-warning m-0'>Database</h3>
                     <hr className='text-warning' />
                     <ul>
-                        <li>MS SQL Server, ORACLE 11g, MY SQL,SQLite</li>
-                        <li>PostgreSQL, MongoDB (Document-based) </li>
-                        <li>DynamoDB (AWS-managed NoSQL)</li>
+                        <li>&#9758; MS SQL Server, ORACLE 11g, MY SQL,</li>
+                        <li>&#9758; SQLite, PostgreSQL</li>
+                        <li>&#9758; MongoDB (Document-based)</li>
+                        <li>&#9758; DynamoDB (AWS-managed NoSQL)</li>
                     </ul>
                 </div>
                 <div className="glass-card shadow-lg">
                     <h3 className='text-warning m-0'>DevOps Things</h3>
                     <hr className='text-warning' />
                     <ul>
-                        <li>Azure, Docker, Kubernetes, Minikube, MicroK8s</li>
-                        <li></li>
+                        <li>&#9758; Azure, Docker</li>
+                        <li>&#9758; Kubernetes, Minikube, MicroK8s</li>
                     </ul>
                 </div>
 
@@ -49,8 +50,8 @@ function Home() {
                     <h3 className='text-warning m-0'>Source Control</h3>
                     <hr className='text-warning' />
                     <ul>
-                        <li>Azure DevOps, GitHub, Bitbucket, SVN</li>
-                        <li>TFS, SourceTree</li>
+                        <li>&#9758; Azure DevOps, GitHub, Bitbucket</li>
+                        <li>&#9758; SVN, TFS, SourceTree</li>
                         <li></li>
                     </ul>
                 </div>

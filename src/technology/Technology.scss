@@ -2,7 +2,7 @@
     background-image: url(../assets/back-img-3.jpg);
     background-size: cover;
     background-position: center;
-    height: 95vh  !important;
+    height: 95vh !important;
     width: 100% !important;
     background-repeat: no-repeat;
     overflow: auto;
@@ -22,7 +22,7 @@
             backdrop-filter: blur(20px);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            //box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             padding: 20px;
             opacity: 0.8;
             height: 400px;
@@ -31,9 +31,12 @@
             border: 1px solid darkgoldenrod;
             display: flex;
             flex-direction: column;
+            background: linear-gradient(to top left, darkgoldenrod 10%, black 10%);
+
+
             ul>li {
-                font-size: 14px;
-                color: whitesmoke;
+                font-size: 15px;
+                color: aqua;
             }
 
             h3 {
@@ -52,6 +55,8 @@
 
         }
     }
+
+
 
 
 }

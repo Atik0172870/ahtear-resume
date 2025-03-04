@@ -17,7 +17,7 @@ function App() {
   return (
     <div className='container-fluid mt-2 p-0'>
       <Routes>
-        <Route path="" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/technology" element={<Technology />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/cover-letter" element={<CoverLetter />} />

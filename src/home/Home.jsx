@@ -14,7 +14,7 @@ function Home() {
                 <h4 className="card-title">MD AHTEAR RAHMAN</h4>
                 <img className="card-img-bottom rounded-circle profile_pic border-1 border border-warning" src={Ahtear_rahman} alt="Card image" />
                 <p className="text-warning m-0 fw-bold p-font-size-degination mt-3">{'Senior Full-Stack Software Engineer'}</p>
-                <p className="text-info p-font-size-tech m-0 mb-2">{'(.NET, .NET CORE | React | Angular)'}</p>
+                <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                 {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
                 <p className="text-white p-font-size m-0">{'[ C# .NET, ASP.NET MVC,.NET Core,Microservice, RabbitMQ ,'}</p>

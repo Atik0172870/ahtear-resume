@@ -1,6 +1,8 @@
 
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import CV from '../assets/AHTEAR-RAHMAN-CV.pdf';
+
 export const data = {
   experience: 'Experience: More than 9 years.',
   firstPage: [
@@ -18,7 +20,7 @@ export const data = {
 
     { type: 'Technologies Back End Client Side Front', value: 'Technologies:', isIcon: false, className: 'common-header mt-2' },
     { type: 'Technologies Back End Client Side Front', value: '❖ Back-End Technology:', isIcon: false, className: 'technology-item  ms-3' },
-    { type: 'Technologies Back End Client Side Front', value: 'C#.NET, ASP.NET CORE, .NET Core Micro Service, Ocelot, JWT Token, RabbitMQ, ASP.NET MVC CORE, LINQ', isIcon: false, className: 'common-font-size ms-4' },
+    { type: 'Technologies Back End Client Side Front', value: 'C#.NET, ASP.NET CORE, .NET Core Microservice, Ocelot, JWT Token, RabbitMQ, ASP.NET MVC CORE, LINQ', isIcon: false, className: 'common-font-size ms-4' },
     { type: 'Technologies Back End Client Side Front', value: 'ASP.NET: WEB FORM, MVC, WEB API and WIN FORM, CODE FIRST, DATABASE FIRST, IDENTITYSERVER, AND', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Technologies Back End Client Side Front', value: 'CRYSTAL REPORT, MS SQL Server, ORACLE 11g, MY SQL. Visual Studio, Visual Studio Code', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Technologies Back End Client Side Front', value: '❖ DevOps Things:', isIcon: false, className: 'technology-item ms-3' },
@@ -33,9 +35,9 @@ export const data = {
     { type: 'Project Job Experience Working History', value: 'Company: Adaptive Enterprise Ltd. https://www.napcosecurity.com, http://ael-bd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Note: I am directly working with Napco Security Technologies (USA)', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/12/2021 to till now.', isIcon: false, className: 'common-font-size  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Project: iBridgeOnline:', isIcon: false, className: 'common-header ms-4' },
-    { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE, .Net Core Micro Service.', isIcon: false, className: 'common-font-size  ms-5' },
-    { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Micro Service Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
+    { type: 'Project Job Experience Working History', value: 'Project: iBridgeOnline, NapcoLink:', isIcon: false, className: 'common-header ms-4' },
+    { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE, .Net Core Microservice.', isIcon: false, className: 'common-font-size  ms-5' },
+    { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Microservice Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Write maintainable and extensible code in a team environment.', isIcon: false, className: 'common-font-size  ms-5' },
 
@@ -43,7 +45,7 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '❖ Worked as Full-Stack Software Engineer: Part time (01/01/2021 to 31/12/2021). ', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company:  Hoxro (https://www.hoxro.co.uk/)', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Project: Legal Management System:', isIcon: false, className: 'common-header ms-4' },
-    { type: 'Project Job Experience Working History', value: '➢ Technology: ASP.NET CORE, .Net Core Micro Service, Using Angular for Client-Side Technology.', isIcon: false, className: 'common-font-size  ms-5' },
+    { type: 'Project Job Experience Working History', value: '➢ Technology: ASP.NET CORE, .Net Core Microservice, Using Angular for Client-Side Technology.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement Ocelot, JWT Token, RabbitMQ.', isIcon: false, className: 'common-font-size  ms-5' },
     //2
     { type: 'Project Job Experience Working History', value: '❖ Worked as Full-Stack Software Engineer.', isIcon: false, className: 'technology-item  ms-3 mt-2' },
@@ -143,5 +145,15 @@ export const printPDF = (componentRef, fileNmame = 'AHTEAR-RAHMAN-CV') => {
     }
     pdf.save(fileNmame);
   });
+};
+
+
+export const handleDownloadCvFile = () => {
+  const link = document.createElement("a");
+  link.href = CV;
+  link.download = "MD AHTEAR RAHMAN.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 };
 

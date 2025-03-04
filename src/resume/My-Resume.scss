@@ -1,9 +1,39 @@
 .my-resume {
-    background-image: url(../assets/back-img-3.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 93vh !important;
-    width: 100% !important;
-    background-repeat: no-repeat;
-    overflow: auto;
+    // background-image: url(../assets/back-img-3.jpg);
+    // background-size: cover;
+    // background-position: center;
+    // height: 93vh !important;
+    // width: 100% !important;
+    // background-repeat: no-repeat;
+    // overflow: auto;
+
+    .btn-print-1 {
+        display: block;
+    }
+
+    .btn-print-2 {
+        display: none;
+    }
+
+    /* Tablets (768px - 1024px) */
+    @media screen and (max-width: 1024px) {
+        .btn-print-1 {
+            display: none;
+        }
+
+        .btn-print-2 {
+            display: block;
+        }
+    }
+
+    /* Mobile Phones (up to 767px) */
+    @media screen and (max-width: 767px) {
+        .btn-print-1 {
+            display: none;
+        }
+
+        .btn-print-2 {
+            display: block;
+        }
+    }
 }

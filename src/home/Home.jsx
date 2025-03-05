@@ -17,9 +17,11 @@ function Home() {
                 <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                 {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
-                <p className="text-white p-font-size m-0">{'[ C# .NET, ASP.NET MVC,.NET Core,Microservice, RabbitMQ ,'}</p>
-                <p className="text-white p-font-size m-0">{' Ocelot, JWT Token | ReactJs, Angular,Typescript ,JavaScript '}</p>
-                <p className="text-white p-font-size m-0">{'| Azure DevOps, Docker, Kubernetes, Minikube, Microk8s, Kafka ]'}</p>
+                <span>
+                    <p className="text-white p-font-size m-0">{'C# .NET, ASP.NET MVC,.NET Core,Microservice, RabbitMQ ,'}</p>
+                    <p className="text-white p-font-size m-0">{' Ocelot, JWT Token | ReactJs, Angular,Typescript ,JavaScript '}</p>
+                    <p className="text-white p-font-size m-0">{'| Azure DevOps, Docker, Kubernetes, Minikube, Microk8s, Kafka'}</p>
+                </span>
                 <div className='mt-auto d-flex gap-4'>
                     <a href='https://www.facebook.com/share/1HciuJSaVV/' target='_blank' title='Facebook'>    <img src={facebook} height={25} /></a>
                     <a href='https://www.linkedin.com/in/md-ahtear-rahman-b8043a15a/' target='_blank' title='LinkedIn'>    <img src={linkedin} height={25} /></a>

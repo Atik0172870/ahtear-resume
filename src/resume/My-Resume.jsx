@@ -24,7 +24,7 @@ function Resume() {
             })
           }
         </div>
-        <div className='card-body d-flex flex-column h-100 secoond-page mt-5 pt-5'>
+        <div className='card-body d-flex flex-column h-100 secoond-page mt-2 pt-3'>
           <span className='text-center mb-2 text-secondary d-flex justify-content-between'>
             <span className='common-font-size'>Page : 2</span><span className='ms-auto me-auto'>{data.experience}</span>
           </span>
@@ -38,12 +38,12 @@ function Resume() {
         </div>
       </div>
       <div className='text-end mt-2 mb-2'>
-        <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-1' onClick={() => printPDF(componentRef)}>
-        <img src={print_icon} className='rounded-circle degree-icon' /> Print
-      </button>
-      <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-2' onClick={() => handleDownloadCvFile()}>
-        <img src={print_icon} className='rounded-circle degree-icon' /> Print
-      </button>
+        {/* <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-1' onClick={() => printPDF(componentRef)}>
+          <img src={print_icon} className='rounded-circle degree-icon' /> Print
+        </button> */}
+        <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-2' onClick={() => handleDownloadCvFile()}>
+          <img src={print_icon} className='rounded-circle degree-icon' /> Print
+        </button>
       </div>
     </div>
   );

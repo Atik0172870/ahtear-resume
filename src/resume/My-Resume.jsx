@@ -5,7 +5,7 @@ import profile_pic from '../assets/Ahtear_rahman.JPG';
 import print_icon from '../assets/icons8-print-16.png';
 import React, { useRef } from 'react';
 import './My-Resume.scss';
-
+import mycvpdf from '../assets/AHTEAR-RAHMAN-CV.pdf';
 function Resume() {
   const componentRef = useRef();
   return (
@@ -37,13 +37,14 @@ function Resume() {
           }
         </div>
       </div>
-      <div className='text-end mt-2 mb-2'>
+      <div className='text-end mt-2 mb-2 d-flex gap-3'>
         {/* <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-1' onClick={() => printPDF(componentRef)}>
           <img src={print_icon} className='rounded-circle degree-icon' /> Print
         </button> */}
         <button className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-2' onClick={() => handleDownloadCvFile()}>
           <img src={print_icon} className='rounded-circle degree-icon' /> Print
         </button>
+        <a className='btn btn-sm bg-dark btn-outline-warning text-white btn-print-2' href={mycvpdf} target="_blank" download>Download PDF</a>
       </div>
     </div>
   );

@@ -10,8 +10,8 @@ function Resume() {
   const componentRef = useRef();
   return (
     <div className='mt-5 pt-5 d-flex flex-column align-items-center my-resume'>
-      <div className='card border-0 a4-page h-100 overflow-auto' ref={componentRef}>
-        <div className='card-body d-flex flex-column h-100'>
+      <div className='card border-0 a4-page h-100 w-100 overflow-auto' ref={componentRef}>
+        <div className='card-body d-flex flex-column h-100 w-100 overflow-auto'>
           <span className='text-center mb-2 text-secondary d-flex justify-content-between'>
             <span className='common-font-size'>Page : 1</span><span className='ms-auto me-auto'>{data.experience}</span>
           </span>
@@ -24,7 +24,7 @@ function Resume() {
             })
           }
         </div>
-        <div className='card-body d-flex flex-column h-100 secoond-page mt-2 pt-3'>
+        <div className='card-body d-flex flex-column h-100 secoond-page mt-2 pt-3 w-100 overflow-auto' >
           <span className='text-center mb-2 text-secondary d-flex justify-content-between'>
             <span className='common-font-size'>Page : 2</span><span className='ms-auto me-auto'>{data.experience}</span>
           </span>

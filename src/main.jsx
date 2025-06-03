@@ -6,7 +6,7 @@ import Navbar from './navbar/Navbar.jsx'
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/ahtear-resume'>
         <Navbar />
         <App />
     </BrowserRouter>

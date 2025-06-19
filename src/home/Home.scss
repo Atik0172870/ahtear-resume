@@ -8,6 +8,12 @@
     overflow: auto;
     //background: linear-gradient(90deg, rgba(0, 0, 0, 1) 2%, rgba(13, 6, 42, 1) 100%);
 
+    .base-div {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
 
     .glass-card {
         display: flex;
@@ -23,7 +29,14 @@
         // min-width: 25%;
         //width: 25%;
         opacity: 0.8;
-
+        max-width: 20vw;
+        margin-left: auto;
+        height: 93.3vh;
+        //overlap css
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        /* Higher z-index brings it on top */
 
 
         .p-font-size-degination {
@@ -40,12 +53,20 @@
         }
 
         .profile_pic {
-            height: 300px;
-            width: 300px;
+            height: 250px;
+            width: 250px;
             background-color: black;
             z-index: 1000;
         }
 
+    }
+
+
+    @media (max-width: 600px) {
+        .glass-card {
+            min-width: 100%;
+            overflow: auto;
+        }
     }
 
 }

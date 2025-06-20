@@ -18,7 +18,7 @@
     .glass-card {
         display: flex;
         flex-direction: column;
-        justify-content: top;
+        justify-content: center;
         align-items: center;
         background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(20px);
@@ -26,17 +26,12 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: whitesmoke;
         padding: 20px;
+        // min-width: 25%;
+        //width: 25%;
         opacity: 0.9;
-       // max-width: 20vw;
-        //width: 20dvw;
-        max-width: 100dvw;
+        max-width: 420px;
         margin-left: auto;
-        height: 93.3dvh;
-        //overlap css
-        position: absolute;
-        right: 0;
-        z-index: 2;
-        /* Higher z-index brings it on top */
+        height: 93.3vh;
 
 
         .p-font-size-degination {

@@ -9,7 +9,7 @@ import './Home.scss';
 function Home() {
 
     return (
-        <div className='card home rounded-0 border-0 mt-5 pt-3 d-flex flex-row'>
+        <div className='card home rounded-0 border-0 mt-5 d-flex flex-row'>
 
             <div className="card-body text-white glass-card border-0 rounded-0 shadow-lg">
                 <h4 className="card-title">MD AHTEAR RAHMAN</h4>
@@ -24,7 +24,7 @@ function Home() {
                     <p className="text-white p-font-size m-0">{'Typescript, JavaScript| Azure DevOps, Docker,'}</p>
                     <p className="text-white p-font-size m-0">{'Kubernetes, Minikube, Microk8s, Kafka | Python, FastAPI'}</p>
                 </span>
-                <div className='mt-auto  mb-0 d-flex flex-column'>
+                <div className='mt-auto  mb-0 d-flex flex-column contact-info'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>
                     <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                     <span className='m-0 p-font-size'>Cell : +8801728706930, +8801516162081</span>

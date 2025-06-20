@@ -27,9 +27,9 @@ function Navbar() {
         // <!-- Navbar -->
         <>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark navbar-div p-2 fixed-top border-0 border">
-                <a className="navbar-brand d-flex align-items-center" >
+                {/* <a className="navbar-brand d-flex align-items-center" >
                     <img src={profile_pic} alt="Avatar Logo" className="rounded-circle profile_pic" />
-                </a>
+                </a> */}
                 <button className="navbar-toggler btn btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-mobile">
                     <span className="navbar-toggler-icon"></span>
                 </button>

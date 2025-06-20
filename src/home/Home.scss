@@ -29,9 +29,20 @@
         // min-width: 25%;
         //width: 25%;
         opacity: 0.9;
-        max-width: 420px;
+        //min-width: 420px;
         margin-left: auto;
-        height: 93.3vh;
+        height: 95vh;
+        position: absolute;
+        right: 0;
+
+            @media (min-width: 600px) {
+                .contact-info  {
+                    width: 370px;
+                }
+
+            // width: 345px;
+        }
+
         //overlap css
         /* Higher z-index brings it on top */
 

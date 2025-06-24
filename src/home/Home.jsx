@@ -9,7 +9,7 @@ import './Home.scss';
 function Home() {
 
     return (
-        <div className='card home rounded-0 border-0 mt-5 d-flex flex-row'>
+        <div className='card home rounded-0 border-0 mt-5 d-flex flex-row aligin-items-center justify-content-center'>
 
             <div className="card-body text-white glass-card border-0 rounded-0 shadow-lg">
                 <h4 className="card-title">MD AHTEAR RAHMAN</h4>
@@ -40,6 +40,9 @@ function Home() {
                     <a href='https://api.whatsapp.com/send?phone=8801516162081' target='_blank' title={"What's app => 8801516162081"}><img src={whatsapp} height={25} /></a>
                 </div>
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
+            </div>
+            <div className='d-flex align-items-center'>
+                <span className='typewriter fw-bold fs-3'>Full-Stack Senior Software Engineer</span>
             </div>
         </div>
     )

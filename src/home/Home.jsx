@@ -42,7 +42,7 @@ function Home() {
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
             </div>
             <div className='d-flex align-items-center'>
-                <span className='typewriter fw-bold fs-3'>Full-Stack Senior Software Engineer</span>
+                <span className='typewriter fw-bold fs-3'>Full Stack Senior Software Engineer</span>
             </div>
         </div>
     )

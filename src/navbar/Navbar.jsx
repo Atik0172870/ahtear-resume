@@ -41,13 +41,16 @@ function Navbar() {
                         <li className={`nav-item btn btn-sm li-btn ${activeBtn == 2 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/technology', 2) }}>
                             Technolory
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 3 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/resume', 3) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 3 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/technology-overview', 3) }}>
+                            Technolory Overview
+                        </li>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 4 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/resume', 4) }}>
                             Resume
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 4 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 4) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 5 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 5) }}>
                             Cover letter
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 5 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/video-interview', 5) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/video-interview', 6) }}>
                             Video Interview
                         </li>
                         {/* <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/pdf-cv', 6) }}>
@@ -60,12 +63,25 @@ function Navbar() {
                 <div className="offcanvas-header">
                     <button type="button" className="btn btn-close btn-sm btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
-                <div className="offcanvas-body p-0 d-flex align-items-center flex-column gap-4 justify-content-start mt-5">
-                    <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/', 1) }} />
-                    <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/technology', 2) }} />
-                    <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/resume', 3) }} />
-                    <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 4) }} />
-                    <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/video-interview', 5) }} />
+                <div className="offcanvas-body p-0 d-flex align-items-center flex-column gap-3 justify-content-start mt-4 p-2">
+                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/', 1) }}>Home
+                        <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
+                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/technology', 2) }}>Technology
+                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
+                        <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/technology-overview', 3) }}>Technology Overview
+                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
+                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/resume', 4) }}>Resume
+                        <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
+                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/cover-letter', 5) }}>Cover Letter
+                        <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
+                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/video-interview', 6) }}>Video Interview
+                        <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} />
+                    </span>
                     {/* <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/pdf-cv', 6) }} /> */}
                 </div>
             </div>

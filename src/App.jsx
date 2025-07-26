@@ -5,6 +5,8 @@ import './App.css';
 import { Route, Router, Routes, useNavigate } from "react-router-dom";
 import Home from './home/Home.jsx';
 import Technology from './technology/Technology.jsx';
+import TechnologyOverview from './technology-overview/TechnologyOverview.jsx'
+
 import CoverLetter from './cover-letter/Cover-Letter';
 import VideoInterview from './Video-interview';
 import Resume from './resume/My-Resume';
@@ -19,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/technology" element={<Technology />} />
+        <Route path="/technology-overview" element={<TechnologyOverview />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/cover-letter" element={<CoverLetter />} />
         <Route path="/video-interview" element={<VideoInterview />} />

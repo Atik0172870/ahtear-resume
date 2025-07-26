@@ -17,6 +17,11 @@
         flex-wrap: wrap;
         margin-bottom: 1rem;
 
+        // span {
+        //     font-size: 15px;
+        //     color: aqua;
+        // }
+
         .glass-card {
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(20px);
@@ -25,19 +30,27 @@
             //box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             padding: 20px;
             opacity: 0.8;
-            max-height: 400px;
+            max-height: 500px;
             width: 320px;
             //min-width: 300px;
             border: 1px solid darkgoldenrod;
             display: flex;
             flex-direction: column;
-            //background: linear-gradient(to top left, darkgoldenrod 10%, black 10%);
 
+            //background: linear-gradient(to top left, darkgoldenrod 10%, black 10%);
+            .skill {
+                .skillProgressBar-body {
+                    span {
+                        font-size: 14px;
+                        color: aqua;
+                    }
+                }
+            }
 
             ul>li {
                 font-size: 15px;
                 color: aqua;
-                
+
             }
 
             h3 {

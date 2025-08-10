@@ -17,7 +17,7 @@ import Resume from './resume/My-Resume';
 function App() {
 
   return (
-    <div className='container-fluid mt-2 p-0'>
+    <div className='container-fluid m-0 p-0'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/technology" element={<Technology />} />

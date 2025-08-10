@@ -63,24 +63,30 @@ function Navbar() {
                 <div className="offcanvas-header">
                     <button type="button" className="btn btn-close btn-sm btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
-                <div className="offcanvas-body p-0 d-flex align-items-center flex-column gap-3 justify-content-start mt-4 p-2">
-                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/', 1) }}>Home
+                <div className="offcanvas-body p-0 d-flex align-items-start flex-column gap-3 justify-content-start mt-4 p-3">
+                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/', 1) }}>
                         <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 1 ? 'text-warning border p-2 border-warning' : ''}`}>Home</span>
                     </span>
-                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/technology', 2) }}>Technology
+                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/technology', 2) }}>
                         <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 2 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology</span>
                     </span>
-                        <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/technology-overview', 3) }}>Technology Overview
+                    <span className="d-flex align-items-center gap-2 " onClick={() => { navigateToRoute('/technology-overview', 3) }}>
                         <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 3 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology Overview</span>
                     </span>
-                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/resume', 4) }}>Resume
+                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/resume', 4) }}>
                         <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 4 ? 'text-warning border p-2 p-2 border-warning border p-2 p-2 border-warning' : ''}`}>Resume</span>
                     </span>
-                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/cover-letter', 5) }}>Cover Letter
+                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/cover-letter', 5) }}>
                         <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 5 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Cover Letter</span>
                     </span>
-                    <span className="d-flex align-items-center flex-column"  onClick={() => { navigateToRoute('/video-interview', 6) }}>Video Interview
+                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/video-interview', 6) }}>
                         <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == 6 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Video Interview</span>
                     </span>
                     {/* <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/pdf-cv', 6) }} /> */}
                 </div>

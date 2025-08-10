@@ -5,7 +5,7 @@ import './Technology.scss';
 function Home() {
 
     return (
-        <div className='card technology rounded-0 border-0 mt-5 pt-4'>
+        <div className='card technology rounded-0 border-0 mt-4 pt-4'>
             <div className='main-card card-body'>
                 <div className="glass-card">
                     <h3 className='text-warning m-0'>Back-End Technology</h3>

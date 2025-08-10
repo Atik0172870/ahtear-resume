@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import profile_pic from '../assets/linkedIn-pic.png';
-import './Technology.scss';
+import './Technology-overview.scss';
 import { skillsData } from './technology-data';
 
 function Home() {
@@ -71,7 +71,7 @@ function Home() {
     );
 
     return (
-        <div className='card technology rounded-0 border-0 mt-5 pt-4'>
+        <div className='card technology-overview rounded-0 border-0 mt-4 pt-4'>
             <div className='main-card card-body'>
                 <SkillCategoryCard title="Back-End Technology" skills={skillsData.backend} />
                 <SkillCategoryCard title="Database Technology" skills={skillsData.database} />

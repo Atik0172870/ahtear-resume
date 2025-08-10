@@ -9,12 +9,12 @@ import './Home.scss';
 function Home() {
 
     return (
-        <div className='card home rounded-0 border-0 mt-5 d-flex flex-row aligin-items-center justify-content-center'>
+        <div className='card home rounded-0 border-0 mt-4 pt-3 d-flex flex-row aligin-items-center justify-content-center'>
 
             <div className="card-body text-white glass-card border-0 rounded-0 shadow-lg">
                 <h4 className="card-title">MD AHTEAR RAHMAN</h4>
                 <img className="card-img-bottom rounded-circle profile_pic border-1 border border-warning" src={Ahtear_rahman} alt="Card image" />
-                <p className="text-warning m-0 fw-bold p-font-size-degination mt-3">{'Senior Full-Stack Software Engineer'}</p>
+                <p className="text-warning m-0 fw-bold p-font-size-degination mt-1">{'Senior Full-Stack Software Engineer'}</p>
                 <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                 {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
@@ -24,7 +24,7 @@ function Home() {
                     <p className="text-white p-font-size m-0">{'Typescript, JavaScript| Azure DevOps, Docker,'}</p>
                     <p className="text-white p-font-size m-0">{'Kubernetes, Minikube, Microk8s, Kafka | Python, FastAPI'}</p>
                 </span>
-                <div className='mt-auto  mb-0 d-flex flex-column contact-info'>
+                <div className='mt-auto  mb-0 d-flex flex-column contact-info ps-3'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>
                     <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                     <span className='m-0 p-font-size'>Cell : +8801728706930, +8801516162081</span>

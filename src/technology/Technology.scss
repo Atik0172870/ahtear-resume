@@ -2,7 +2,8 @@
     background-image: url(../assets/back-img-3.jpg);
     background-size: cover;
     background-position: center;
-    height: auto !important;
+    height: 100dvh !important;
+    // max-height: 100dvh !important;
     width: 100% !important;
     background-repeat: no-repeat;
     overflow: auto;
@@ -37,7 +38,7 @@
             ul>li {
                 font-size: 15px;
                 color: aqua;
-                
+
             }
 
             h3 {

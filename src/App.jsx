@@ -10,6 +10,8 @@ import TechnologyOverview from './technology-overview/TechnologyOverview.jsx'
 import CoverLetter from './cover-letter/Cover-Letter';
 import VideoInterview from './Video-interview';
 import Resume from './resume/My-Resume';
+import Project from './projects/Project.jsx';
+
 // import PdfCv from './pdfCvContainer/PdfCv.jsx';
 
 
@@ -20,6 +22,7 @@ function App() {
     <div className='container-fluid m-0 p-0'>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Project />} />
         <Route path="/technology" element={<Technology />} />
         <Route path="/technology-overview" element={<TechnologyOverview />} />
         <Route path="/resume" element={<Resume />} />

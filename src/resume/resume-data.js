@@ -31,10 +31,10 @@ export const data = {
     { type: 'Technologies Back End Client Side Front', value: 'TFS, Source tree, Bitbucket, GitHub, and SVN, Azure DevOps', isIcon: false, className: 'common-font-size  ms-4' },
     //1
     { type: 'Project Job Experience Working History', value: 'Job Experience and Working History:', isIcon: false, className: 'common-header mt-2' },
-    { type: 'Project Job Experience Working History', value: '❖ Working Senior Principal software Engineer: ', isIcon: false, className: 'technology-item  ms-3' },
+    { type: 'Project Job Experience Working History', value: '❖ Working as Manager, Document and Loan Management Systems.: ', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Company: Brac Bank PLC. https://www.bracbank.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 17/08/2025 to till now.', isIcon: false, className: 'common-font-size  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Project: Various fintech project', isIcon: false, className: 'common-header ms-4' },
+    { type: 'Project Job Experience Working History', value: 'Project: Various fintech projects, Shubidha, Digital Desk, Astha.', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE, .Net Core Microservice.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Microservice Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs, angular for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
@@ -44,7 +44,7 @@ export const data = {
     { type: 'Project Job Experience Working History', value: 'Company: Adaptive Enterprise Ltd. https://www.napcosecurity.com, http://ael-bd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Note: I am directly working with Napco Security Technologies (USA)', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/12/2021 to  16/08/2025.', isIcon: false, className: 'common-font-size  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Project: iBridgeOnline, NapcoLink:', isIcon: false, className: 'common-header ms-4' },
+    { type: 'Project Job Experience Working History', value: 'Project: iBridgeOnline,NapcoLink, DoorBell, GarageDoor (USA):', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE, .Net Core Microservice.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Microservice Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
@@ -53,7 +53,7 @@ export const data = {
     //part time
     { type: 'Project Job Experience Working History', value: '❖ Worked as Full-Stack Software Engineer: Part time (01/01/2021 to 31/12/2021). ', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company:  Hoxro (https://www.hoxro.co.uk/)', isIcon: false, className: 'common-font-size  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Project: Project: Legal Management System:', isIcon: false, className: 'common-header ms-4' },
+    { type: 'Project Job Experience Working History', value: 'Project: Project: Legal Management System(UK):', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Technology: ASP.NET CORE, .Net Core Microservice, Using Angular for Client-Side Technology.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement Ocelot, JWT Token, RabbitMQ.', isIcon: false, className: 'common-font-size  ms-5' },
     //2

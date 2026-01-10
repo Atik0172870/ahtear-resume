@@ -78,8 +78,6 @@ function Home() {
                 <SkillCategoryCard title="Client-Side Technology" skills={skillsData.frontend} />
                 <SkillCategoryCard title="DevOps Things" skills={skillsData.devops} />
                 <SkillCategoryCard title="Source Control" skills={skillsData.sourceControl} />
-
-
             </div>
         </div>
     )

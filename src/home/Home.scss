@@ -17,14 +17,16 @@
         width: 0;
         animation: typing 8s steps(37) infinite, blink 0.7s step-end infinite;
         padding: 1rem;
-        color: white;
+        // color: white;
+        color: #ffc107;
         text-align: center;
+        text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF
     }
 
     @keyframes typing {
       0%   { width: 0ch; }
       62.5%  { width: 37ch; }  /* Typing finishes in 5s (62.5% of 8s) */
-      87.5% { width: 37ch; }   /* Hold full text for 2s (5s–7s) */
+      87.5% { width: 50ch; }   /* Hold full text for 2s (5s–7s) */
       100%  { width: 0ch; }    /* Clear in the last 1s */
     }
 

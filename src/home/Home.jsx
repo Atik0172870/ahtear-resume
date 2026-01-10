@@ -14,7 +14,7 @@ function Home() {
             <div className="card-body text-white glass-card border-0 rounded-0 shadow-lg">
                 <h4 className="card-title">MD AHTEAR RAHMAN</h4>
                 <img className="card-img-bottom rounded-circle profile_pic border-1 border border-warning" src={Ahtear_rahman} alt="Card image" />
-                <p className="text-warning m-0 fw-bold p-font-size-degination mt-1">{'Senior Full-Stack Software Engineer'}</p>
+                <p className="text-warning m-0 fw-bold p-font-size-degination mt-1">{'Senior Principle Software Engineer(Manager)'}</p>
                 <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                 {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
@@ -41,8 +41,8 @@ function Home() {
                 </div>
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
             </div>
-            <div className='d-flex align-items-center'>
-                <span className='typewriter fw-bold fs-3'>Full Stack Senior Software Engineer</span>
+            <div className='d-flex align-items-center w-100'>
+                <span className='typewriter fw-bold fs-3'>Senior Principle Software Engineer</span>
             </div>
         </div>
     )

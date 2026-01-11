@@ -7,7 +7,7 @@ export const data = {
   experience: 'Experience: More than 9 years.',
   firstPage: [
     { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'text-primary name' },
-    { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Full Stack Principal Software Engineer (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
+    { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Principal Software Engineer (Full-Stack) (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
     { type: 'MD AHTEAR RAHMAN Name', value: '[ C# .NET, ASP.NET MVC,.NET Core, Microservice, RabbitMQ , Ocelot, JWT Token | ReactJs, Angular, ', isIcon: false, className: 'common-font-size' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'Typescript, JavaScript | Azure DevOps, Docker, Kubernetes, Minikube, Microk8s | Python, FastAPI ]', isIcon: false, className: 'common-font-size' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081', isIcon: false, className: 'mt-2 contact' },
@@ -40,7 +40,7 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs, angular for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Write maintainable and extensible code in a team environment.', isIcon: false, className: 'common-font-size  ms-5' },
 //2
-    { type: 'Project Job Experience Working History', value: '❖ Working as Full-Stack Senior Software Engineer: ', isIcon: false, className: 'technology-item  ms-3' },
+    { type: 'Project Job Experience Working History', value: '❖ Working as Senior Software Engineer (Full-Stack): ', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Company: Adaptive Enterprise Ltd. https://www.napcosecurity.com, http://ael-bd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Note: I am directly working with Napco Security Technologies (USA)', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/12/2021 to  16/08/2025.', isIcon: false, className: 'common-font-size  ms-3' },
@@ -51,13 +51,13 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '➢ Write maintainable and extensible code in a team environment.', isIcon: false, className: 'common-font-size  ms-5' },
 
     //part time
-    { type: 'Project Job Experience Working History', value: '❖ Worked as Full-Stack Software Engineer: Part time (01/01/2021 to 31/12/2021). ', isIcon: false, className: 'technology-item  ms-3 mt-2' },
+    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack): Part time (01/01/2021 to 31/12/2021). ', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company:  Hoxro (https://www.hoxro.co.uk/)', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Project: Legal Management System(UK):', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Technology: ASP.NET CORE, .Net Core Microservice, Using Angular for Client-Side Technology.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement Ocelot, JWT Token, RabbitMQ.', isIcon: false, className: 'common-font-size  ms-5' },
     //2
-    { type: 'Project Job Experience Working History', value: '❖ Worked as Full-Stack Software Engineer.', isIcon: false, className: 'technology-item  ms-3 mt-2' },
+    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Next IT Limited, https://nextitltd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/07/2019 to 30/11/2021', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Big Accessories ERP:', isIcon: false, className: 'common-header ms-4' },
@@ -72,7 +72,7 @@ export const data = {
   ],
   secondPage: [
     //3
-    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer.', isIcon: false, className: 'technology-item  ms-3 mt-2' },
+    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Omni Solutions Limited, http://omnisolutionsbd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/04/2018 to 31/06/2019', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: ERP Software: (i) Supply Chain Management. (ii) Inventory. (iii) HR:', isIcon: false, className: 'common-header ms-4' },
@@ -83,7 +83,7 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '➢ Helped and learned knowledge with team member friendly and enthusiastically.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Performance review and optimization.', isIcon: false, className: 'common-font-size  ms-5' },
     //4
-    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer.', isIcon: false, className: 'technology-item  ms-3 mt-2' },
+    { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Startrek Associates , http://www.startrekbd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date 01/02/2016 to 31/03/2018', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Bangladesh Rural Electrification Board billing software:', isIcon: false, className: 'common-header ms-4' },
@@ -96,11 +96,11 @@ export const data = {
     // certification or education
     { type: 'Vendor Certification Education', value: 'Vendor Certification:', isIcon: true, className: 'common-header mt-2 glyphicon glyphicon-book' },
     { type: 'Vendor Certification Education', value: '1. Microsoft Specialist.', isIcon: false, className: 'technology-item ms-4' },
-    { type: 'Vendor Certification Education', value: 'https://www.dropbox.com/scl/fi/sw0aq6xeu7sx8sgnlwidr/Certificate_HTML5.pdf?rlkey=rgywyy57l77gxn69usj1ll72i&dl=0', isIcon: false, className: 'common-font-size  ms-4' },
+    { type: 'Vendor Certification Education', value: 'https://drive.google.com/file/d/1H1c8seumW1IHu2eD74_bcxugBq6uKIRI/view', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Vendor Certification Education', value: '2. Microsoft Certified Professional.', isIcon: false, className: 'technology-item ms-4' },
-    { type: 'Vendor Certification Education', value: 'https://www.dropbox.com/scl/fi/n3d9w70simlxc40f4pt81/Certificate_MVC5.pdf?rlkey=8dxr35pclzos234t6hr5obj4f&dl=0', isIcon: false, className: 'common-font-size  ms-4' },
+    { type: 'Vendor Certification Education', value: 'https://drive.google.com/file/d/1ac8wbAw-ATirW93i_Ftw156lhTNvIT3q/view', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Vendor Certification Education', value: '3. Microsoft Certified Solutions Developer.', isIcon: false, className: 'technology-item ms-4' },
-    { type: 'Vendor Certification Education', value: 'https://www.dropbox.com/scl/fi/q58wfn0bui9v5grg3t196/Certificate_WindowsAzure.pdf?rlkey=mmiom4gn20h9odzut0ictgz6s&dl=0', isIcon: false, className: 'common-font-size  ms-4' },
+    { type: 'Vendor Certification Education', value: 'https://drive.google.com/file/d/1cxyU11DFw2dd6ggPlfi7dhvAZm2spaXA/view', isIcon: false, className: 'common-font-size  ms-4' },
 
     { type: 'Certification Education Degree', value: 'Academic Qualification / Degree:', isIcon: true, className: 'common-header mt-2 glyphicon glyphicon-book' },
     { type: 'Certification Education Degree', value: '1. MSCSE from United International University (UIU): Obtained in November 2017.', isIcon: false, className: 'ms-4 common-font-size' },

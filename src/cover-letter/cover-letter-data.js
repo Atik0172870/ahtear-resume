@@ -13,7 +13,7 @@ export const coverLetterData = {
     experience: 'Experience: More than 9 years.',
     firstPage: [
         { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'text-primary name' },
-        { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Full-Stack Software Engineer (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
+        { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Principal Software Engineer (Full-Stack) (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
         { type: 'MD AHTEAR RAHMAN Name', value: '[ C# .NET, ASP.NET MVC,.NET Core, Microservice, RabbitMQ , Ocelot, JWT Token | ', isIcon: false, className: 'common-font-size' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'ReactJs, Angular,Typescript, JavaScript | Azure DevOps, Docker, Kubernetes, Minikube, Microk8s | Python, FastAPI ]', isIcon: false, className: 'common-font-size' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081', isIcon: false, className: 'mt-2 contact' },

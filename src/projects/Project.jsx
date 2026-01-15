@@ -28,7 +28,7 @@ function Project() {
                                 {item.git ? (
                                     <>
                                         <hr className="text-warning" />
-                                        <a href={item.git} className="text-white m-0 git-link">Git Link: {item.git} </a>
+                                        <a href={item.git} target='_blank' className="text-white m-0 git-link">Git Link: {item.git} </a>
                                     </>
                                 ) : null}
 

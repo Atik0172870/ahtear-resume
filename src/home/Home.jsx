@@ -27,7 +27,7 @@ function Home() {
                 <div className='mt-auto  mb-0 d-flex flex-column contact-info ps-3'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>
                     <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
-                    <span className='m-0 p-font-size'>Cell : +8801728706930, +8801516162081</span>
+                    <span className='m-0 p-font-size'>Cell : +8801728706930, +8801516162081(whatsApp)</span>
                     <span className='m-0 p-font-size'>Email : Atik0172870@gmail.com, Atik017287069@gmail.com</span>
                     <span className='m-0 p-font-size'>LinkedIn : https://www.linkedin.com/in/md-ahtear-rahman-b8043a15a/</span>
                     <span className='m-0 p-font-size'>GitHub : https://github.com/Atik0172870</span>

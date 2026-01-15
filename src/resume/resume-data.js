@@ -4,13 +4,13 @@ import jsPDF from 'jspdf';
 import CV from '../assets/AHTEAR-RAHMAN-CV.pdf';
 
 export const data = {
-  experience: 'Experience: More than 9 years.',
+  experience: 'Experience: More than 10 years.',
   firstPage: [
     { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'text-primary name' },
     { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Principal Software Engineer (Full-Stack) (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
     { type: 'MD AHTEAR RAHMAN Name', value: '[ C# .NET, ASP.NET MVC,.NET Core, Microservice, RabbitMQ , Ocelot, JWT Token | ReactJs, Angular, ', isIcon: false, className: 'common-font-size' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'Typescript, JavaScript | Azure DevOps, Docker, Kubernetes, Minikube, Microk8s | Python, FastAPI ]', isIcon: false, className: 'common-font-size' },
-    { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081', isIcon: false, className: 'mt-2 contact' },
+    { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081(whatsApp)', isIcon: false, className: 'mt-2 contact' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'Email: Atik0172870@gmail.com, Atik017287069@gmail.com', isIcon: false, className: 'contact' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'LinkedIn: https://www.linkedin.com/in/md-ahtear-rahman-b8043a15a/', isIcon: false, className: 'contact' },
     { type: 'MD AHTEAR RAHMAN Name', value: 'GitHub: https://github.com/Atik0172870', isIcon: false, className: 'contact' },

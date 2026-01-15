@@ -10,16 +10,17 @@ const getDate = () => {
 
 
 export const coverLetterData = {
-    experience: 'Experience: More than 9 years.',
+    experience: 'Experience: More than 10 years.',
     firstPage: [
         { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'text-primary name' },
         { type: 'MD AHTEAR RAHMAN Name', value: '[ Senior Principal Software Engineer (Full-Stack) (.NET | React | Angular) ]', isIcon: false, className: 'title-designation' },
         { type: 'MD AHTEAR RAHMAN Name', value: '[ C# .NET, ASP.NET MVC,.NET Core, Microservice, RabbitMQ , Ocelot, JWT Token | ', isIcon: false, className: 'common-font-size' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'ReactJs, Angular,Typescript, JavaScript | Azure DevOps, Docker, Kubernetes, Minikube, Microk8s | Python, FastAPI ]', isIcon: false, className: 'common-font-size' },
-        { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081', isIcon: false, className: 'mt-2 contact' },
+        { type: 'MD AHTEAR RAHMAN Name', value: 'Cell: +8801728706930, +8801516162081(whatsApp)', isIcon: false, className: 'mt-2 contact' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'Email: Atik0172870@gmail.com, Atik017287069@gmail.com', isIcon: false, className: 'contact' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'LinkedIn: https://www.linkedin.com/in/md-ahtear-rahman-b8043a15a/', isIcon: false, className: 'contact' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'GitHub: https://github.com/Atik0172870', isIcon: false, className: 'contact' },
+        { type: 'MD AHTEAR RAHMAN Name', value: 'Profile: https://atik0172870.github.io/ahtear-resume/', isIcon: false, className: 'contact' },
 
         { type: 'date', value: `Date : ${getDate()}`, isIcon: false, className: 'mt-3 common-font-size fw-semibold' },
         { type: 'Hiring Manager', value: 'Hiring Manager', isIcon: false, className: 'mt-1 common-font-size fw-semibold' },
@@ -28,7 +29,7 @@ export const coverLetterData = {
         { type: 'MD AHTEAR RAHMAN Name', value: '[CityStateZIPCode]', isIcon: false, className: 'common-font-size' },
 
         { type: 'MD AHTEAR RAHMAN Name', value: 'Dear Hiring Manager,', isIcon: false, className: 'mt-3  common-font-size fw-semibold' },
-        { type: 'MD AHTEAR RAHMAN Name', value: 'I am writing to express my interest in the <b>[JobTitle]</b> position at <b>[CompanyName].</b> With over 9 years of experience as a Senior Full Stack Software Engineer, I specialize in building scalable and high-performance applications using C# .NET, ASP.NET Core, Microservices, and cloud technologies. I have a proven track record of leading full-stack development projects from architecture to deployment, delivering robust solutions in dynamic and fast-paced environments.', isIcon: false, className: 'mt-2 common-font-size' },
+        { type: 'MD AHTEAR RAHMAN Name', value: 'I am writing to express my interest in the <b>[JobTitle]</b> position at <b>[CompanyName].</b> With over 10 years of experience as a Senior Full Stack Software Engineer, I specialize in building scalable and high-performance applications using C# .NET, ASP.NET Core, Microservices, and cloud technologies. I have a proven track record of leading full-stack development projects from architecture to deployment, delivering robust solutions in dynamic and fast-paced environments.', isIcon: false, className: 'mt-2 common-font-size' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'I lead the development of microservices-based architectures using ASP.NET Core, RabbitMQ for messaging, and Ocelot for API gateway management, ensuring secure authentication with JWT tokens. I also manage containerized environments using Docker and Kubernetes on Azure, driving continuous integration and deployment (CI/CD) through Azure DevOps.', isIcon: false, className: 'mt-2 common-font-size' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'On the front end, I have delivered seamless user experiences using ReactJS, Angular, and TypeScript. My focus on maintainability and performance has consistently resulted in efficient, scalable web applications. I have successfully contributed to projects like <b>iBridgeOnline and Big Accessories ERP,Legal Management System,ERP Software: (i) Supply Chain Management. (ii) Inventory. (iii) HR,Bangladesh Rural Electrification Board billing software</b> where I implemented security measures, optimized system performance, and developed mission-critical features.', isIcon: false, className: 'mt-2 common-font-size' },
         { type: 'Technology', value: 'And I have more knowledge about the technoogies like.', isIcon: false, className: 'mt-2 common-font-size' },
@@ -50,9 +51,9 @@ export const coverLetterData = {
 
         { type: 'Sincerely', value: 'Sincerely,', isIcon: false, className: 'technology-item  mt-2' },
         { type: 'MD AHTEAR RAHMAN Name', value: 'MD AHTEAR RAHMAN', isIcon: false, className: 'common-font-size' },
-        { type: 'Designation', value: 'Senior Full-Stack Software Engineer', isIcon: false, className: 'common-font-size' },
-        { type: 'Current Company', value: 'Adaptive Enterprise Ltd.', isIcon: false, className: 'common-font-size' },
-        { type: 'Current Company addreess', value: '5/5 Gaznabi Road, Block B Mohammadpur, Dhaka-1207, Bangladesh.', isIcon: false, className: 'common-font-size' },
+        { type: 'Designation', value: 'Senior Principal Software Engineer', isIcon: false, className: 'common-font-size' },
+        { type: 'Current Company', value: 'Brac Bank PLC.', isIcon: false, className: 'common-font-size' },
+        { type: 'Current Company addreess', value: 'Anik Tower, 220/B Bir Uttam Mir Shawkat Sarak, Dhaka 1208', isIcon: false, className: 'common-font-size' },
 
         
 

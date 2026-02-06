@@ -328,6 +328,18 @@ export const ProjectData =
         "Tested the application for performance, usability, and cross-browser/device compatibility."
       ],
       git: 'https://github.com/Atik0172870/MobileBillCalculator-s3in'
+    },
+    {
+      name: 'React-Header-Footer-sideBar-menu-Admin-Panel',
+      detailsList: [
+        "Designed a component-based layout with a persistent header, collapsible sidebar menu, and footer for consistent UI across pages.",
+        "Implemented interactive navigation elements enabling users to open/close the sidebar and navigate between UI sections efficiently.",
+        "Used TypeScript with Vite for development to ensure type safety, fast builds, and a modern development experience.",
+        "Styled UI with SCSS and CSS modules to maintain organized and scalable styles for responsive layouts that adapt to different screens.",
+        "Organized files and components (Header, Sidebar, Footer) for clearer separation of concerns and ease of future enhancements",
+        "Tested layout responsiveness across devices to verify that navigation components reflow correctly on mobile and desktop views"
+      ],
+      git: 'https://github.com/Atik0172870/React-Header-Footer-sideBar-menu'
 
     }
   ];

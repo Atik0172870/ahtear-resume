@@ -29,7 +29,7 @@ export const data = {
     { type: 'Technologies Back End Client Side Front', value: 'ReactJs, Angular, Typescripts, AngularJS, jQuery, Java Script, Ajax, CSS3, SASS, Bootstrap5, HTML5, XML ', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Technologies Back End Client Side Front', value: '❖ Source Control:', isIcon: false, className: 'technology-item ms-3' },
     { type: 'Technologies Back End Client Side Front', value: 'TFS, Source tree, Bitbucket, GitHub, and SVN, Azure DevOps', isIcon: false, className: 'common-font-size  ms-4' },
-    //1
+    //1 Brac Bank PLC
     { type: 'Project Job Experience Working History', value: 'Job Experience and Working History:', isIcon: false, className: 'common-header mt-2' },
     { type: 'Project Job Experience Working History', value: '❖ Working as Manager, Document and Loan Management Systems.: ', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Company: Brac Bank PLC. https://www.bracbank.com/', isIcon: false, className: 'common-font-size  ms-3' },
@@ -39,27 +39,27 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Microservice Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs, angular for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Write maintainable and extensible code in a team environment.', isIcon: false, className: 'common-font-size  ms-5' },
-//2
+//2 Adaptive Enterprise Ltd
     { type: 'Project Job Experience Working History', value: '❖ Working as Senior Software Engineer (Full-Stack): ', isIcon: false, className: 'technology-item  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Company: Adaptive Enterprise Ltd. https://www.napcosecurity.com, http://ael-bd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Note: I am directly working with Napco Security Technologies (USA)', isIcon: false, className: 'technology-item  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Date: 01/12/2021 to  16/08/2025.', isIcon: false, className: 'common-font-size  ms-3' },
+    { type: 'Project Job Experience Working History', value: 'Date: 01/12/2020 to  16/08/2025.', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: iBridgeOnline,NapcoLink, DoorBell, GarageDoor (USA):', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE, .Net Core Microservice.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement with .Net Core Microservice Architecture.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Using ReactJs for Client Side Language.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Write maintainable and extensible code in a team environment.', isIcon: false, className: 'common-font-size  ms-5' },
 
-    //part time
+    //3 part time
     { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack): Part time (01/01/2021 to 31/12/2021). ', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company:  Hoxro (https://www.hoxro.co.uk/)', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Project: Legal Management System(UK):', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Technology: ASP.NET CORE, .Net Core Microservice, Using Angular for Client-Side Technology.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Implement Ocelot, JWT Token, RabbitMQ.', isIcon: false, className: 'common-font-size  ms-5' },
-    //2
+    //4 Next IT Limited
     { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Next IT Limited, https://nextitltd.com/', isIcon: false, className: 'common-font-size  ms-3' },
-    { type: 'Project Job Experience Working History', value: 'Date: 01/07/2019 to 30/11/2021', isIcon: false, className: 'common-font-size  ms-3' },
+    { type: 'Project Job Experience Working History', value: 'Date: 01/07/2019 to 30/11/2020', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Project: Big Accessories ERP:', isIcon: false, className: 'common-header ms-4' },
     { type: 'Project Job Experience Working History', value: '➢ Requirements analysis, design and developed ASP.NET CORE MVC Identity security module.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Developing Order Management system on ASP.NET framework through WEB API', isIcon: false, className: 'common-font-size  ms-5' },
@@ -71,7 +71,7 @@ export const data = {
 
   ],
   secondPage: [
-    //3
+    //5 Omni Solutions Limited
     { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Omni Solutions Limited, http://omnisolutionsbd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date: 01/04/2018 to 31/06/2019', isIcon: false, className: 'common-font-size  ms-3' },
@@ -82,7 +82,7 @@ export const data = {
     { type: 'Project Job Experience Working History', value: '➢ Wrote maintainable and extensible code in a team environment using SOLID Principle.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Helped and learned knowledge with team member friendly and enthusiastically.', isIcon: false, className: 'common-font-size  ms-5' },
     { type: 'Project Job Experience Working History', value: '➢ Performance review and optimization.', isIcon: false, className: 'common-font-size  ms-5' },
-    //4
+    //6 Startrek Associates
     { type: 'Project Job Experience Working History', value: '❖ Worked as Software Engineer (Full-Stack).', isIcon: false, className: 'technology-item  ms-3 mt-2' },
     { type: 'Project Job Experience Working History', value: 'Company: Startrek Associates , http://www.startrekbd.com/', isIcon: false, className: 'common-font-size  ms-3' },
     { type: 'Project Job Experience Working History', value: 'Date 01/02/2016 to 31/03/2018', isIcon: false, className: 'common-font-size  ms-3' },
@@ -101,7 +101,7 @@ export const data = {
     { type: 'Vendor Certification Education', value: 'https://drive.google.com/file/d/1ac8wbAw-ATirW93i_Ftw156lhTNvIT3q/view', isIcon: false, className: 'common-font-size  ms-4' },
     { type: 'Vendor Certification Education', value: '3. Microsoft Certified Solutions Developer.', isIcon: false, className: 'technology-item ms-4' },
     { type: 'Vendor Certification Education', value: 'https://drive.google.com/file/d/1cxyU11DFw2dd6ggPlfi7dhvAZm2spaXA/view', isIcon: false, className: 'common-font-size  ms-4' },
-
+    // Academic Qualification / Degree
     { type: 'Certification Education Degree', value: 'Academic Qualification / Degree:', isIcon: true, className: 'common-header mt-2 glyphicon glyphicon-book' },
     { type: 'Certification Education Degree', value: '1. MSCSE from United International University (UIU): Obtained in November 2017.', isIcon: false, className: 'ms-4 common-font-size' },
     { type: 'Certification Education Degree', value: '2. PGDICT in ICT from Bangladesh Computer Council (BCC): Obtained in November 2016.', isIcon: false, className: 'ms-4 common-font-size' },

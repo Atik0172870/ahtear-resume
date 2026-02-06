@@ -12,7 +12,7 @@ function Project() {
                     ProjectData.map((item, index) => {
                         return (
                             <div className="glass-card" key={item.name + '_' + index}>
-                                <h5 className='text-warning m-0'>{item.name}</h5>
+                                <h6 className='text-warning m-0'>{item.name}</h6>
                                 <hr className='text-warning' />
                                 <div className='h-100 overflow-auto'>
                                     <ul>
@@ -27,7 +27,7 @@ function Project() {
                                 </div>
                                 {item.git ? (
                                     <>
-                                        <hr className="text-warning" />
+                                        <hr className="text-warning mb-0" />
                                         <a href={item.git} target='_blank' className="text-white m-0 git-link">Git Link: {item.git} </a>
                                     </>
                                 ) : null}

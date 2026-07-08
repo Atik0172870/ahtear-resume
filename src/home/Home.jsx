@@ -5,6 +5,7 @@ import linkedin from '../assets/linkedin-app-icon.png';
 import whatsapp from '../assets/wa-whatsapp-icon.png';
 
 import './Home.scss';
+import { GlassAnalogClock } from '../clock/AnalogClock';
 
 function Home() {
 
@@ -41,9 +42,12 @@ function Home() {
                 </div>
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
             </div>
-            <div className='d-flex align-items-center w-100'>
                 <span className='typewriter fw-bold fs-3'>Senior Principal Software Engineer</span>
+            <div className=" position-absolute top-50 start-50 translate-middle z-0">
+                <GlassAnalogClock />
             </div>
+
+            
         </div>
     )
 }

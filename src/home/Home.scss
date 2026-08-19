@@ -14,24 +14,33 @@
     // space actually remains, instead of guessing a fixed position.
     --card-max-width: 420px;
 
+    // "Senior Principal Software Engineer" is 34 characters; steps(34) reveals
+    // one character per step and 36ch leaves a 2-char buffer for the cursor.
+    // font-size is sized in cqw (a % of .home-decor-wrapper's own width, set
+    // as a query container below) rather than fixed breakpoints, so the text
+    // is always scaled to actually fit whatever leftover space remains beside
+    // the card — a fixed-breakpoint guess still clipped it at some widths.
     .typewriter {
         font-family: monospace;
-        font-size: 1.5rem;
+        font-size: clamp(0.6rem, 4cqw, 1.5rem);
         white-space: nowrap;
         overflow: hidden;
+        max-width: 92%;
         width: 0;
-        animation: typing 8s steps(37) infinite, blink 0.7s step-end infinite;
-        padding: 1rem;
+        animation: typing 6s steps(34) infinite, blink 0.7s step-end infinite;
+        padding: 0.5rem 0;
         color: #ffc107;
         text-align: center;
         text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
     }
 
+    // Types in, holds at the full line long enough to read, erases, repeats —
+    // continuously, on loop, at every device width.
     @keyframes typing {
       0%   { width: 0ch; }
-      62.5%  { width: 37ch; }  /* Typing finishes in 5s (62.5% of 8s) */
-      87.5% { width: 50ch; }   /* Hold full text for 2s (5s–7s) */
-      100%  { width: 0ch; }    /* Clear in the last 1s */
+      45%  { width: 36ch; }
+      75%  { width: 36ch; }
+      100% { width: 0ch; }
     }
 
     .base-div {
@@ -41,19 +50,22 @@
         z-index: 1;
     }
 
-    // Decorative flourishes over the background — centered in the leftover
-    // space beside the card, not the whole page, so they never sit on top of
-    // the card's text regardless of viewport width.
-    .home-typewriter-wrapper,
-    .home-clock-wrapper {
+    // Decorative flourishes over the background — stacked with the
+    // typewriter line on top of the clock, centered as a group in the
+    // leftover space beside the card so they never sit on top of the card's
+    // text regardless of viewport width.
+    .home-decor-wrapper {
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: calc(100% - var(--card-max-width));
+        container-type: inline-size;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 28px;
         z-index: 0;
         pointer-events: none;
 
@@ -84,11 +96,11 @@
         position: absolute;
         right: 0;
 
-        @media (min-width: 600px) {
-            .contact-info {
-                width: 370px;
-            }
-        }
+        // @media (min-width: 600px) {
+        //     .contact-info {
+        //         width: 370px;
+        //     }
+        // }
 
         .p-font-size-degination {
             font-size: 16px;
@@ -103,10 +115,10 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
-        .technogy-data {
-            text-align: justify;
-            text-justify: inter-word;
-        }
+        // .technogy-data {
+        //     text-align: justify;
+        //     text-justify: inter-word;
+        // }
 
         .profile_pic {
             height: 200px;

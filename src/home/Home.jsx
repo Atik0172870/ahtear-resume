@@ -24,7 +24,7 @@ function Home() {
                         {data.skillsLine}
                     </p>
                 </span>
-                <div className='mt-auto  mb-0 d-flex flex-column contact-info ps-3'>
+                <div className='mt-auto  mb-0 d-flex flex-column contact-info'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>
                     <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                     <span className='m-0 p-font-size'>Cell : +8801728706930, +8801516162081(whatsApp)</span>
@@ -41,10 +41,8 @@ function Home() {
                 </div>
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
             </div>
-            <div className='home-typewriter-wrapper'>
-                <span className='typewriter fw-bold fs-3'>Senior Principal Software Engineer</span>
-            </div>
-            <div className="home-clock-wrapper">
+            <div className='home-decor-wrapper'>
+                <span className='typewriter fw-bold'>Senior Principal Software Engineer</span>
                 <GlassAnalogClock />
             </div>
 

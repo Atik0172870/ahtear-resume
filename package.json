@@ -1,6 +1,6 @@
 {
   "name": "react-resume",
-  "homepage": "https://Atik0172870/github.io/ahtear-resume",
+  "homepage": "https://Atik0172870.github.io/ahtear-resume",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/copy-404.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

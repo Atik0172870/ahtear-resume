@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Ahtear_rahman from '../assets/ahtear_small_1.jpg';
 import facebook from '../assets/facebook-icon.png';
 import linkedin from '../assets/linkedin-app-icon.png';
@@ -6,6 +6,7 @@ import whatsapp from '../assets/wa-whatsapp-icon.png';
 
 import './Home.scss';
 import { GlassAnalogClock } from '../clock/AnalogClock';
+import { data } from '../resume/resume-data';
 
 function Home() {
 
@@ -18,12 +19,10 @@ function Home() {
                 <p className="text-warning m-0 fw-bold p-font-size-degination mt-1">{'Senior Principal Software Engineer(Full-Stack)'}</p>
                 <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
-                {/* <p className="text-info m-0 fw-bold p-font-size-tech">{'[ Napco Security Technologies - USA ]'}</p> */}
-                <span>
-                    <p className="text-white p-font-size m-0">{'C# .NET, .NET Core, ASP.NET MVC, Microservice,'}</p>
-                    <p className="text-white p-font-size m-0">{'RabbitMQ, Ocelot, JWT Token | ReactJs, Angular,'}</p>
-                    <p className="text-white p-font-size m-0">{'Typescript, JavaScript| Azure DevOps, Docker,'}</p>
-                    <p className="text-white p-font-size m-0">{'Kubernetes, Minikube, Microk8s, Kafka | Python, FastAPI'}</p>
+                <span className='technogy-data text-white p-font-size m-0 d-flex flex-column gap-0'>
+                    <p className="text-white p-font-size m-0">
+                        {data.skillsLine}
+                    </p>
                 </span>
                 <div className='mt-auto  mb-0 d-flex flex-column contact-info ps-3'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>
@@ -42,12 +41,14 @@ function Home() {
                 </div>
                 <span className='mt-2 text-info'>	&copy; {new Date().getFullYear()}{' All Right Reserved.'}</span>
             </div>
+            <div className='home-typewriter-wrapper'>
                 <span className='typewriter fw-bold fs-3'>Senior Principal Software Engineer</span>
-            <div className=" position-absolute top-50 start-50 translate-middle z-0">
+            </div>
+            <div className="home-clock-wrapper">
                 <GlassAnalogClock />
             </div>
 
-            
+
         </div>
     )
 }

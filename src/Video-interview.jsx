@@ -7,7 +7,7 @@ function VideoInterview() {
             <div className="card">
                 <div className="card-header text-center">Video Interview</div>
                 <div className="card-body">
-                    <video width="600" controls>
+                    <video style={{ width: '600px', maxWidth: '100%' }} controls>
                         <source src="your-video-file.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

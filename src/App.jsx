@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
-import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from './home/Home.jsx';
 import Technology from './technology/Technology.jsx';
 import TechnologyOverview from './technology-overview/TechnologyOverview.jsx'
@@ -29,6 +29,7 @@ function App() {
         <Route path="/cover-letter" element={<CoverLetter />} />
         <Route path="/video-interview" element={<VideoInterview />} />
         {/* <Route path="/pdf-cv" element={<PdfCv />} /> */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
 

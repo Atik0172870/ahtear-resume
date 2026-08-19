@@ -6,25 +6,25 @@
     width: 100% !important;
     background-repeat: no-repeat;
     overflow: auto;
+    position: relative;
 
-    //background: linear-gradient(90deg, rgba(0, 0, 0, 1) 2%, rgba(13, 6, 42, 1) 100%);
+    // The card is pinned to a fixed max-width on the right; this is how much
+    // background space is left over on the left for the clock/typewriter to
+    // float in — read by calc() below so they're always centered in whatever
+    // space actually remains, instead of guessing a fixed position.
+    --card-max-width: 420px;
+
     .typewriter {
         font-family: monospace;
         font-size: 1.5rem;
         white-space: nowrap;
         overflow: hidden;
-        // border-right: 1px solid white;
         width: 0;
         animation: typing 8s steps(37) infinite, blink 0.7s step-end infinite;
         padding: 1rem;
-        // color: white;
         color: #ffc107;
         text-align: center;
         text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
-        position: absolute;
-        top: 30%;   
-        right: 50%;
-        transform: translate(50%, -50%);
     }
 
     @keyframes typing {
@@ -34,12 +34,34 @@
       100%  { width: 0ch; }    /* Clear in the last 1s */
     }
 
-
     .base-div {
         width: 100%;
         height: 100%;
         position: relative;
         z-index: 1;
+    }
+
+    // Decorative flourishes over the background — centered in the leftover
+    // space beside the card, not the whole page, so they never sit on top of
+    // the card's text regardless of viewport width.
+    .home-typewriter-wrapper,
+    .home-clock-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: calc(100% - var(--card-max-width));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 0;
+        pointer-events: none;
+
+        // Below this width the leftover space is too narrow for the clock
+        // (~200px) to sit in comfortably; hide rather than crowd it.
+        @media (max-width: 700px) {
+            display: none;
+        }
     }
 
     .glass-card {
@@ -53,12 +75,12 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: whitesmoke;
         padding: 20px;
-        // min-width: 25%;
-        //width: 25%;
         opacity: 0.9;
-        //min-width: 420px;
+        width: 100%;
+        max-width: var(--card-max-width);
         margin-left: auto;
         height: 95vh;
+        overflow-y: auto;
         position: absolute;
         right: 0;
 
@@ -66,13 +88,7 @@
             .contact-info {
                 width: 370px;
             }
-
-            // width: 345px;
         }
-
-        //overlap css
-        /* Higher z-index brings it on top */
-
 
         .p-font-size-degination {
             font-size: 16px;
@@ -87,6 +103,11 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
+        .technogy-data {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
         .profile_pic {
             height: 200px;
             width: 200px;
@@ -94,14 +115,6 @@
             z-index: 1000;
         }
 
-    }
-
-
-    @media (max-width: 600px) {
-        .glass-card {
-            min-width: 100%;
-            overflow: auto;
-        }
     }
 
 }

@@ -74,10 +74,13 @@ function Home() {
         <div className='card technology-overview rounded-0 border-0 mt-4 pt-4'>
             <div className='main-card card-body'>
                 <SkillCategoryCard title="Back-End Technology" skills={skillsData.backend} />
+                <SkillCategoryCard title="Architecture & Patterns" skills={skillsData.architecture} />
                 <SkillCategoryCard title="Database Technology" skills={skillsData.database} />
                 <SkillCategoryCard title="Client-Side Technology" skills={skillsData.frontend} />
                 <SkillCategoryCard title="DevOps Things" skills={skillsData.devops} />
+                <SkillCategoryCard title="Testing & Observability" skills={skillsData.testing} />
                 <SkillCategoryCard title="Source Control" skills={skillsData.sourceControl} />
+                <SkillCategoryCard title="Tools & AI Assistants" skills={skillsData.tooling} />
             </div>
         </div>
     )

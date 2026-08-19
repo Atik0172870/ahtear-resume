@@ -1,10 +1,155 @@
 .cover-letter {
-    background-image: url(../assets/back-img-3.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 93vh !important;
-    width: 100% !important;
-    background-repeat: no-repeat;
-    overflow: auto;
+    --teal: #0f5c58;
+    --teal-dark: #0a3d3a;
+    --text: #1b1e1d;
+    --text-strong: #232726;
+    --text-secondary: #454d4b;
+    --text-muted: #6b7472;
+    --border-light: #d9dfdd;
+    --border-lighter: #e2e7e6;
 
+    .cover-letter-page {
+        box-sizing: border-box;
+        padding: 0.42in 0.45in;
+        font-family: 'Instrument Sans', system-ui, sans-serif;
+        color: var(--text);
+        font-size: 12.8px;
+        line-height: 1.42;
+
+        a {
+            color: var(--teal);
+            text-decoration: none;
+
+            &:hover {
+                color: var(--teal-dark);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .cover-letter-page__body {
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cl-header {
+        border-bottom: 2px solid var(--teal);
+        padding-bottom: 9px;
+        margin-bottom: 9px;
+        text-align: left;
+    }
+
+    .cl-header__name {
+        margin: 0;
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 1.05;
+        letter-spacing: 0.01em;
+        color: var(--teal);
+    }
+
+    .cl-header__title {
+        margin: 6px 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-strong);
+    }
+
+    .cl-header__contacts {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        column-gap: 28px;
+        row-gap: 2px;
+        justify-content: start;
+        margin-top: 8px;
+        font-size: 12.5px;
+        color: var(--text-secondary);
+        white-space: nowrap;
+    }
+
+    .cl-meta {
+        text-align: left;
+        margin-bottom: 9px;
+
+        p {
+            margin: 0 0 1px;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+
+            &:first-child {
+                font-weight: 600;
+                color: var(--text-strong);
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    .cl-greeting {
+        text-align: left;
+        margin: 0 0 8px;
+        font-weight: 600;
+        color: var(--text-strong);
+    }
+
+    .cl-paragraph {
+        text-align: left;
+        margin: 0 0 8px;
+        color: var(--text-strong);
+    }
+
+    .tech-grid {
+        display: grid;
+        gap: 3px;
+        margin-bottom: 9px;
+    }
+
+    .tech-row {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 12px;
+        align-items: start;
+        text-align: left;
+    }
+
+    .tech-label {
+        font-weight: 600;
+        font-size: 12.4px;
+    }
+
+    .tech-value {
+        color: var(--text-strong);
+        font-size: 12.4px;
+    }
+
+    .cl-signature {
+        text-align: left;
+        margin-top: 4px;
+
+        p {
+            margin: 0 0 1px;
+            color: var(--text-strong);
+        }
+    }
+
+    /* Matches the .a4-page breakpoint in App.css — must stay in sync or the
+       fixed-width card and this fluid layout fight each other and overflow. */
+    @media screen and (max-width: 820px) {
+        // .cover-letter-page sits in a flex column with align-items:center, so
+        // its width:auto (inherited from .a4-page) shrink-wraps to content
+        // instead of filling the viewport — pin it explicitly.
+        .cover-letter-page {
+            width: 100%;
+        }
+
+        .cl-header__contacts {
+            grid-template-columns: 1fr;
+            white-space: normal;
+        }
+
+        .tech-row {
+            grid-template-columns: 1fr;
+        }
+    }
 }

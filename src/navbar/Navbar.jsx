@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import profile_pic from '../assets/Ahtear_rahman.JPG';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import menuIcon from '../assets/circle-menu.svg';
 import homeIcon from '../assets/home.svg';
 import resumeIcon from '../assets/resume.svg';
@@ -12,16 +11,22 @@ import project from '../assets/project.png';
 
 import './Navbar.scss';
 
+const ROUTES = {
+    HOME: { id: 1, path: '/' },
+    PROJECTS: { id: 2, path: '/projects' },
+    TECHNOLOGY: { id: 3, path: '/technology' },
+    TECHNOLOGY_OVERVIEW: { id: 4, path: '/technology-overview' },
+    RESUME: { id: 5, path: '/resume' },
+    COVER_LETTER: { id: 6, path: '/cover-letter' },
+    VIDEO_INTERVIEW: { id: 7, path: '/video-interview' },
+};
+
 function Navbar() {
     const navigate = useNavigate();
-    const [activeBtn, setAtiveBtn] = useState(1);
+    const location = useLocation();
+    const activeBtn = Object.values(ROUTES).find((route) => route.path === location.pathname)?.id ?? ROUTES.HOME.id;
 
-    useEffect(() => {
-        navigateToRoute('/', 1)
-    }, [])
-
-    const navigateToRoute = (url = '/', activeBtn) => {
-        setAtiveBtn(activeBtn);
+    const navigateToRoute = (url) => {
         navigate(url);
     }
 
@@ -37,28 +42,28 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="mynavbar">
                     <ul className="navbar-nav me-auto">
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 1 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/', 1) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.HOME.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.HOME.path) }}>
                             Home
                         </li>
-                            <li className={`nav-item btn btn-sm li-btn ${activeBtn == 2 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/projects', 2) }}>
+                            <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.PROJECTS.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.PROJECTS.path) }}>
                             Projects
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 3 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/technology', 3) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.TECHNOLOGY.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.TECHNOLOGY.path) }}>
                             Technolory
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 4 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/technology-overview', 4) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.TECHNOLOGY_OVERVIEW.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.TECHNOLOGY_OVERVIEW.path) }}>
                             Technolory Overview
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 5 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/resume', 5) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.RESUME.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.RESUME.path) }}>
                             Resume
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/cover-letter', 6) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.COVER_LETTER.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.COVER_LETTER.path) }}>
                             Cover letter
                         </li>
-                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == 7 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/video-interview', 7) }}>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.VIDEO_INTERVIEW.path) }}>
                             Video Interview
                         </li>
-                        {/* <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/pdf-cv', 6) }}>
+                        {/* <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/pdf-cv') }}>
                             PDF CV
                         </li> */}
                     </ul>
@@ -69,35 +74,34 @@ function Navbar() {
                     <button type="button" className="btn btn-close btn-sm btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div className="offcanvas-body p-0 d-flex align-items-start flex-column gap-3 justify-content-start mt-4 p-3">
-                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/', 1) }}>
-                        <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 1 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 1 ? 'text-warning border p-2 border-warning' : ''}`}>Home</span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.HOME.path) }}>
+                        <img src={homeIcon} title='Home' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.HOME.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.HOME.id ? 'text-warning border p-2 border-warning' : ''}`}>Home</span>
                     </span>
-                     <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/projects', 2) }}>
-                        <img src={project} title='Project' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 2 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 2 ? 'text-warning border p-2 border-warning' : ''}`}>Projects</span>
+                     <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.PROJECTS.path) }}>
+                        <img src={project} title='Project' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.PROJECTS.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.PROJECTS.id ? 'text-warning border p-2 border-warning' : ''}`}>Projects</span>
                     </span>
-                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/technology', 3) }}>
-                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 3 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 3 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology</span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.TECHNOLOGY.path) }}>
+                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.TECHNOLOGY.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.TECHNOLOGY.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology</span>
                     </span>
-                    <span className="d-flex align-items-center gap-2 " onClick={() => { navigateToRoute('/technology-overview', 4) }}>
-                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 4 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 4 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology Overview</span>
+                    <span className="d-flex align-items-center gap-2 " data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.TECHNOLOGY_OVERVIEW.path) }}>
+                        <img src={Technology} title='Technology' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.TECHNOLOGY_OVERVIEW.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.TECHNOLOGY_OVERVIEW.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Technology Overview</span>
                     </span>
-                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/resume', 5) }}>
-                        <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 5 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 5 ? 'text-warning border p-2 p-2 border-warning border p-2 p-2 border-warning' : ''}`}>Resume</span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.RESUME.path) }}>
+                        <img src={resumeIcon} title='Resume' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.RESUME.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.RESUME.id ? 'text-warning border p-2 p-2 border-warning border p-2 p-2 border-warning' : ''}`}>Resume</span>
                     </span>
-                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/cover-letter', 6) }}>
-                        <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 6 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Cover Letter</span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.COVER_LETTER.path) }}>
+                        <img src={covverletterIcon} title='Cover Letter' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.COVER_LETTER.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.COVER_LETTER.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Cover Letter</span>
                     </span>
-                    <span className="d-flex align-items-center gap-2" onClick={() => { navigateToRoute('/video-interview', 7) }}>
-                        <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 7 ? 'border border-3 border-warning' : ''}`} />
-                        <span className={`${activeBtn == 7 ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Video Interview</span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.VIDEO_INTERVIEW.path) }}>
+                        <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Video Interview</span>
                     </span>
-                    {/* <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == 6 ? 'border border-3 border-warning' : ''}`} onClick={() => { navigateToRoute('/pdf-cv', 6) }} /> */}
                 </div>
             </div>
         </>

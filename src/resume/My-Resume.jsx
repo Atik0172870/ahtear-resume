@@ -93,7 +93,7 @@ function Resume() {
             <div className='resume-header__text'>
               <h1 className='resume-header__name'>{data.name}</h1>
               <p className='resume-header__title'>{data.title}</p>
-              <p className='resume-header__skills'>{data.skillsLine}</p>
+              <p className='resume-header__skills' dangerouslySetInnerHTML={{ __html: data.skillsLine }} />
               <div className='resume-header__contacts '>
                 {data.contacts.map((contact) => (
                   <span key={contact.label}>

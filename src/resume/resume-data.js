@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 export const data = {
   name: 'MD AHTEAR RAHMAN',
   title: 'Senior Principal Software Engineer (Full-Stack | C#.NET | React | Angular)',
-  skillsLine: 'C# .NET 9/10, ASP.NET Core, microservices, gRPC, YARP, Kafka, MassTransit, EF Core, Redis | Clean Architecture, CQRS, DDD, event-driven, resilience patterns | ReactJs, Angular, TypeScript | Azure, Docker, Kubernetes, Azure DevOps CI/CD, OpenTelemetry | Python, FastAPI | xUnit, NUnit, Postman, Swagger, Serilog, NLog, Application Insights | MS SQL Server, SQL Azure, Oracle 11g, MySQL, PostgreSQL, MongoDB | AI: Claude, Gemini, GitHub Copilot, ChatGPT',
+  skillsLine: 'C# .NET 9/10, ASP.NET Core, microservices, gRPC, YARP, Kafka, MassTransit, EF Core, Redis | Clean Architecture, CQRS, DDD, event-driven, resilience patterns | ReactJs, Angular, TypeScript | Azure, Docker, Kubernetes, Azure DevOps CI/CD, OpenTelemetry | Python, FastAPI | xUnit, NUnit, Postman, Swagger, Serilog, NLog, Application Insights | MS SQL Server, SQL Azure, Oracle 11g, MySQL, PostgreSQL, MongoDB | <span class="fw-bold" >AI: Claude, Gemini, GitHub Copilot, ChatGPT</span>',
   experienceYears: 10,
   experience: 'More than 10 years.',
   contacts: [

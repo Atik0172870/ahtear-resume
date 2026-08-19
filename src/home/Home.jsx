@@ -20,9 +20,7 @@ function Home() {
                 <p className="text-info p-font-size-tech m-0 mb-2">{'[ C#.NET, .NET CORE | React | Angular ]'}</p>
                 <div className='border border-0 border-bottom w-100 mb-2 border-warning'></div>
                 <span className='technogy-data text-white p-font-size m-0 d-flex flex-column gap-0'>
-                    <p className="text-white p-font-size m-0">
-                        {data.skillsLine}
-                    </p>
+                    <p className="text-white p-font-size m-0" dangerouslySetInnerHTML={{ __html: data.skillsLine }} />
                 </span>
                 <div className='mt-auto  mb-0 d-flex flex-column contact-info'>
                     <span className='text-info fw-bold p-font-size-tech d-flex align-items-center justify-content-center mb-1'>Contact (Dhaka, Bangladesh.)</span>

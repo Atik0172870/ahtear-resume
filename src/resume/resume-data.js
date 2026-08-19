@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 export const data = {
   name: 'MD AHTEAR RAHMAN',
   title: 'Senior Principal Software Engineer (Full-Stack | C#.NET | React | Angular)',
-  skillsLine: 'C# .NET 9/10, ASP.NET Core, microservices, gRPC, YARP, Kafka, MassTransit, EF Core, Redis | Clean Architecture, CQRS, DDD, event-driven, resilience patterns | ReactJs, Angular, TypeScript | Azure, Docker, Kubernetes, Azure DevOps CI/CD, OpenTelemetry | Python, FastAPI | xUnit, NUnit, Postman, Swagger, Serilog, NLog, Application Insights | MS SQL Server, SQL Azure, Oracle 11g, MySQL, PostgreSQL, MongoDB | <span class="fw-bold" >AI: Claude, Gemini, GitHub Copilot, ChatGPT</span>',
+  skillsLine: 'C# .NET 9/10, ASP.NET Core, microservices, gRPC, YARP, Kafka, MassTransit, EF Core, Redis | Clean Architecture, CQRS, DDD, event-driven, resilience patterns | ReactJs, Angular, TypeScript | Azure, Docker, Kubernetes, Azure DevOps CI/CD, OpenTelemetry | Python, FastAPI | xUnit, NUnit, Postman, Swagger, Serilog, NLog, Application Insights | MS SQL Server, SQL Azure, Oracle 11g, MySQL, PostgreSQL, MongoDB | <span class="fw-bold">AI: Claude, Gemini, GitHub Copilot, ChatGPT</span>',
   experienceYears: 10,
   experience: 'More than 10 years.',
   contacts: [
@@ -22,7 +22,7 @@ export const data = {
     { label: 'Cloud & DevOps', value: 'Azure Functions, Service Bus, Blob Storage, Azure DevOps CI/CD pipelines, Docker, Kubernetes, Minikube, Microk8s' },
     { label: 'Testing & Observability', value: 'xUnit, NUnit, integration testing, Postman, Swagger, Serilog, NLog, Application Insights, OpenTelemetry, Elastic / Kibana' },
     { label: 'Client-Side', value: 'ReactJs, Angular, Typescripts, AngularJS, jQuery, Java Script, Ajax, CSS3, SASS, Bootstrap5, HTML5, XML' },
-    { label: 'Tooling', value: 'Visual Studio, Visual Studio Code, TFS, Source tree, Bitbucket, GitHub, SVN, Azure DevOps. AI: Claude, Gemini, GitHub Copilot for development and code review.' },
+    { label: 'Tooling', value: 'Visual Studio, Visual Studio Code, TFS, Source tree, Bitbucket, GitHub, SVN, Azure DevOps. <span class="fw-bold">AI: Claude, Gemini, GitHub Copilot and ChatGPT</span> for development and code review.' },
   ],
   experienceEntries: [
     {

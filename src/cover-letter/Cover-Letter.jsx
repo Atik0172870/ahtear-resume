@@ -87,7 +87,7 @@ function CoverLetter() {
                             {coverLetterData.technologies.map((tech) => (
                                 <div className='tech-row' key={tech.label}>
                                     <strong className='tech-label'>{tech.label}</strong>
-                                    <span className='tech-value'>{tech.value}</span>
+                                    <span className='tech-value' dangerouslySetInnerHTML={{ __html: tech.value }} />
                                 </div>
                             ))}
                         </div>

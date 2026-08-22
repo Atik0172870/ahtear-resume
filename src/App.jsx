@@ -11,6 +11,7 @@ import CoverLetter from './cover-letter/Cover-Letter';
 import VideoInterview from './Video-interview';
 import Resume from './resume/My-Resume';
 import Project from './projects/Project.jsx';
+import BracBusinessJourney from './brac-business-journey/BracBusinessJourney.jsx';
 
 // import PdfCv from './pdfCvContainer/PdfCv.jsx';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/resume" element={<Resume />} />
         <Route path="/cover-letter" element={<CoverLetter />} />
         <Route path="/video-interview" element={<VideoInterview />} />
+        <Route path="/business-automation" element={<BracBusinessJourney />} />
         {/* <Route path="/pdf-cv" element={<PdfCv />} /> */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

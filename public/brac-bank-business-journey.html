@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRAC Bank — Master Business & Department Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220; --panel:#101B2E; --panel-2:#0D1728;
+    --rail-inactive:#22314A; --hairline:#1D2A3E;
+    --text-primary:#F1F4F9; --text-muted:#8494AD; --text-faint:#56637C;
+    --gold:#C9A15A; --gold-soft:rgba(201,161,90,0.16);
+
+    --c-acquire:#6C8CBF; --c-know:#9B8BD9; --c-sell:#C9A15A; --c-assess:#4FA8B0;
+    --c-fund:#E0984B; --c-use:#4FAE83; --c-control:#C1613F; --c-close:#7FA7A0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{ background:var(--bg); color:var(--text-primary); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh; }
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
+
+  .wrap{ max-width:1220px; margin:0 auto; padding:36px 28px 70px; }
+
+  header{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:14px; padding-bottom:22px; border-bottom:1px solid var(--hairline); flex-wrap:wrap; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,3.4vw,38px); line-height:1.08; margin:0 0 8px 0; letter-spacing:-0.01em; }
+  .subtitle{ color:var(--text-muted); font-size:14.5px; max-width:600px; line-height:1.55; }
+  .ledger-id{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-faint); text-align:right; line-height:1.7; }
+  .caveat{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); line-height:1.6;
+    background:var(--panel); border:1px solid var(--hairline); border-left:3px solid var(--c-control);
+    padding:12px 16px; margin:20px 0 8px; border-radius:0 4px 4px 0;
+  }
+  .caveat b{ color:var(--c-control); }
+
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin:56px 0 20px; flex-wrap:wrap; }
+  .section-num{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold); border:1px solid var(--hairline); padding:4px 9px; border-radius:2px; }
+  .section-title{ font-family:'Fraunces',serif; font-weight:600; font-size:24px; }
+  .section-sub{ color:var(--text-muted); font-size:13.5px; margin-left:auto; text-align:right; max-width:380px; }
+
+  .controls{ display:flex; align-items:center; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+  .btn{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.04em; background:var(--panel); border:1px solid var(--hairline); color:var(--text-primary); padding:9px 16px; border-radius:3px; cursor:pointer; transition:border-color .15s ease, background .15s ease; display:flex; align-items:center; gap:7px; }
+  .btn:hover{ border-color:var(--gold); background:var(--panel-2); }
+  .btn:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  .btn.icon{ padding:9px 12px; } .btn.primary{ border-color:var(--gold); color:var(--gold); }
+  .progress-readout{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-muted); margin-left:auto; white-space:nowrap; }
+  .progress-readout b{ color:var(--text-primary); font-weight:500; }
+  .speed-select{ font-family:'IBM Plex Mono',monospace; font-size:12px; background:var(--panel); color:var(--text-primary); border:1px solid var(--hairline); border-radius:3px; padding:8px 10px; cursor:pointer; }
+
+  /* domain band */
+  .rail-outer{ position:relative; overflow-x:auto; overflow-y:hidden; padding:2px 4px 22px; -webkit-overflow-scrolling:touch; }
+  .rail-outer::-webkit-scrollbar{ height:6px; } .rail-outer::-webkit-scrollbar-thumb{ background:var(--hairline); border-radius:3px; }
+  .scroll-content{ position:relative; }
+  .domain-band{ display:flex; height:26px; border-radius:3px; overflow:hidden; margin-bottom:6px; }
+  .domain-seg{ display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--bg); font-weight:600; white-space:nowrap; overflow:hidden; }
+
+  .rail{ position:relative; display:flex; align-items:flex-start; padding-top:34px; }
+  .rail-line-bg{ position:absolute; top:34px; left:19px; right:19px; height:2px; background:var(--rail-inactive); z-index:0; }
+  .rail-line-fg{ position:absolute; top:34px; left:19px; height:2px; background:linear-gradient(90deg, var(--gold), #E8CD91); z-index:1; transition:width .5s cubic-bezier(.65,0,.35,1); box-shadow:0 0 10px rgba(201,161,90,0.55); }
+  .node{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; align-items:center; cursor:pointer; padding:0 3px; min-width:78px; }
+  .stamp{ width:32px; height:32px; border-radius:50%; background:var(--panel); border:2px solid var(--rail-inactive); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); transition:transform .35s cubic-bezier(.34,1.56,.64,1), border-color .3s ease, color .3s ease, box-shadow .3s ease, background .3s ease; }
+  .node.past .stamp{ border-color:var(--gold); color:var(--gold); background:var(--panel-2); }
+  .node.active .stamp{ border-color:var(--phase-color, var(--gold)); color:var(--text-primary); background:var(--phase-color, var(--gold)); transform:scale(1.25); box-shadow:0 0 0 6px var(--gold-soft), 0 0 22px rgba(201,161,90,0.5); }
+  .node-label{ margin-top:10px; font-size:10.5px; text-align:center; color:var(--text-faint); max-width:90px; line-height:1.25; transition:color .3s ease, font-weight .3s ease; }
+  .node.past .node-label{ color:var(--text-muted); } .node.active .node-label{ color:var(--text-primary); font-weight:600; }
+  .dept-tag{ font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-faint); margin-top:4px; opacity:0; transition:opacity .3s ease; text-align:center; max-width:90px; }
+  .node.active .dept-tag{ opacity:1; color:var(--phase-color); }
+
+  .loop-note{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); text-align:center; margin-top:14px; letter-spacing:0.04em; }
+  .loop-note span{ color:var(--gold); }
+
+  .detail{ background:var(--panel); border:1px solid var(--hairline); border-left:3px solid var(--phase-color, var(--gold)); border-radius:4px; padding:24px 26px; margin-top:28px; transition:border-color .3s ease; }
+  .detail-top{ display:flex; align-items:baseline; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+  .detail-num{ font-family:'IBM Plex Mono',monospace; color:var(--phase-color, var(--gold)); font-size:13px; }
+  .detail-title{ font-family:'Fraunces',serif; font-weight:600; font-size:22px; }
+  .detail-phase{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:3px 9px; border-radius:2px; background:var(--gold-soft); color:var(--phase-color, var(--gold)); margin-left:auto; }
+  .detail-desc{ color:var(--text-muted); font-size:14.5px; line-height:1.65; max-width:780px; }
+  .detail-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; align-items:center; }
+  .detail-row-label{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-right:4px; }
+  .mod-chip-mini{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-muted); border:1px solid var(--hairline); padding:5px 10px; border-radius:20px; cursor:pointer; transition:all .2s ease; }
+  .mod-chip-mini:hover{ border-color:var(--gold); color:var(--gold); }
+  .dept-chip-mini{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--bg); background:var(--phase-color,var(--gold)); font-weight:600; padding:5px 12px; border-radius:20px; cursor:pointer; }
+
+  .branches{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:20px; }
+  .track{ background:var(--panel-2); border:1px solid var(--hairline); border-radius:4px; padding:14px 16px 16px; }
+  .track-head{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--track-color); margin-bottom:10px; display:flex; align-items:center; gap:7px; }
+  .track-head::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--track-color); display:inline-block; }
+  .track-items{ display:flex; flex-direction:column; gap:6px; }
+  .titem{ font-size:12.5px; color:var(--text-faint); padding:6px 9px; border-radius:3px; border-left:2px solid var(--hairline); transition:color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease; }
+  .titem.done{ color:var(--text-muted); border-color:var(--track-color); opacity:0.6; }
+  .titem.live{ color:var(--text-primary); border-color:var(--track-color); background:rgba(255,255,255,0.03); font-weight:500; transform:translateX(2px); }
+
+  .legend{ display:flex; flex-wrap:wrap; gap:16px; margin-top:34px; padding-top:20px; border-top:1px solid var(--hairline); }
+  .legend-item{ display:flex; align-items:center; gap:7px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-faint); }
+  .legend-dot{ width:8px; height:8px; border-radius:50%; }
+
+  /* shared card grid (modules + departments) */
+  .filters{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px; }
+  .chip{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.03em; padding:8px 14px; border-radius:20px; border:1px solid var(--hairline); color:var(--text-muted); cursor:pointer; transition:all .2s ease; background:var(--panel); }
+  .chip.active{ border-color:var(--gold); color:var(--gold); background:var(--gold-soft); }
+  .chip:hover{ border-color:var(--gold); color:var(--gold); }
+
+  .mod-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
+  .mod-card{ background:var(--panel); border:1px solid var(--hairline); border-left:3px solid var(--cat-color, var(--gold)); border-radius:4px; padding:18px 20px; cursor:pointer; transition:border-color .25s ease, transform .2s ease, box-shadow .25s ease; }
+  .mod-card:hover{ transform:translateY(-2px); }
+  .mod-card.linked{ box-shadow:0 0 0 2px var(--gold), 0 0 22px rgba(201,161,90,0.35); }
+  .mod-card-top{ display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
+  .mod-code{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--cat-color, var(--gold)); }
+  .mod-name{ font-family:'Fraunces',serif; font-weight:600; font-size:17px; }
+  .mod-owner{
+    font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--text-faint); border:1px solid var(--hairline); padding:2px 8px; border-radius:10px; cursor:pointer; margin-left:auto;
+  }
+  .mod-owner:hover{ border-color:var(--cat-color,var(--gold)); color:var(--cat-color,var(--gold)); }
+  .mod-purpose{ color:var(--text-muted); font-size:13px; line-height:1.5; margin-bottom:10px; }
+  .mod-expand-hint{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--text-faint); letter-spacing:0.06em; text-transform:uppercase; }
+  .mod-detail{ display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--hairline); grid-template-columns:1fr 1fr; gap:10px 18px; }
+  .mod-card.open .mod-detail{ display:grid; } .mod-card.open .mod-expand-hint{ display:none; }
+  .mod-field{ font-size:12.5px; line-height:1.55; }
+  .mod-field b{ display:block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--cat-color, var(--gold)); margin-bottom:4px; font-weight:600; }
+  .mod-field span{ color:var(--text-muted); }
+  .mod-field.full{ grid-column:1 / -1; }
+  .flagship-tag{ font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; background:var(--gold-soft); color:var(--gold); padding:2px 8px; border-radius:10px; }
+
+  .wf-block{ grid-column:1 / -1; margin-top:6px; padding-top:14px; border-top:1px dashed var(--hairline); }
+  .wf-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+  .wf-title{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--cat-color,var(--gold)); }
+  .wf-btn{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:var(--panel-2); border:1px solid var(--hairline); color:var(--text-primary); padding:5px 11px; border-radius:3px; cursor:pointer; transition:border-color .15s ease; }
+  .wf-btn:hover{ border-color:var(--cat-color,var(--gold)); }
+  .wf-readout{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-faint); margin-left:auto; }
+  .wf-rail{ position:relative; padding-top:14px; margin-bottom:8px; }
+  .wf-line-bg{ position:absolute; top:22px; left:13px; right:13px; height:1.5px; background:var(--rail-inactive); }
+  .wf-line-fg{ position:absolute; top:22px; left:13px; height:1.5px; background:linear-gradient(90deg, var(--cat-color,var(--gold)), #fff2); transition:width .4s ease; }
+  .wf-steps{ position:relative; display:flex; justify-content:space-between; gap:4px; }
+  .wf-step{ display:flex; flex-direction:column; align-items:center; flex:1; cursor:pointer; }
+  .wf-dot{ width:16px; height:16px; border-radius:50%; background:var(--panel); border:2px solid var(--rail-inactive); transition:all .3s cubic-bezier(.34,1.56,.64,1); }
+  .wf-step.past .wf-dot{ border-color:var(--cat-color,var(--gold)); background:var(--panel-2); }
+  .wf-step.active .wf-dot{ border-color:var(--cat-color,var(--gold)); background:var(--cat-color,var(--gold)); transform:scale(1.35); box-shadow:0 0 12px var(--cat-color,var(--gold)); }
+  .wf-step-label{ margin-top:8px; font-size:10px; text-align:center; color:var(--text-faint); line-height:1.3; max-width:90px; transition:color .25s ease, font-weight .25s ease; }
+  .wf-step.past .wf-step-label{ color:var(--text-muted); } .wf-step.active .wf-step-label{ color:var(--text-primary); font-weight:600; }
+  .wf-detail-line{ font-size:12px; color:var(--text-muted); background:var(--panel-2); border-left:2px solid var(--cat-color,var(--gold)); padding:9px 12px; border-radius:0 3px 3px 0; margin-top:8px; min-height:18px; }
+
+  .flow-pair{ display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-muted); margin-bottom:10px; flex-wrap:wrap; }
+  .flow-pair .arrow{ color:var(--text-faint); }
+  .flow-pair b{ color:var(--text-primary); font-weight:500; }
+
+  footer{ margin-top:40px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); text-align:center; }
+
+  /* ---------- Live handoff map ---------- */
+  .flowmap-outer{ position:relative; overflow-x:auto; overflow-y:hidden; border:1px solid var(--hairline); border-radius:4px; background:var(--panel); -webkit-overflow-scrolling:touch; }
+  .flowmap-outer::-webkit-scrollbar{ height:6px; } .flowmap-outer::-webkit-scrollbar-thumb{ background:var(--hairline); border-radius:3px; }
+  .flowmap-inner{ position:relative; height:490px; }
+  .flow-svg{ position:absolute; top:0; left:0; width:100%; height:100%; }
+  .flow-svg path{ fill:none; stroke-width:1.6; }
+  .flow-svg path.edge-main{ stroke:var(--rail-inactive); }
+  .flow-svg path.edge-feedback{ stroke:rgba(193,97,63,0.35); stroke-dasharray:4 4; }
+  .flow-svg path.lit-main{ stroke:var(--gold); stroke-width:2.4; filter:drop-shadow(0 0 4px rgba(201,161,90,0.6)); }
+  .flow-svg path.lit-feedback{ stroke:var(--c-control); stroke-width:2.4; stroke-dasharray:5 4; filter:drop-shadow(0 0 4px rgba(193,97,63,0.6)); }
+  .flow-node{
+    position:absolute; transform:translate(-50%,-50%); width:118px; text-align:center; cursor:pointer;
+  }
+  .flow-node-dot{
+    width:42px; height:42px; border-radius:50%; margin:0 auto; background:var(--panel-2);
+    border:2px solid var(--rail-inactive); display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-muted); font-weight:600;
+    transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .flow-node.terminal .flow-node-dot{ border-style:dashed; }
+  .flow-node-label{ margin-top:8px; font-size:11px; color:var(--text-muted); line-height:1.25; transition:color .3s ease, font-weight .3s ease; font-weight:500; }
+  .flow-node.active .flow-node-dot{ border-color:var(--gold); background:var(--gold); box-shadow:0 0 0 6px var(--gold-soft), 0 0 18px rgba(201,161,90,0.5); transform:scale(1.15); }
+  .flow-node.active .flow-node-label{ color:var(--text-primary); font-weight:600; }
+  .flow-node.visited .flow-node-dot{ border-color:var(--gold); }
+  .flow-node.feedback-hit .flow-node-dot{ border-color:var(--c-control); background:var(--c-control); box-shadow:0 0 0 6px rgba(193,97,63,0.18), 0 0 18px rgba(193,97,63,0.5); }
+
+  .flow-token{
+    position:absolute; width:12px; height:12px; border-radius:50%; background:var(--text-primary);
+    box-shadow:0 0 10px rgba(236,241,248,0.8), 0 0 22px rgba(201,161,90,0.6);
+    transition:left .55s cubic-bezier(.4,0,.2,1), top .55s cubic-bezier(.4,0,.2,1);
+    opacity:0; pointer-events:none;
+  }
+  .flow-token.on{ opacity:1; }
+
+  .flow-log-panel{ background:var(--panel); border:1px solid var(--hairline); border-radius:4px; padding:16px 20px; margin-top:16px; }
+  .flow-log-head{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .flow-log{ max-height:180px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; }
+  .flow-log::-webkit-scrollbar{ width:5px; } .flow-log::-webkit-scrollbar-thumb{ background:var(--hairline); border-radius:3px; }
+  .flow-log-empty{ color:var(--text-faint); font-size:12.5px; }
+  .flow-log-line{ font-size:12.5px; line-height:1.5; padding:7px 10px; border-radius:3px; border-left:2px solid var(--rail-inactive); color:var(--text-muted); }
+  .flow-log-line.is-feedback{ border-left-color:var(--c-control); background:rgba(193,97,63,0.06); color:var(--text-primary); }
+  .flow-log-line.is-latest{ background:rgba(255,255,255,0.03); color:var(--text-primary); }
+  .flow-log-line b{ color:var(--gold); font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:11px; margin-right:6px; }
+
+  /* ---------- Sticky nav ---------- */
+  .stickynav{
+    position:sticky; top:0; z-index:50; background:rgba(11,18,32,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline); margin:0 -28px 0; padding:0 28px;
+  }
+  .stickynav-inner{ max-width:1220px; margin:0 auto; display:flex; align-items:center; gap:4px; overflow-x:auto; padding:12px 0; }
+  .stickynav-inner::-webkit-scrollbar{ display:none; }
+  .navlink{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; white-space:nowrap;
+    color:var(--text-muted); padding:8px 14px; border-radius:20px; cursor:pointer; transition:all .2s ease;
+    display:flex; align-items:center; gap:7px; border:1px solid transparent;
+  }
+  .navlink:hover{ color:var(--text-primary); background:var(--panel); }
+  .navlink.on{ color:var(--gold); background:var(--gold-soft); border-color:rgba(201,161,90,0.3); }
+  .navlink .navdot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+
+  /* ---------- How-to-read strip ---------- */
+  .howto{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--hairline); border:1px solid var(--hairline); border-radius:6px; overflow:hidden; margin:26px 0 0; }
+  .howto-cell{ background:var(--panel); padding:18px 20px; }
+  .howto-num{ font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--gold); line-height:1; margin-bottom:8px; }
+  .howto-title{ font-size:13.5px; font-weight:600; color:var(--text-primary); margin-bottom:5px; }
+  .howto-desc{ font-size:12.5px; color:var(--text-muted); line-height:1.5; }
+
+  /* ---------- Stat dashboard ---------- */
+  .statbar{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--hairline); border:1px solid var(--hairline); border-radius:6px; overflow:hidden; margin:16px 0 0; }
+  .stat-cell{ background:var(--panel-2); padding:16px 14px; text-align:center; cursor:pointer; transition:background .2s ease; }
+  .stat-cell:hover{ background:var(--panel); }
+  .stat-num{ font-family:'Fraunces',serif; font-size:30px; font-weight:600; color:var(--text-primary); line-height:1; }
+  .stat-label{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-faint); margin-top:6px; }
+
+  @media (max-width:760px){ .statbar{ grid-template-columns:repeat(2,1fr); } }
+
+  @media (max-width:640px){
+    .detail-phase{ margin-left:0; } .progress-readout{ margin-left:0; width:100%; order:5; }
+    .mod-detail{ grid-template-columns:1fr; } .section-sub{ margin-left:0; text-align:left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="eyebrow">BRAC Bank · Retail Banking</div>
+      <h1>Master Business &amp; Department Blueprint</h1>
+      <div class="subtitle">The full 32-stage journey across 8 business domains, a live animated map of how cases actually move between departments — including what happens when work gets sent back — and what every department and module is responsible for.</div>
+    </div>
+    <div class="ledger-id">FOLIO No. RB / 2026 — REV.3<br>8 DOMAINS · 32 STAGES · 6 SCENARIOS<br>20+ DEPARTMENTS · 24 MODULES</div>
+  </header>
+
+  <nav class="stickynav" id="stickynav">
+    <div class="stickynav-inner">
+      <div class="navlink" data-target="sec-flow"><span class="navdot"></span>01 · The Business Flow</div>
+      <div class="navlink" data-target="sec-handoff"><span class="navdot"></span>02 · Live Handoff Map</div>
+      <div class="navlink" data-target="sec-departments"><span class="navdot"></span>03 · Departments</div>
+      <div class="navlink" data-target="sec-modules"><span class="navdot"></span>04 · Modules</div>
+    </div>
+  </nav>
+
+  <div class="howto">
+    <div class="howto-cell">
+      <div class="howto-num">01</div>
+      <div class="howto-title">Watch the whole journey</div>
+      <div class="howto-desc">Press play on the top rail to see a customer's entire lifecycle stamp through, stage by stage.</div>
+    </div>
+    <div class="howto-cell">
+      <div class="howto-num">02</div>
+      <div class="howto-title">See where cases bounce back</div>
+      <div class="howto-desc">Run a scenario on the handoff map to watch a real case move between desks — and loop back when work gets returned.</div>
+    </div>
+    <div class="howto-cell">
+      <div class="howto-num">03</div>
+      <div class="howto-title">Drill into who's responsible</div>
+      <div class="howto-desc">Click any department or module chip anywhere on the page to jump straight to its full responsibility record.</div>
+    </div>
+  </div>
+
+  <div class="statbar" id="statbar">
+    <div class="stat-cell" data-target="sec-flow"><div class="stat-num">8</div><div class="stat-label">Domains</div></div>
+    <div class="stat-cell" data-target="sec-flow"><div class="stat-num">32</div><div class="stat-label">Stages</div></div>
+    <div class="stat-cell" data-target="sec-handoff"><div class="stat-num">6</div><div class="stat-label">Live Scenarios</div></div>
+    <div class="stat-cell" data-target="sec-departments"><div class="stat-num">21</div><div class="stat-label">Departments</div></div>
+    <div class="stat-cell" data-target="sec-modules"><div class="stat-num">24</div><div class="stat-label">Modules</div></div>
+  </div>
+
+  <div class="caveat"><b>Scope note —</b> the stage-to-department mapping below is my best-effort construction from the business blueprint and department breakdown you provided. It is not confirmed against BRAC Bank's actual internal org chart, queue names, or SLAs — validate it against real SOPs before treating it as an engineering spec.</div>
+
+  <!-- ============ SECTION 01 — JOURNEY ============ -->
+  <div class="section-head" id="sec-flow">
+    <span class="section-num">01</span>
+    <span class="section-title">The Business Flow</span>
+    <span class="section-sub">32 stages, grouped into 8 domains, each stage owned by one department.</span>
+  </div>
+
+  <div class="controls">
+    <button class="btn icon primary" id="playBtn">▶ Play</button>
+    <button class="btn icon" id="prevBtn">← Prev</button>
+    <button class="btn icon" id="nextBtn">Next ▶</button>
+    <button class="btn icon" id="resetBtn">↺ Restart</button>
+    <select class="speed-select" id="speedSelect">
+      <option value="1.6">Speed: Fast</option>
+      <option value="1" selected>Speed: Normal</option>
+      <option value="0.55">Speed: Slow</option>
+    </select>
+    <div class="progress-readout">Stage <b id="stageNum">01</b> / 32</div>
+  </div>
+
+  <div class="rail-outer">
+    <div class="scroll-content" id="scrollContent">
+      <div class="domain-band" id="domainBand"></div>
+      <div class="rail" id="rail">
+        <div class="rail-line-bg"></div>
+        <div class="rail-line-fg" id="railFg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="loop-note">Stage 32 loops back to <span>07 · Product Selection</span> — a retained customer's new need re-enters the flow</div>
+
+  <div class="detail" id="detail">
+    <div class="detail-top">
+      <span class="detail-num" id="detailNum">01</span>
+      <span class="detail-title" id="detailTitle"></span>
+      <span class="detail-phase" id="detailPhase"></span>
+    </div>
+    <div class="detail-desc" id="detailDesc"></div>
+    <div class="detail-row">
+      <span class="detail-row-label">Owning dept</span>
+      <span class="dept-chip-mini" id="detailDeptChip"></span>
+    </div>
+    <div class="branches" id="branches"></div>
+    <div class="detail-row" id="detailModules"></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-acquire)"></span>1 Acquire</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-know)"></span>2 Know</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-sell)"></span>3 Originate</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-assess)"></span>4 Assess / Decide</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-fund)"></span>5 Fulfill / Fund</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-use)"></span>6 Use / Service</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-control)"></span>7 Control</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-close)"></span>8 Settle / Close</div>
+  </div>
+
+  <!-- ============ SECTION 02 — LIVE HANDOFF MAP ============ -->
+  <div class="section-head" id="sec-handoff">
+    <span class="section-num">02</span>
+    <span class="section-title">The Live Department Handoff Map</span>
+    <span class="section-sub">Watch an actual case move between desks — including what happens when it gets sent back.</span>
+  </div>
+
+  <div class="controls">
+    <select class="speed-select" id="scenarioSelect" style="min-width:280px;"></select>
+    <button class="btn icon primary" id="flowPlayBtn">▶ Run Scenario</button>
+    <button class="btn icon" id="flowResetBtn">↺ Reset</button>
+    <select class="speed-select" id="flowSpeedSelect">
+      <option value="1.6">Speed: Fast</option>
+      <option value="1" selected>Speed: Normal</option>
+      <option value="0.5">Speed: Slow</option>
+    </select>
+    <div class="progress-readout">Hop <b id="flowHopNum">0</b> / <span id="flowHopTotal">0</span></div>
+  </div>
+
+  <div class="flowmap-outer" id="flowmapOuter">
+    <div class="flowmap-inner" id="flowmapInner">
+      <svg id="flowSvg" class="flow-svg">
+        <defs>
+          <marker id="arrow-main" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="var(--gold)"></path>
+          </marker>
+          <marker id="arrow-feedback" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="var(--c-control)"></path>
+          </marker>
+        </defs>
+      </svg>
+      <div id="flowNodes"></div>
+      <div class="flow-token" id="flowToken"></div>
+    </div>
+  </div>
+
+  <div class="flow-log-panel">
+    <div class="flow-log-head">
+      <span class="wf-title">Case Narrative</span>
+      <span class="wf-readout" id="flowCurrentNode">Not started</span>
+    </div>
+    <div class="flow-log" id="flowLog"><span class="flow-log-empty">Choose a scenario above and press Run to see a case move through the departments — including any feedback loop.</span></div>
+  </div>
+
+  <div class="legend" style="margin-top:20px;">
+    <div class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Forward handoff</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--c-control)"></span>Feedback / return / decline path</div>
+  </div>
+
+  <!-- ============ SECTION 03 — DEPARTMENTS ============ -->
+  <div class="section-head" id="sec-departments">
+    <span class="section-num">03</span>
+    <span class="section-title">The Department Responsibility Directory</span>
+    <span class="section-sub">Who does what: purpose, human duty, system duty, upstream and downstream handoffs, and each department's own internal workflow.</span>
+  </div>
+  <div class="filters" id="deptFilters"></div>
+  <div class="mod-grid" id="deptGrid"></div>
+
+  <!-- ============ SECTION 04 — MODULES ============ -->
+  <div class="section-head" id="sec-modules">
+    <span class="section-num">04</span>
+    <span class="section-title">The Module &amp; Responsibility Ledger</span>
+    <span class="section-sub">The 24 functional modules behind the departments above — each with its own playable internal workflow.</span>
+  </div>
+  <div class="filters" id="modFilters"></div>
+  <div class="mod-grid" id="modGrid"></div>
+
+  <footer>Click any stamp to jump to a stage · Click a department chip to see who owns it · Click a module chip to see how it works · Business-domain blueprint, retail banking journey</footer>
+</div>
+
+<script>
+/* ================= DOMAINS ================= */
+const DOMAINS = [
+  {id:'acquire',  label:'1 · Acquire',          color:'var(--c-acquire)'},
+  {id:'know',     label:'2 · Know',             color:'var(--c-know)'},
+  {id:'originate',label:'3 · Sell / Originate', color:'var(--c-sell)'},
+  {id:'assess',   label:'4 · Assess / Decide',  color:'var(--c-assess)'},
+  {id:'fulfill',  label:'5 · Fulfill / Fund',   color:'var(--c-fund)'},
+  {id:'use',      label:'6 · Use / Service',    color:'var(--c-use)'},
+  {id:'control',  label:'7 · Control',          color:'var(--c-control)'},
+  {id:'close',    label:'8 · Settle / Close',   color:'var(--c-close)'},
+];
+const DOMAIN_COLOR = {}; DOMAINS.forEach(d=>DOMAIN_COLOR[d.id]=d.color);
+const DOMAIN_LABEL_SHORT = {acquire:'Acquire',know:'Know',originate:'Originate',assess:'Assess',fulfill:'Fulfill',use:'Use',control:'Control',close:'Close'};
+
+/* ================= STAGES (32) ================= */
+const STAGES = [
+  {title:"Customer Need", domain:"acquire", dept:"customer",
+   desc:"A person has a financial need — somewhere to keep a salary, a home, a car, working capital, or a way to save.", modules:[]},
+  {title:"Acquisition", domain:"acquire", dept:"sales",
+   desc:"The prospect reaches BRAC Bank through a branch officer, RM, digital channel, or partner campaign. The lead is captured.", modules:[]},
+  {title:"Identity", domain:"know", dept:"sales",
+   desc:"NID capture and live face verification establish who the applicant actually is — captured at the point of contact by Sales/RM or the digital channel.", modules:["ekyc"]},
+  {title:"eKYC / CDD", domain:"know", dept:"riskcompliance",
+   desc:"Customer due diligence builds the compliance profile — occupation, source of funds, and risk category — under compliance ownership.", modules:["kyc"]},
+  {title:"AML / Sanctions Screening", domain:"know", dept:"sanction",
+   desc:"Sanctions and financial-crime screening clear the customer before any account or facility can be created. A Clear result proceeds immediately; an Exception is routed to Compliance Review before identity can be finalized.", modules:["aml"]},
+  {title:"CIF Establishment", domain:"know", dept:"los",
+   desc:"One Customer Information File is created in the LOS/core platform. Every product attaches to this single customer relationship.", modules:["cif"]},
+  {title:"Product Selection", domain:"originate", dept:"sales",
+   desc:"The customer's need is routed into one of three journeys, each carrying its own rules, documents, and pace.", modules:["casa","dps","fdr","loanorig","cards"],
+   branches:{sync:true, tracks:[
+     {name:"Deposit", color:"var(--c-sell)", items:["Savings / Current","DPS","FDR"]},
+     {name:"Loan", color:"var(--c-fund)", items:["Personal","Auto","Home","Digital","Cash-Secured"]},
+     {name:"Card", color:"var(--c-know)", items:["Debit","Credit"]},
+   ]}},
+  {title:"Eligibility Check", domain:"originate", dept:"los",
+   desc:"Before an application is even created, the system checks age, income, employment, existing relationship, and product policy for a basic eligibility gate.", modules:["loanorig"]},
+  {title:"Application Origination", domain:"originate", dept:"sales",
+   desc:"Sales/RM or the digital channel captures the applicant's personal, business, and property information into a draft application.", modules:["loanorig"]},
+  {title:"Application Parking", domain:"originate", dept:"los",
+   desc:"The submitted application is assigned an Application ID and CIF link, and enters the bank's processing workflow. Parking is not approval.", modules:["loanorig"]},
+  {title:"DRD — Digital Review Desk", domain:"assess", dept:"drd",
+   desc:"The digital review desk checks completeness, document validity, and data consistency. It then asks 'Verification Need?' — if yes, it triggers an early CPV pass before deciding Complete / Deficiency / Reject; if no, the file moves straight on. (Loan-path detail — deposit and card paths use a lighter check.)", modules:["cpv"]},
+  {title:"Dedupe / AML / KYC — Application Control Checks", domain:"assess", dept:"dedupe",
+   desc:"Dedupe, application-level AML/sanction screening, and a KYC re-check run together as one control-checks gate before the file is allowed into credit assessment.", modules:["loanorig"]},
+  {title:"CIB", domain:"assess", dept:"cib",
+   desc:"Pulls the applicant's credit bureau report: existing liabilities, delinquency history, and overall exposure.", modules:["cib"]},
+  {title:"CPV / Verification", domain:"assess", dept:"cpv",
+   desc:"Independently verifies residence, employment, business, or income information the applicant declared.", modules:["cpv"]},
+  {title:"Credit Assessment", domain:"assess", dept:"credit",
+   desc:"Combines income analysis, liability analysis, and risk analysis into credit scoring / underwriting, producing a lending recommendation for the sanctioning authority.", modules:["income","creditassess"]},
+  {title:"Credit Decision / Sanction", domain:"assess", dept:"sanctioning",
+   desc:"The approving authority signs off — approve, decline, or refer — and sets the approved terms. Sanction is not disbursement.", modules:["creditdecision"]},
+  {title:"Conditions & Guarantor", domain:"fulfill", dept:"fulfillment",
+   desc:"Post-approval conditions are worked through — a guarantor is nominated, KYC'd, and accepted where the product requires one.", modules:["guarantor"]},
+  {title:"Acknowledgement & Repayment Account", domain:"fulfill", dept:"fulfillment",
+   desc:"The customer formally acknowledges the approved terms, and a CASA account is linked as the source for scheduled EMI collection.", modules:["repayacct"]},
+  {title:"Documentation & Signature", domain:"fulfill", dept:"docsops",
+   desc:"Legal loan documents are generated, reviewed, signed, and uploaded — checked for completeness before anything is disbursed.", modules:["docs"]},
+  {title:"Legal / Valuation / Security", domain:"fulfill", dept:"legal",
+   desc:"For secured products only — property valuation, title/legal vetting, or vehicle security documentation is completed.", modules:["docs"]},
+  {title:"Final Verification", domain:"fulfill", dept:"docsops",
+   desc:"A last check across documents, conditions, and authentication before the file is marked ready for disbursement.", modules:["docs"]},
+  {title:"Booking / Account Creation", domain:"fulfill", dept:"corebanking",
+   desc:"The facility is booked — a loan or product account is created and core banking is updated — a distinct moment from disbursement: the account can exist before any money actually moves.", modules:["corebanking"]},
+  {title:"Disbursement", domain:"fulfill", dept:"disbursement",
+   desc:"Once every condition, document, and verification is complete, the disbursement instruction is authorized and funds are released — to the customer's account, directly to a vendor/dealer (e.g. an auto loan paid to the dealership), or another approved payee, depending on product policy.", modules:["disbursement"]},
+  {title:"Activation", domain:"use", dept:"corebanking",
+   desc:"The product is marked active and the customer can now actually use it — the final handoff from origination into everyday servicing.", modules:["corebanking"]},
+  {title:"Use & Servicing", domain:"use", dept:"servicing",
+   desc:"Deposits, withdrawals, transfers, card spend, EMIs, and statements — the daily rhythm of an active banking relationship.", modules:["payment","cards","corebanking"]},
+  {title:"Monitoring", domain:"control", dept:"riskcompliance",
+   desc:"Three streams run continuously — AML monitoring, credit/portfolio monitoring, and transaction monitoring — feeding one portfolio control view of payment behaviour and risk.", modules:["reporting"],
+   branches:{sync:false, tracks:[
+     {name:"Normal path", color:"var(--c-use)", items:["On-time EMI","Next cycle"]},
+     {name:"Delinquent path", color:"var(--c-control)", items:["Overdue","Collection","Regularize or Escalate"]},
+   ]}},
+  {title:"Collection", domain:"control", dept:"collection",
+   desc:"Overdue accounts are contacted and, where possible, brought back to a payment arrangement.", modules:["collection"]},
+  {title:"Recovery", domain:"control", dept:"recovery",
+   desc:"Serious delinquency or default is escalated here — legal, collateral, or restructuring action is managed.", modules:["recovery"]},
+  {title:"Post-Disbursement Review", domain:"control", dept:"postreview",
+   desc:"A control layer reviews disbursed files for completeness and compliance exceptions after the fact.", modules:["reporting"]},
+  {title:"Settlement / Maturity", domain:"close", dept:"servicing",
+   desc:"Outstanding principal, interest, and fees reach zero through one of three routes, and the facility is fully settled.", modules:["recovery","corebanking"],
+   branches:{sync:true, tracks:[
+     {name:"Normal Maturity", color:"var(--c-use)", items:["Full Term Completed"]},
+     {name:"Early Settlement", color:"var(--c-sell)", items:["Customer Pays Off Early"]},
+     {name:"Recovery Payoff", color:"var(--c-control)", items:["Collateral / Legal Resolution"]},
+   ]}},
+  {title:"Closure & Security Release", domain:"close", dept:"docsops",
+   desc:"The product closes and any lien or security is released. Closing a loan does not close the customer relationship.", modules:["corebanking","reporting"]},
+  {title:"Retention & Cross-Sell", domain:"close", dept:"custservice",
+   desc:"The relationship continues — a satisfied customer is offered the next product, looping back to Product Selection.", modules:["custservice"]},
+];
+
+/* ================= DEPARTMENTS ================= */
+const DEPT_DOMAINS = DOMAINS; // reuse same 8 categories for filtering
+const DEPARTMENTS = [
+  {id:"customer", code:"DEPT-00", name:"Customer / Applicant", domain:"acquire",
+   purpose:"Originates every request the bank processes — the need, the information, the documents, the consent.",
+   receives:"—", handsTo:"Sales / RM / Channel",
+   human:"Provides information, documents, consent, and acceptance at every stage.", system:"Interacts via branch, app, or web channel.",
+   workflow:["Financial Need Arises","Reaches Out to a Channel","Supplies Information & Documents","Reviews & Accepts Terms","Uses the Product"]},
+  {id:"sales", code:"DEPT-01", name:"Sales / RM / DSE / Channel", domain:"acquire",
+   purpose:"Sources the customer, understands the need, recommends a product, and creates the application. Does not approve credit.",
+   receives:"Customer", handsTo:"Application / LOS",
+   human:"Captures NID, personal, employment, and product-specific data face-to-face or via digital onboarding.", system:"Loan Origination front-end captures and drafts the application.",
+   workflow:["Find Customer","Understand Need","Recommend Product","Collect Information","Create & Submit Application"]},
+  {id:"los", code:"DEPT-02", name:"Application / LOS", domain:"originate",
+   purpose:"Stores and orchestrates the application workflow — assigns IDs, tracks status, and routes between departments.",
+   receives:"Sales / RM", handsTo:"DRD",
+   human:"Ops team monitors queue health and resolves stuck workflow states.", system:"Assigns Application ID, links CIF, tracks status transitions, and routes the file automatically.",
+   workflow:["Application Received","ID & CIF Link Assigned","Status Set to Parked","Routed to DRD"]},
+  {id:"drd", code:"DEPT-03", name:"DRD — Digital Review Desk", domain:"assess",
+   purpose:"First back-office checkpoint: makes sure a digitally submitted application is actually processable before deeper credit work begins.",
+   receives:"Application / LOS", handsTo:"Dedupe",
+   human:"Reviewer checks completeness, document validity, and data consistency; coordinates CPV.", system:"Tracks DRD_STATUS: Pending, In Review, Completed, Deficiency, Returned, Rejected.",
+   workflow:["Application Completeness Check","Document Review","Data Consistency Check","CPV Coordination","Outcome: Complete / Deficiency / Reject"]},
+  {id:"dedupe", code:"DEPT-04", name:"Dedupe", domain:"assess",
+   purpose:"Determines whether this customer, application, or exposure already exists in the bank's records.",
+   receives:"DRD", handsTo:"Sanction / AML Screening",
+   human:"Reviews possible-duplicate flags that the system can't resolve automatically.", system:"Matches NID, mobile, CIF, name, and DOB against existing records.",
+   workflow:["Identifying Data Collected","Match Against NID / CIF / Mobile","Classify: New / Existing / Possible Duplicate","Link to Existing CIF if Found"]},
+  {id:"sanction", code:"DEPT-05", name:"Sanction / AML Screening", domain:"assess",
+   purpose:"A compliance control gate — screens for sanctions and financial-crime matches. Not the same as credit sanction.",
+   receives:"Dedupe", handsTo:"CIB",
+   human:"Investigates and dispositions any alert the screening engine raises.", system:"Matches customer and transaction data against watchlists.",
+   workflow:["Screen Against Watchlists","Match Found?","Investigate Alert","Clear or Escalate"]},
+  {id:"cib", code:"DEPT-06", name:"CIB Team / Credit Bureau Interface", domain:"assess",
+   purpose:"Obtains and processes the applicant's credit bureau information.",
+   receives:"Sanction Screening", handsTo:"CPV / Verification",
+   human:"Interprets bureau flags such as classified accounts per credit policy.", system:"Retrieves the CIB report via the credit bureau interface.",
+   workflow:["CIB Request Sent","Bureau Report Retrieved","Existing Liabilities Extracted","Exception Flags Reviewed"]},
+  {id:"cpv", code:"DEPT-07", name:"CPV / Verification", domain:"assess",
+   purpose:"Verifies whether the information the applicant supplied is actually true and consistent.",
+   receives:"CIB Team", handsTo:"Credit / Underwriting",
+   human:"Field or phone agent conducts the actual verification and files findings.", system:"Tracks verification status: Verified, Partially Verified, Negative, Unable to Verify.",
+   workflow:["Verification Method Assigned","Residence / Employment / Business Check","Income Cross-Check","Result Logged","Routed to Credit"]},
+  {id:"credit", code:"DEPT-08", name:"Credit / Underwriting", domain:"assess",
+   purpose:"Determines creditworthiness and prepares a lending recommendation. The question shifts from 'is it complete' to 'should we lend.'",
+   receives:"CPV / Verification", handsTo:"Credit Sanctioning Authority",
+   human:"Analyst evaluates income, liabilities, stability, and risk; drafts a recommendation.", system:"Consolidates income, CIB, CPV, and policy rules into a risk score.",
+   workflow:["Consolidate All Inputs","Assess Repayment Capacity","Apply Credit Policy","Risk Scoring","Recommendation Drafted"]},
+  {id:"sanctioning", code:"DEPT-09", name:"Credit Sanctioning Authority", domain:"assess",
+   purpose:"Makes the final credit decision within its delegated approval authority — approve, refer, or decline.",
+   receives:"Credit / Underwriting", handsTo:"Fulfillment",
+   human:"Approving officer reviews the recommendation and signs off per delegated limits.", system:"Records the decision and approved terms against the application.",
+   workflow:["Review Recommendation","Check Delegated Authority Limit","Decide: Approve / Refer / Decline","Set Approved Terms","Record Sanction"]},
+  {id:"fulfillment", code:"DEPT-10", name:"Fulfillment Team", domain:"fulfill",
+   purpose:"Makes sure everything the approval requires is actually completed before the file can move to documentation.",
+   receives:"Credit Sanctioning Authority", handsTo:"Documentation / Asset Operations",
+   human:"Coordinates guarantor nomination, customer acknowledgement, and repayment account setup.", system:"Tracks each condition's status until all are marked complete.",
+   workflow:["Identify Required Conditions","Guarantor Process (if required)","Customer Acknowledgement","Repayment Account Linked","Conditions Marked Complete"]},
+  {id:"docsops", code:"DEPT-11", name:"Documentation / Asset Operations", domain:"fulfill",
+   purpose:"Ensures the approved facility is properly and completely documented, and operationally ready to disburse.",
+   receives:"Fulfillment Team", handsTo:"Disbursement Team",
+   human:"Checks document completeness, authenticity, and charges before sign-off.", system:"Generates document sets and tracks signature/upload status.",
+   workflow:["Document Set Generated","Customer Signature","Document Upload & Check","Charges & Conditions Verified","Marked Disbursement-Ready"]},
+  {id:"legal", code:"DEPT-12", name:"Legal / Valuation / Security", domain:"fulfill",
+   purpose:"Handles collateral, legal, and valuation requirements — only for products that require security (home, auto, cash-secured).",
+   receives:"Documentation / Asset Operations", handsTo:"Documentation / Asset Operations",
+   human:"Legal officer reviews title/ownership; valuer assesses the asset.", system:"Records valuation and security/lien creation against the facility.",
+   workflow:["Property / Vehicle Details Received","Valuation Conducted","Legal / Title Vetting","Security / Lien Created"]},
+  {id:"disbursement", code:"DEPT-13", name:"Disbursement Team", domain:"fulfill",
+   purpose:"Performs the final check and releases the approved facility. The last operational gate before money moves.",
+   receives:"Documentation / Asset Operations", handsTo:"Core Banking / CBS",
+   human:"Authorizes the disbursement instruction per policy.", system:"Executes the fund transfer and triggers loan account creation.",
+   workflow:["Final Readiness Check","Disbursement Instruction Raised","Authorization","Funds Released"]},
+  {id:"corebanking", code:"DEPT-14", name:"Core Banking / CBS", domain:"use",
+   purpose:"Creates and maintains the financial account and posts every transaction — the system of record for the whole bank.",
+   receives:"Disbursement Team", handsTo:"Loan Servicing / Operations",
+   human:"Operations monitors system health and reconciles exceptions.", system:"Posts every financial event: disbursement, interest, fees, transactions.",
+   workflow:["Event Received","Validation","Ledger Posting","Balance & Statement Update"]},
+  {id:"servicing", code:"DEPT-15", name:"Loan Servicing / Operations", domain:"use",
+   purpose:"Maintains the loan or account after disbursement — EMI, interest, principal, statements, and customer requests.",
+   receives:"Core Banking", handsTo:"Collection (if overdue) / Closure",
+   human:"Handles servicing requests, rescheduling, and day-to-day maintenance.", system:"Runs the repayment schedule and posts each EMI.",
+   workflow:["EMI Schedule Generated","EMI Due","Payment Posted","Statement Updated","Next Cycle or Settlement"]},
+  {id:"collection", code:"DEPT-16", name:"Collection", domain:"control",
+   purpose:"Identifies and follows up on overdue repayments to bring the account back to current.",
+   receives:"Loan Servicing", handsTo:"Recovery (if unresolved)",
+   human:"Contacts the customer and negotiates a payment arrangement.", system:"Flags overdue accounts and tracks the collection workflow status.",
+   workflow:["Overdue Identified","Customer Contacted","Payment Follow-Up","Arrangement Made or Escalated"]},
+  {id:"recovery", code:"DEPT-17", name:"Recovery", domain:"control",
+   purpose:"Manages seriously distressed or defaulted exposure — a different responsibility from routine collection.",
+   receives:"Collection", handsTo:"Settlement / Closure",
+   human:"Manages legal action, collateral enforcement, or restructuring.", system:"Tracks recovery status and eventual settlement outcome.",
+   workflow:["Case Escalated","Legal / Collateral Review","Recovery Action Selected","Outcome Recorded"]},
+  {id:"postreview", code:"DEPT-18", name:"Post-Disbursement Review / Control", domain:"control",
+   purpose:"A second control layer that checks completed and disbursed files for compliance exceptions after the fact.",
+   receives:"Core Banking / Disbursement", handsTo:"Risk / Compliance / Audit",
+   human:"Reviews a sample or full set of disbursed files for policy adherence.", system:"Logs exceptions and tracks rectification.",
+   workflow:["File Selected for Review","Control Check","Exception Found?","Rectification or Closure"]},
+  {id:"custservice", code:"DEPT-19", name:"Customer Service", domain:"close",
+   purpose:"Handles ongoing servicing requests and keeps the relationship alive after any single product closes.",
+   receives:"Loan Servicing / any active product", handsTo:"Product Selection (new need)",
+   human:"Resolves requests and complaints; identifies cross-sell opportunities.", system:"Logs and tracks service requests to resolution.",
+   workflow:["Request Logged","Categorized & Routed","Resolved","Cross-Sell Opportunity Flagged"]},
+  {id:"riskcompliance", code:"DEPT-20", name:"Risk / Compliance / Audit", domain:"control",
+   purpose:"Provides control, monitoring, and regulatory oversight across the entire bank — a cross-cutting function, not a single point in the pipeline.",
+   receives:"Every department (oversight)", handsTo:"Regulators / Senior Management",
+   human:"Sets policy, reviews exceptions, and reports to regulators.", system:"Aggregates monitoring data across AML, credit, and transaction systems.",
+   workflow:["Policy Set","Continuous Monitoring","Exception Review","Regulatory Reporting"]},
+];
+
+/* ================= MODULES (24) ================= */
+const CATS = [
+  {id:"identity", label:"Identity & Compliance", color:"var(--c-know)"},
+  {id:"deposit", label:"Deposit Products", color:"var(--c-sell)"},
+  {id:"credit", label:"Credit & Lending", color:"var(--c-assess)"},
+  {id:"cardspay", label:"Cards & Payments", color:"var(--c-use)"},
+  {id:"ops", label:"Core & Risk Operations", color:"var(--c-control)"},
+  {id:"retain", label:"Customer & Retention", color:"var(--c-close)"},
+];
+const MODULES = [
+  {id:"ekyc", code:"MOD-01", name:"eKYC", cat:"identity", dept:"sales",
+   purpose:"Establishes who the applicant actually is, using NID and live face verification.",
+   customer:"Provides NID, submits to a live face-verification capture.", bank:"Reviews exceptions and manual review queues when automated checks fail.",
+   system:"Validates NID against issuing authority, matches face to ID photo, returns a pass/fail confidence score.",
+   input:"NID number, applicant selfie/live capture.", output:"Verified identity record.", dependsOn:"National ID registry / biometric matching service.", usedBy:"KYC/CDD, CIF creation.",
+   workflow:["NID Capture","OCR Data Extraction","Registry Match","Live Face Capture","Face Match Score","Verified / Manual Review"]},
+  {id:"kyc", code:"MOD-02", name:"KYC / CDD", cat:"identity", dept:"riskcompliance",
+   purpose:"Builds the customer due-diligence profile: occupation, source of funds, and risk category.",
+   customer:"Declares personal, occupational, and financial background information.", bank:"Reviews declared information, assigns or confirms risk category.",
+   system:"Stores the CDD profile and applies risk-scoring rules.", input:"Verified identity, declared customer information.", output:"KYC status and customer risk rating.",
+   dependsOn:"eKYC.", usedBy:"CIF, AML screening, all product on-boarding.",
+   workflow:["Personal & Occupation Data","Source-of-Funds Declaration","Risk Category Rules Applied","CDD Profile Created","Enhanced Due Diligence If High-Risk"]},
+  {id:"aml", code:"MOD-03", name:"AML / Sanctions Screening", cat:"identity", dept:"sanction",
+   purpose:"Screens the customer and their transactions against sanctions and financial-crime watchlists.",
+   customer:"No direct action — screening runs in the background.", bank:"Investigates and dispositions any alert raised by the screening engine.",
+   system:"Matches customer/transaction data against watchlists and flags alerts.", input:"Customer profile, transaction data.", output:"Clear status or an alert requiring investigation.",
+   dependsOn:"KYC/CDD, customer and transaction data.", usedBy:"CIF creation, account opening, loan disbursement, payments.",
+   workflow:["Watchlist Screening","Name / Transaction Match","Alert Generated (if any)","Investigation","Clear or Escalate"]},
+  {id:"cif", code:"MOD-04", name:"CIF (Customer Information File)", cat:"identity", dept:"los",
+   purpose:"Maintains one customer identity that every product — deposit, loan, or card — attaches to.",
+   customer:"Nothing further required; the relationship is now established.", bank:"Owns the golden record for the customer; approves changes to core customer data.",
+   system:"Creates and maintains the master customer record and unique customer ID.", input:"Verified, KYC-cleared, AML-cleared customer.", output:"CIF / unique customer ID.",
+   dependsOn:"eKYC, KYC/CDD, AML.", usedBy:"All products: CASA, DPS, FDR, loans, cards.",
+   workflow:["Duplicate Customer Check","Customer Data Consolidation","CIF Number Generated","Linked to Products"]},
+  {id:"casa", code:"MOD-05", name:"CASA", cat:"deposit", dept:"servicing",
+   purpose:"Opens and manages transactional savings or current accounts.",
+   customer:"Requests the account, provides initial funding.", bank:"Approves account opening per product eligibility rules.",
+   system:"Creates the account, assigns an account number, posts the initial deposit.", input:"Customer/CIF, product request.", output:"Active CASA account.",
+   dependsOn:"CIF, KYC.", usedBy:"Cards, loan repayment accounts, all transactions.",
+   workflow:["Account Type Selection","Eligibility Check","Application","Account Number Issued","Initial Deposit","Activation"]},
+  {id:"dps", code:"MOD-06", name:"DPS", cat:"deposit", dept:"servicing",
+   purpose:"Manages a recurring monthly savings commitment linked to a funding account.",
+   customer:"Commits to a monthly installment; funds the account each cycle.", bank:"Monitors missed installments and applies the product's freeze/exception rules.",
+   system:"Debits the linked account each cycle, tracks installment history and maturity.", input:"CIF, linked CASA account, product terms.", output:"Active DPS with running installment history.",
+   dependsOn:"CIF, CASA.", usedBy:"Deposit servicing, potential collateral for secured lending.",
+   workflow:["Eligibility & Linked Account Check","Tenure & Installment Selection","DPS Opening","Monthly Debit Cycle","Missed-Installment Handling","Maturity"]},
+  {id:"fdr", code:"MOD-07", name:"FDR / Term Deposit", cat:"deposit", dept:"servicing",
+   purpose:"Places customer funds for a fixed term at a fixed return.",
+   customer:"Provides funds and selects a term.", bank:"Confirms placement terms and rate applicable at booking.",
+   system:"Books the term deposit, accrues interest, manages maturity and renewal.", input:"CIF, source funds, selected term.", output:"Active FDR; at maturity, renewed or settled funds.",
+   dependsOn:"CIF, CASA (source of funds).", usedBy:"Deposit servicing; can be pledged as security for a Cash-Secured Loan.",
+   workflow:["Source Fund Verification","Term & Rate Selection","FDR Booking","Interest Accrual","Maturity Decision: Renew / Settle"]},
+  {id:"loanorig", code:"MOD-08", name:"Loan Origination", cat:"credit", dept:"los",
+   purpose:"Captures and manages the loan application from product selection through submission.",
+   customer:"Selects a loan product, supplies personal, business, and property information.", bank:"Reviews the application for completeness before it enters assessment.",
+   system:"Stores application data as Draft, then Submitted, and routes it to assessment.", input:"CIF, product selection, applicant-supplied data.", output:"A complete, submitted loan application.",
+   dependsOn:"CIF.", usedBy:"Income Assessment, CIB, Credit Assessment.",
+   workflow:["Product Selection","Applicant Data Capture","Business / Property Info (if applicable)","Draft Saved","Application Submitted"]},
+  {id:"income", code:"MOD-09", name:"Income Assessment", cat:"credit", dept:"credit",
+   purpose:"Determines the applicant's assessable income from all declared sources.",
+   customer:"Declares salary/cash, rental, business/chamber, and other income.", bank:"Verifies declared income where required (documents, employer confirmation).",
+   system:"Aggregates declared sources and calculates assessable income.", input:"Declared income sources from the application.", output:"Verified, assessable income figure.",
+   dependsOn:"Loan Origination.", usedBy:"Credit Assessment.",
+   workflow:["Income Source Declaration","Supporting Document Check","Employer / Business Verification","Income Aggregation","Assessable Income Calculated"]},
+  {id:"cib", code:"MOD-10", name:"CIB / Credit Bureau", cat:"credit", dept:"cib",
+   purpose:"Determines the applicant's existing credit exposure and repayment history.",
+   customer:"No direct action — bureau data is pulled using their identity.", bank:"Interprets bureau flags (e.g. classified accounts) per credit policy.",
+   system:"Retrieves the credit bureau report and existing facility exposure.", input:"Applicant identity.", output:"Credit bureau report, existing obligations.",
+   dependsOn:"Identity, Loan Origination.", usedBy:"Credit Assessment.",
+   workflow:["Applicant Bureau Pull","Existing Facility Extraction","Classification Check (SMA / Default)","DBR Calculation","Report Finalized"]},
+  {id:"creditassess", code:"MOD-11", name:"Credit Assessment", cat:"credit", dept:"credit",
+   purpose:"Assesses whether the applicant can reasonably service the requested facility.",
+   customer:"No direct action beyond what's already been declared and verified.", bank:"Credit officer reviews the assessment output and applies judgement where policy allows.",
+   system:"Combines income, CIB, existing exposure, and DBR into a risk profile and recommendation.", input:"Assessable income, CIB report, requested loan terms.", output:"A risk profile and lending recommendation.",
+   dependsOn:"Income Assessment, CIB, Loan Origination.", usedBy:"Credit Decision.",
+   workflow:["Consolidate Income + CIB + Requested Terms","Apply Credit Policy Rules","Risk Scoring","Recommendation Drafted","Sent to Approving Authority"]},
+  {id:"creditdecision", code:"MOD-12", name:"Credit Decision", cat:"credit", dept:"sanctioning",
+   purpose:"Converts the assessment into an approve, decline, or refer outcome — and sets approved terms.",
+   customer:"Is informed of the outcome; approved terms may differ from requested terms.", bank:"Approving authority signs off per delegated approval limits.",
+   system:"Records the decision, approved amount, and tenure against the application.", input:"Credit assessment and recommendation.", output:"Approve / Decline / Refer, with approved terms if applicable.",
+   dependsOn:"Credit Assessment.", usedBy:"Post-approval Conditions, Documentation, Disbursement.",
+   workflow:["Review Recommendation","Apply Delegated Approval Authority","Approve / Decline / Refer","Set Approved Terms","Record Decision"]},
+  {id:"guarantor", code:"MOD-13", name:"Guarantor Management", cat:"credit", dept:"fulfillment",
+   purpose:"Manages the guarantor obligation where the product or risk profile requires one.",
+   customer:"Nominates a guarantor; the guarantor consents and is verified.", bank:"Confirms the guarantor meets policy requirements.",
+   system:"Runs guarantor KYC and records acceptance against the loan.", input:"Guarantor identity and consent.", output:"Verified, accepted guarantor on file.",
+   dependsOn:"Credit Decision (condition trigger).", usedBy:"Post-approval Conditions.",
+   workflow:["Guarantor Nomination","Guarantor KYC","Income / Liability Check","Consent Signed","Accepted on File"]},
+  {id:"cpv", code:"MOD-14", name:"CPV / Digital Review Desk (DRD)", cat:"credit", dept:"drd", flagship:true,
+   purpose:"Independently validates information supplied in the application — the digital review desk that cross-checks the file before it's allowed to proceed to fulfillment.",
+   customer:"Makes themselves available for a field visit, a phone confirmation, or a digital verification prompt (e.g. a live location/photo check).",
+   bank:"A DRD reviewer works the case queue, cross-checks documents against declared data, and files a verified/exception verdict against the file.",
+   system:"Routes the case to the queue, timestamps every checkpoint, tracks status (Queued — In Progress — Verified/Exception), and pushes the verdict back into Loan Origination.",
+   input:"Submitted application data, uploaded documents, contact details requiring independent validation.", output:"A verified or exception verdict, with findings logged against the application.",
+   dependsOn:"Loan Origination (submitted application), Documentation (uploaded documents).",
+   usedBy:"Post-approval Conditions, Final Verification, Credit Decision (exceptions can trigger re-assessment).",
+   workflow:["Case Queued to DRD","Document Cross-Check","Verification Method Assigned","Contact / Field / Digital Check Conducted","Findings Logged","Verdict: Verified or Exception","Routed Back to Origination"],
+   workflowDesc:[
+     "The submitted file lands in the DRD queue the moment the application is complete — before it can move any further.",
+     "A reviewer checks the uploaded documents against what the applicant declared: does the address match, does the income document match the stated employer, does the signature match?",
+     "Based on the product and risk level, the case is assigned a verification method — a phone confirmation, a field visit, or a digital check like a live photo/location capture.",
+     "The actual check happens: a call is made, a visit occurs, or the applicant completes a digital prompt in real time.",
+     "Whatever is found — confirmed, mismatched, unreachable, suspicious — is logged against the file with a timestamp and reviewer ID.",
+     "The desk closes the case with a verdict: Verified lets the file continue; Exception flags it for review or correction.",
+     "The verdict is pushed back to Loan Origination, which either continues fulfillment or halts for correction/reassessment."
+   ]},
+  {id:"docs", code:"MOD-15", name:"Documentation", cat:"credit", dept:"docsops",
+   purpose:"Generates, collects, and validates the legal documents for an approved facility.",
+   customer:"Reviews and signs the loan documents; uploads required paperwork.", bank:"Verifies document completeness and authenticity before disbursement.",
+   system:"Generates document sets, tracks signature and upload status.", input:"Approved facility terms.", output:"Signed, verified loan documentation.",
+   dependsOn:"Credit Decision.", usedBy:"Disbursement.",
+   workflow:["Document Set Generated","Customer Review","Signature","Document Upload","Authenticity Check","Filed"]},
+  {id:"repayacct", code:"MOD-16", name:"Repayment Account", cat:"credit", dept:"fulfillment",
+   purpose:"Establishes the account from which scheduled repayments will be collected.",
+   customer:"Nominates or confirms a CASA account for EMI collection.", bank:"Confirms the account is valid and belongs to the borrower (or approved payer).",
+   system:"Links the loan facility to the CASA account for scheduled debits.", input:"Borrower's CASA account.", output:"A linked repayment account on the loan facility.",
+   dependsOn:"CASA.", usedBy:"Disbursement, ongoing loan servicing.",
+   workflow:["Nominate CASA","Ownership Match Check","Link to Loan Facility","EMI Debit Mandate Setup"]},
+  {id:"disbursement", code:"MOD-17", name:"Disbursement", cat:"credit", dept:"disbursement",
+   purpose:"Releases approved funds once every condition, document, and verification is complete.",
+   customer:"Receives the disbursed funds into the nominated account.", bank:"Authorizes the disbursement instruction per policy.",
+   system:"Executes the fund transfer and creates the active loan account in core banking.", input:"Completed conditions, documents, and final verification.", output:"Disbursed funds; an active loan account.",
+   dependsOn:"Documentation, Repayment Account, CPV, Guarantor (where applicable).", usedBy:"Core Banking, loan servicing.",
+   workflow:["Condition Completion Check","Disbursement Instruction Raised","Authorization","Funds Transfer Executed","Loan Account Activated"]},
+  {id:"cards", code:"MOD-18", name:"Cards", cat:"cardspay", dept:"servicing",
+   purpose:"Issues and manages debit and credit cards.",
+   customer:"Applies for a card, activates it, and uses it for spend/withdrawal.", bank:"Approves issuance (credit cards also route through Credit Assessment).",
+   system:"Issues the physical/virtual card, sets limits, processes activation.", input:"CIF (debit) or CIF + credit assessment (credit).", output:"Active, usable card.",
+   dependsOn:"CIF, CASA (debit) or Credit Assessment (credit).", usedBy:"Payment processing, customer daily use.",
+   workflow:["Card Type Selection","Eligibility / Credit Check (if credit)","Personalization / Printing","Dispatch","Activation","PIN Set"]},
+  {id:"payment", code:"MOD-19", name:"Payment Processing", cat:"cardspay", dept:"corebanking",
+   purpose:"Executes and settles financial transactions across all channels.",
+   customer:"Initiates a transfer, bill payment, merchant payment, or withdrawal.", bank:"Investigates flagged or failed transactions.",
+   system:"Authenticates, validates limits/balance, screens for fraud, posts, and settles the transaction.", input:"Payment instruction from an active account or card.", output:"Posted, settled transaction with notification.",
+   dependsOn:"CASA / Cards, Core Banking.", usedBy:"Customer, reconciliation, reporting.",
+   workflow:["Instruction Initiated","Authentication (PIN / OTP)","Balance / Limit Check","Fraud Screening","Processing","Posting & Settlement","Notification"]},
+  {id:"corebanking", code:"MOD-20", name:"Core Banking / Ledger", cat:"ops", dept:"corebanking",
+   purpose:"Maintains the single source of truth for all accounts, balances, and postings.",
+   customer:"No direct action — this runs behind every product a customer holds.", bank:"Operations teams monitor system health and reconcile exceptions.",
+   system:"Posts every financial event: deposits, loans, interest, fees, transactions.", input:"Every financial event across all products.", output:"Accurate balances, statements, and the system of record.",
+   dependsOn:"All product-origination modules.", usedBy:"Everything — servicing, reporting, closure.",
+   workflow:["Event Received","Validation","Ledger Posting","Balance Update","Interest / Fee Accrual","Statement Update"]},
+  {id:"collection", code:"MOD-21", name:"Collection", cat:"ops", dept:"collection",
+   purpose:"Manages accounts that have missed a scheduled repayment.",
+   customer:"Is contacted and, where possible, arranges payment.", bank:"Collections officer follows the escalation path defined by policy.",
+   system:"Flags overdue accounts and tracks the collection workflow status.", input:"An overdue EMI or payment.", output:"Payment recovered, or escalation to Recovery.",
+   dependsOn:"Core Banking (overdue detection).", usedBy:"Recovery, Settlement.",
+   workflow:["Overdue Flag Raised","Customer Notification","Contact Attempt","Payment Arrangement","Escalation Decision"]},
+  {id:"recovery", code:"MOD-22", name:"Recovery", cat:"ops", dept:"recovery",
+   purpose:"Resolves accounts that have moved into serious delinquency or default.",
+   customer:"Engages in a resolution — restructuring, settlement, or collateral action.", bank:"Recovery team manages the legal/collateral process per policy.",
+   system:"Tracks recovery status and the eventual settlement outcome.", input:"An account escalated from Collection.", output:"Settled exposure or realized collateral.",
+   dependsOn:"Collection, collateral records (FDR/property/vehicle).", usedBy:"Settlement, Closure.",
+   workflow:["Case Escalated","Legal / Collateral Review","Recovery Action Selected","Settlement Negotiated","Outcome Recorded"]},
+  {id:"custservice", code:"MOD-23", name:"Customer Service", cat:"retain", dept:"custservice",
+   purpose:"Handles ongoing servicing requests and retains the relationship after any single product closes.",
+   customer:"Raises requests, complaints, or expresses interest in new products.", bank:"Resolves requests and identifies cross-sell opportunities.",
+   system:"Logs and tracks service requests to resolution.", input:"Customer requests, complaints, servicing needs.", output:"Resolved requests; new product leads.",
+   dependsOn:"CIF, all active products.", usedBy:"Product Selection (new product loop).",
+   workflow:["Request Logged","Categorized & Routed","Resolved","Cross-Sell Opportunity Flagged"]},
+  {id:"reporting", code:"MOD-24", name:"Reporting & Reconciliation", cat:"ops", dept:"postreview",
+   purpose:"Ensures the business and financial position is correct and reportable.",
+   customer:"No direct action.", bank:"Finance/operations review reports and resolve reconciliation breaks.",
+   system:"Aggregates core banking data into regulatory and management reports.", input:"Transactions and postings from Core Banking.", output:"Reconciled, reportable financial and business data.",
+   dependsOn:"Core Banking.", usedBy:"Regulatory reporting, management, audit.",
+   workflow:["Data Extraction from Core Banking","Reconciliation Check","Exception Investigation","Regulatory Report Compiled","Submitted / Filed"]},
+];
+
+const CAT_COLOR = {}; CATS.forEach(c=>CAT_COLOR[c.id]=c.color);
+const MOD_BY_ID = {}; MODULES.forEach(m=>MOD_BY_ID[m.id]=m);
+const DEPT_BY_ID = {}; DEPARTMENTS.forEach(d=>DEPT_BY_ID[d.id]=d);
+
+/* ================= RAIL BUILD ================= */
+const railEl = document.getElementById('rail');
+const railFg = document.getElementById('railFg');
+const branchesEl = document.getElementById('branches');
+const detailModulesEl = document.getElementById('detailModules');
+const detailDeptChip = document.getElementById('detailDeptChip');
+const detailNum = document.getElementById('detailNum');
+const detailTitle = document.getElementById('detailTitle');
+const detailPhase = document.getElementById('detailPhase');
+const detailDesc = document.getElementById('detailDesc');
+const detailBox = document.getElementById('detail');
+const stageNum = document.getElementById('stageNum');
+const playBtn = document.getElementById('playBtn');
+const scrollContent = document.getElementById('scrollContent');
+const domainBandEl = document.getElementById('domainBand');
+
+let current = 0, playing = false, timer = null, branchTimer = null, speedMult = 1;
+const NODE_W = 82;
+scrollContent.style.minWidth = (STAGES.length * NODE_W) + 'px';
+
+STAGES.forEach((s,i)=>{
+  const node = document.createElement('div');
+  node.className = 'node';
+  node.style.setProperty('--phase-color', DOMAIN_COLOR[s.domain]);
+  node.innerHTML = `
+    <div class="stamp">${String(i+1).padStart(2,'0')}</div>
+    <div class="node-label">${s.title}</div>
+    <div class="dept-tag">${DEPT_BY_ID[s.dept] ? DEPT_BY_ID[s.dept].name : ''}</div>
+  `;
+  node.addEventListener('click', ()=>{ stop(); goTo(i); });
+  railEl.appendChild(node);
+});
+const nodeEls = Array.from(railEl.querySelectorAll('.node'));
+function pad(n){ return String(n+1).padStart(2,'0'); }
+
+// domain band segments
+(function renderDomainBand(){
+  let i=0;
+  while(i<STAGES.length){
+    const dom = STAGES[i].domain;
+    let j=i;
+    while(j<STAGES.length && STAGES[j].domain===dom) j++;
+    const count = j-i;
+    const seg = document.createElement('div');
+    seg.className = 'domain-seg';
+    seg.style.flex = count;
+    seg.style.background = DOMAIN_COLOR[dom];
+    seg.textContent = DOMAIN_LABEL_SHORT[dom];
+    domainBandEl.appendChild(seg);
+    i = j;
+  }
+})();
+
+function renderBranches(stage){
+  branchesEl.innerHTML = '';
+  if(!stage.branches) return;
+  stage.branches.tracks.forEach(track=>{
+    const t = document.createElement('div');
+    t.className='track';
+    t.style.setProperty('--track-color', track.color);
+    t.innerHTML = `<div class="track-head">${track.name}</div><div class="track-items">${
+      track.items.map((it,idx)=>`<div class="titem" data-idx="${idx}">${it}</div>`).join('')
+    }</div>`;
+    branchesEl.appendChild(t);
+  });
+}
+function animateBranches(stage){
+  clearInterval(branchTimer);
+  if(!stage.branches) return;
+  const tracks = branchesEl.querySelectorAll('.track');
+  const maxLen = Math.max(...stage.branches.tracks.map(t=>t.items.length));
+  let step = 0;
+  const stepMs = Math.max(260, 520/speedMult);
+  function tick(){
+    tracks.forEach((trackEl)=>{
+      const items = trackEl.querySelectorAll('.titem');
+      items.forEach((el, ii)=>{
+        el.classList.remove('live');
+        if(ii < step) el.classList.add('done');
+        if(ii === step) el.classList.add('live');
+      });
+    });
+    step++;
+    if(step > maxLen){ clearInterval(branchTimer); }
+  }
+  tick();
+  branchTimer = setInterval(tick, stepMs);
+}
+
+function renderDetailModules(stage){
+  detailModulesEl.innerHTML='<span class="detail-row-label">Modules</span>';
+  stage.modules.forEach(id=>{
+    const m = MOD_BY_ID[id];
+    if(!m) return;
+    const chip = document.createElement('span');
+    chip.className='mod-chip-mini';
+    chip.textContent = m.name;
+    chip.addEventListener('click', ()=> jumpToModule(id));
+    detailModulesEl.appendChild(chip);
+  });
+}
+
+function goTo(i){
+  current = ((i % STAGES.length) + STAGES.length) % STAGES.length;
+  const stage = STAGES[current];
+  nodeEls.forEach((el, idx)=>{
+    el.classList.remove('active','past');
+    if(idx < current) el.classList.add('past');
+    if(idx === current) el.classList.add('active');
+  });
+  const pct = (current/(STAGES.length-1))*100;
+  railFg.style.width = `calc((100% - 38px) * ${pct/100})`;
+  detailBox.style.setProperty('--phase-color', DOMAIN_COLOR[stage.domain]);
+  detailNum.textContent = pad(current);
+  detailTitle.textContent = stage.title;
+  detailPhase.textContent = DOMAIN_LABEL_SHORT[stage.domain];
+  detailDesc.textContent = stage.desc;
+  stageNum.textContent = pad(current);
+  const dept = DEPT_BY_ID[stage.dept];
+  detailDeptChip.textContent = dept ? dept.name : '—';
+  detailDeptChip.onclick = ()=> jumpToDept(stage.dept);
+  renderBranches(stage);
+  animateBranches(stage);
+  renderDetailModules(stage);
+  nodeEls[current].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+}
+
+function dwellTime(stage){
+  const base = 2400 / speedMult;
+  if(stage.branches){
+    const maxLen = Math.max(...stage.branches.tracks.map(t=>t.items.length));
+    return Math.max(base, (maxLen+1) * Math.max(260,520/speedMult) + 500);
+  }
+  return base;
+}
+function scheduleNext(){
+  clearTimeout(timer);
+  if(!playing) return;
+  timer = setTimeout(()=>{ goTo(current+1); scheduleNext(); }, dwellTime(STAGES[current]));
+}
+function play(){ playing = true; playBtn.textContent = '⏸ Pause'; scheduleNext(); }
+function stop(){ playing = false; playBtn.textContent = '▶ Play'; clearTimeout(timer); }
+
+playBtn.addEventListener('click', ()=> playing ? stop() : play());
+document.getElementById('prevBtn').addEventListener('click', ()=>{ stop(); goTo(current-1); });
+document.getElementById('nextBtn').addEventListener('click', ()=>{ stop(); goTo(current+1); });
+document.getElementById('resetBtn').addEventListener('click', ()=>{ stop(); goTo(0); });
+document.getElementById('speedSelect').addEventListener('change', (e)=>{
+  speedMult = parseFloat(e.target.value);
+  if(playing){ scheduleNext(); }
+});
+
+/* ================= GENERIC WORKFLOW MINI-STEPPER ================= */
+function buildWorkflowBlock(entity){
+  return `
+    <div class="wf-block">
+      <div class="wf-head">
+        <span class="wf-title">Internal Workflow</span>
+        <button class="wf-btn" data-action="play">▶ Play</button>
+        <button class="wf-btn" data-action="reset">↺ Reset</button>
+        <span class="wf-readout" data-role="readout">Step 1 / ${entity.workflow.length}</span>
+      </div>
+      <div class="wf-rail" data-role="rail">
+        <div class="wf-line-bg"></div>
+        <div class="wf-line-fg" data-role="fg" style="width:0%"></div>
+        <div class="wf-steps" data-role="steps"></div>
+      </div>
+      <div class="wf-detail-line" data-role="detailline"></div>
+    </div>
+  `;
+}
+function initWorkflow(card, m){
+  const stepsEl = card.querySelector('[data-role="steps"]');
+  const fgEl = card.querySelector('[data-role="fg"]');
+  const readoutEl = card.querySelector('[data-role="readout"]');
+  const lineEl = card.querySelector('[data-role="detailline"]');
+  let wfCurrent = 0, wfPlaying = false, wfTimer = null;
+
+  m.workflow.forEach((step,i)=>{
+    const el = document.createElement('div');
+    el.className = 'wf-step';
+    el.innerHTML = `<div class="wf-dot"></div><div class="wf-step-label">${step}</div>`;
+    el.addEventListener('click', (e)=>{ e.stopPropagation(); stopWf(); wfGoTo(i); });
+    stepsEl.appendChild(el);
+  });
+  const dotEls = Array.from(stepsEl.querySelectorAll('.wf-step'));
+
+  function wfGoTo(i){
+    wfCurrent = Math.max(0, Math.min(m.workflow.length-1, i));
+    dotEls.forEach((el,idx)=>{
+      el.classList.remove('active','past');
+      if(idx < wfCurrent) el.classList.add('past');
+      if(idx === wfCurrent) el.classList.add('active');
+    });
+    const pct = m.workflow.length>1 ? (wfCurrent/(m.workflow.length-1))*100 : 0;
+    fgEl.style.width = `calc((100% - 26px) * ${pct/100})`;
+    readoutEl.textContent = `Step ${wfCurrent+1} / ${m.workflow.length}`;
+    lineEl.textContent = (m.workflowDesc && m.workflowDesc[wfCurrent]) ? m.workflowDesc[wfCurrent] : m.workflow[wfCurrent];
+  }
+  function wfNext(){ if(wfCurrent >= m.workflow.length-1){ stopWf(); return; } wfGoTo(wfCurrent+1); }
+  function playWf(){ wfPlaying = true; wfTimer = setInterval(wfNext, 850); }
+  function stopWf(){ wfPlaying = false; clearInterval(wfTimer); }
+
+  card.querySelector('[data-action="play"]').addEventListener('click',(e)=>{
+    e.stopPropagation();
+    if(wfPlaying){ stopWf(); e.target.textContent='▶ Play'; return; }
+    if(wfCurrent >= m.workflow.length-1) wfGoTo(0);
+    playWf();
+    e.target.textContent = '⏸ Pause';
+  });
+  card.querySelector('[data-action="reset"]').addEventListener('click',(e)=>{
+    e.stopPropagation();
+    stopWf();
+    card.querySelector('[data-action="play"]').textContent = '▶ Play';
+    wfGoTo(0);
+  });
+  wfGoTo(0);
+}
+
+/* ================= DEPARTMENT DIRECTORY ================= */
+const deptFiltersEl = document.getElementById('deptFilters');
+const deptGridEl = document.getElementById('deptGrid');
+let deptFilter = 'all';
+
+function renderDeptFilters(){
+  deptFiltersEl.innerHTML = '';
+  const all = document.createElement('div');
+  all.className = 'chip active'; all.textContent='All departments'; all.dataset.cat='all';
+  deptFiltersEl.appendChild(all);
+  DEPT_DOMAINS.forEach(d=>{
+    const chip = document.createElement('div');
+    chip.className='chip'; chip.textContent=d.label.replace(/^\d+\s·\s/,''); chip.dataset.cat=d.id;
+    deptFiltersEl.appendChild(chip);
+  });
+  deptFiltersEl.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      deptFilter = chip.dataset.cat;
+      deptFiltersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderDepts();
+    });
+  });
+}
+function renderDepts(){
+  deptGridEl.innerHTML = '';
+  DEPARTMENTS.filter(d=> deptFilter==='all' || d.domain===deptFilter).forEach(d=>{
+    const card = document.createElement('div');
+    card.className = 'mod-card';
+    card.id = 'deptcard-'+d.id;
+    card.style.setProperty('--cat-color', DOMAIN_COLOR[d.domain]);
+    card.innerHTML = `
+      <div class="mod-card-top">
+        <span class="mod-code">${d.code}</span>
+        <span class="mod-name">${d.name}</span>
+      </div>
+      <div class="mod-purpose">${d.purpose}</div>
+      <div class="mod-expand-hint">Click to expand ▾</div>
+      <div class="mod-detail">
+        <div class="mod-field full">
+          <div class="flow-pair"><b>${d.receives}</b><span class="arrow">→ receives → this desk → hands to →</span><b>${d.handsTo}</b></div>
+        </div>
+        <div class="mod-field"><b>Human duty</b><span>${d.human}</span></div>
+        <div class="mod-field"><b>System duty</b><span>${d.system}</span></div>
+        ${buildWorkflowBlock(d)}
+      </div>
+    `;
+    card.addEventListener('click', (e)=>{ if(e.target.closest('.wf-block')) return; card.classList.toggle('open'); });
+    deptGridEl.appendChild(card);
+    initWorkflow(card, d);
+  });
+}
+function jumpToDept(id){
+  deptFilter = 'all';
+  deptFiltersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  deptFiltersEl.querySelector('.chip[data-cat="all"]').classList.add('active');
+  renderDepts();
+  const card = document.getElementById('deptcard-'+id);
+  if(card){
+    card.classList.add('open','linked');
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(()=> card.classList.remove('linked'), 2200);
+  }
+}
+
+/* ================= MODULE LEDGER ================= */
+const modFiltersEl = document.getElementById('modFilters');
+const modGridEl = document.getElementById('modGrid');
+let modFilter = 'all';
+
+function renderModFilters(){
+  modFiltersEl.innerHTML = '';
+  const all = document.createElement('div');
+  all.className='chip active'; all.textContent='All modules'; all.dataset.cat='all';
+  modFiltersEl.appendChild(all);
+  CATS.forEach(c=>{
+    const chip = document.createElement('div');
+    chip.className='chip'; chip.textContent=c.label; chip.dataset.cat=c.id;
+    modFiltersEl.appendChild(chip);
+  });
+  modFiltersEl.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      modFilter = chip.dataset.cat;
+      modFiltersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderModules();
+    });
+  });
+}
+function renderModules(){
+  modGridEl.innerHTML = '';
+  MODULES.filter(m=> modFilter==='all' || m.cat===modFilter).forEach(m=>{
+    const card = document.createElement('div');
+    card.className = 'mod-card';
+    card.id = 'modcard-'+m.id;
+    card.style.setProperty('--cat-color', CAT_COLOR[m.cat]);
+    const dept = DEPT_BY_ID[m.dept];
+    card.innerHTML = `
+      <div class="mod-card-top">
+        <span class="mod-code">${m.code}</span>
+        <span class="mod-name">${m.name}</span>
+        ${m.flagship ? '<span class="flagship-tag">Worked Example</span>' : ''}
+        <span class="mod-owner" data-role="owner">${dept ? dept.name : ''}</span>
+      </div>
+      <div class="mod-purpose">${m.purpose}</div>
+      <div class="mod-expand-hint">Click to expand ▾</div>
+      <div class="mod-detail">
+        <div class="mod-field"><b>Customer role</b><span>${m.customer}</span></div>
+        <div class="mod-field"><b>Bank / officer role</b><span>${m.bank}</span></div>
+        <div class="mod-field"><b>System role</b><span>${m.system}</span></div>
+        <div class="mod-field"><b>Input</b><span>${m.input}</span></div>
+        <div class="mod-field"><b>Output</b><span>${m.output}</span></div>
+        <div class="mod-field"><b>Depends on</b><span>${m.dependsOn}</span></div>
+        <div class="mod-field full"><b>Used by</b><span>${m.usedBy}</span></div>
+        ${buildWorkflowBlock(m)}
+      </div>
+    `;
+    card.addEventListener('click', (e)=>{
+      if(e.target.closest('.wf-block')) return;
+      if(e.target.closest('[data-role="owner"]')) return;
+      card.classList.toggle('open');
+    });
+    card.querySelector('[data-role="owner"]').addEventListener('click',(e)=>{ e.stopPropagation(); jumpToDept(m.dept); });
+    modGridEl.appendChild(card);
+    initWorkflow(card, m);
+    if(m.flagship) card.classList.add('open');
+  });
+}
+function jumpToModule(id){
+  modFilter = 'all';
+  modFiltersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  modFiltersEl.querySelector('.chip[data-cat="all"]').classList.add('active');
+  renderModules();
+  const card = document.getElementById('modcard-'+id);
+  if(card){
+    card.classList.add('open','linked');
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(()=> card.classList.remove('linked'), 2200);
+  }
+}
+
+renderDeptFilters(); renderDepts();
+renderModFilters(); renderModules();
+goTo(0);
+setTimeout(play, 600);
+
+/* ================= LIVE DEPARTMENT HANDOFF MAP ================= */
+const FLOW_NODES = [
+  {id:"customer", label:"Customer", col:0, row:1},
+  {id:"sales", label:"Sales / RM", col:1, row:1},
+  {id:"los", label:"LOS", col:2, row:1},
+  {id:"drd", label:"DRD", col:3, row:1},
+  {id:"dedupe", label:"Dedupe", col:4, row:1},
+  {id:"sanction", label:"Sanction Screen", col:5, row:1},
+  {id:"cib", label:"CIB", col:6, row:1},
+  {id:"cpv", label:"CPV", col:7, row:1},
+  {id:"credit", label:"Credit / Underwriting", col:8, row:1},
+  {id:"sanctioning", label:"Sanctioning Authority", col:9, row:1},
+  {id:"declined", label:"Declined — Closed", col:9, row:0, terminal:true},
+  {id:"fulfillment", label:"Fulfillment", col:10, row:1},
+  {id:"docsops", label:"Documentation", col:11, row:1},
+  {id:"disbursement", label:"Disbursement", col:12, row:1},
+  {id:"corebanking", label:"Core Banking", col:13, row:1},
+  {id:"servicing", label:"Loan Servicing", col:14, row:1},
+  {id:"collection", label:"Collection", col:14, row:2},
+  {id:"recovery", label:"Recovery", col:14, row:3},
+  {id:"closure", label:"Closure", col:15, row:1},
+];
+const COLW = 168, ROWY = {0:50, 1:170, 2:290, 3:410};
+function nodeXY(id){
+  const n = FLOW_NODES.find(x=>x.id===id);
+  return {x: n.col*COLW + 90, y: ROWY[n.row]};
+}
+const FLOW_EDGES = [
+  {from:"customer",to:"sales",type:"main"},
+  {from:"sales",to:"los",type:"main"},
+  {from:"los",to:"drd",type:"main"},
+  {from:"drd",to:"dedupe",type:"main"},
+  {from:"dedupe",to:"sanction",type:"main"},
+  {from:"sanction",to:"cib",type:"main"},
+  {from:"cib",to:"cpv",type:"main"},
+  {from:"cpv",to:"credit",type:"main"},
+  {from:"credit",to:"sanctioning",type:"main"},
+  {from:"sanctioning",to:"fulfillment",type:"main"},
+  {from:"fulfillment",to:"docsops",type:"main"},
+  {from:"docsops",to:"disbursement",type:"main"},
+  {from:"disbursement",to:"corebanking",type:"main"},
+  {from:"corebanking",to:"servicing",type:"main"},
+  {from:"servicing",to:"closure",type:"main"},
+  {from:"servicing",to:"collection",type:"main"},
+  {from:"collection",to:"recovery",type:"main"},
+  {from:"recovery",to:"closure",type:"main"},
+  {from:"drd",to:"sales",type:"feedback", bow:"down"},
+  {from:"cpv",to:"sales",type:"feedback", bow:"down"},
+  {from:"sanctioning",to:"declined",type:"feedback", bow:"up"},
+  {from:"collection",to:"servicing",type:"feedback", bow:"side"},
+];
+function edgePathD(e){
+  const a = nodeXY(e.from), b = nodeXY(e.to);
+  if(e.type==="main" && a.y===b.y){ return `M${a.x},${a.y} L${b.x},${b.y}`; }
+  if(e.type==="main"){ return `M${a.x},${a.y} L${b.x},${b.y}`; }
+  // feedback curves
+  if(e.bow==="down"){
+    const midY = Math.max(a.y,b.y) + 70;
+    return `M${a.x},${a.y+16} C${a.x},${midY} ${b.x},${midY} ${b.x},${b.y+16}`;
+  }
+  if(e.bow==="up"){
+    const midY = Math.min(a.y,b.y) - 40;
+    return `M${a.x},${a.y-16} C${a.x},${midY} ${b.x},${midY} ${b.x},${b.y+16}`;
+  }
+  // side
+  const midX = Math.max(a.x,b.x) + 46;
+  return `M${a.x+16},${a.y} C${midX},${a.y} ${midX},${b.y} ${b.x+16},${b.y}`;
+}
+
+const flowSvg = document.getElementById('flowSvg');
+const flowNodesEl = document.getElementById('flowNodes');
+const flowInner = document.getElementById('flowmapInner');
+const flowToken = document.getElementById('flowToken');
+const flowLogEl = document.getElementById('flowLog');
+const flowCurrentNodeEl = document.getElementById('flowCurrentNode');
+const flowHopNum = document.getElementById('flowHopNum');
+const flowHopTotal = document.getElementById('flowHopTotal');
+
+const mapWidth = (Math.max(...FLOW_NODES.map(n=>n.col))+1)*COLW + 60;
+flowInner.style.width = mapWidth+'px';
+flowSvg.setAttribute('viewBox', `0 0 ${mapWidth} 490`);
+
+const edgeEls = {};
+FLOW_EDGES.forEach(e=>{
+  const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d', edgePathD(e));
+  p.setAttribute('class', e.type==='main' ? 'edge-main' : 'edge-feedback');
+  p.setAttribute('marker-end', e.type==='main' ? 'url(#arrow-main)' : 'url(#arrow-feedback)');
+  flowSvg.appendChild(p);
+  edgeEls[e.from+'>'+e.to] = {el:p, type:e.type};
+});
+
+const flowNodeEls = {};
+FLOW_NODES.forEach(n=>{
+  const xy = nodeXY(n.id);
+  const div = document.createElement('div');
+  div.className = 'flow-node' + (n.terminal ? ' terminal' : '');
+  div.style.left = xy.x+'px'; div.style.top = xy.y+'px';
+  const dept = DEPT_BY_ID[n.id];
+  if(dept) div.title = dept.name + ' — ' + dept.purpose;
+  div.innerHTML = `<div class="flow-node-dot">${dept ? dept.code.replace('DEPT-','') : ''}</div><div class="flow-node-label">${n.label}</div>`;
+  div.addEventListener('click', ()=>{ if(DEPT_BY_ID[n.id]) jumpToDept(n.id); });
+  flowNodesEl.appendChild(div);
+  flowNodeEls[n.id] = div;
+});
+
+/* ---- Scenarios ---- */
+const SCENARIOS = [
+  {id:'clean', label:'Scenario A — Straight-Through Approval', steps:[
+    {node:"customer", note:"Customer expresses a loan need."},
+    {node:"sales", note:"Sales/RM captures details and creates the application."},
+    {node:"los", note:"Application is parked in LOS with an Application ID."},
+    {node:"drd", note:"DRD reviews completeness — Complete."},
+    {node:"dedupe", note:"Dedupe confirms no duplicate customer or application."},
+    {node:"sanction", note:"Sanction/AML screening — Clear."},
+    {node:"cib", note:"CIB report retrieved — acceptable exposure."},
+    {node:"cpv", note:"CPV verification — Verified."},
+    {node:"credit", note:"Credit assessment completed — recommended for approval."},
+    {node:"sanctioning", note:"Sanctioning authority — Approved."},
+    {node:"fulfillment", note:"Conditions fulfilled — guarantor, acknowledgement, repayment account."},
+    {node:"docsops", note:"Documentation signed, uploaded, and checked."},
+    {node:"disbursement", note:"Final check passed — funds disbursed."},
+    {node:"corebanking", note:"Loan account booked in core banking."},
+    {node:"servicing", note:"Loan is active — EMIs proceeding normally."},
+    {node:"closure", note:"Loan fully settled and closed."},
+  ]},
+  {id:'drd-return', label:'Scenario B — Returned for Correction at DRD', steps:[
+    {node:"customer", note:"Customer submits an application with an unclear document photo."},
+    {node:"sales", note:"Sales/RM submits the application as-is."},
+    {node:"los", note:"Application parked in LOS."},
+    {node:"drd", note:"DRD finds a Deficiency — document unreadable.", feedback:true},
+    {node:"sales", note:"Returned to Sales/RM for correction.", feedbackHop:true},
+    {node:"los", note:"Corrected application resubmitted to LOS."},
+    {node:"drd", note:"DRD reviews again — now Complete."},
+    {node:"dedupe", note:"Dedupe — no duplicates found."},
+    {node:"sanction", note:"Sanction/AML screening — Clear."},
+    {node:"cib", note:"CIB retrieved — acceptable."},
+    {node:"cpv", note:"CPV — Verified."},
+    {node:"credit", note:"Credit assessment — recommended."},
+    {node:"sanctioning", note:"Approved."},
+    {node:"fulfillment", note:"Conditions fulfilled."},
+    {node:"docsops", note:"Documentation complete."},
+    {node:"disbursement", note:"Disbursed."},
+    {node:"corebanking", note:"Booked in core banking."},
+    {node:"servicing", note:"Active loan, servicing normally."},
+    {node:"closure", note:"Settled and closed."},
+  ]},
+  {id:'cpv-negative', label:'Scenario C — CPV Exception, Re-Verified', steps:[
+    {node:"customer", note:"Applicant declares an office address that turns out to be outdated."},
+    {node:"sales", note:"Application submitted."},
+    {node:"los", note:"Parked in LOS."},
+    {node:"drd", note:"DRD — Complete."},
+    {node:"dedupe", note:"No duplicates."},
+    {node:"sanction", note:"Screening clear."},
+    {node:"cib", note:"CIB acceptable."},
+    {node:"cpv", note:"CPV — Negative, office address could not be confirmed.", feedback:true},
+    {node:"sales", note:"Sent back to Sales/RM to obtain updated employment details.", feedbackHop:true},
+    {node:"los", note:"Updated details resubmitted."},
+    {node:"drd", note:"DRD re-checks — Complete."},
+    {node:"dedupe", note:"Still no duplicates."},
+    {node:"sanction", note:"Still clear."},
+    {node:"cib", note:"CIB unaffected."},
+    {node:"cpv", note:"CPV re-attempted — now Verified."},
+    {node:"credit", note:"Credit assessment proceeds."},
+    {node:"sanctioning", note:"Approved."},
+    {node:"fulfillment", note:"Conditions fulfilled."},
+    {node:"docsops", note:"Documentation complete."},
+    {node:"disbursement", note:"Disbursed."},
+    {node:"corebanking", note:"Booked."},
+    {node:"servicing", note:"Active and current."},
+    {node:"closure", note:"Closed."},
+  ]},
+  {id:'declined', label:'Scenario D — Declined at Sanction', steps:[
+    {node:"customer", note:"Applicant requests a loan beyond their repayment capacity."},
+    {node:"sales", note:"Application submitted."},
+    {node:"los", note:"Parked."},
+    {node:"drd", note:"Complete."},
+    {node:"dedupe", note:"No duplicates."},
+    {node:"sanction", note:"Clear."},
+    {node:"cib", note:"High existing exposure found."},
+    {node:"cpv", note:"Verified."},
+    {node:"credit", note:"Assessment shows repayment capacity is insufficient."},
+    {node:"sanctioning", note:"Decision: Declined.", feedback:true},
+    {node:"declined", note:"Customer is notified. Application closed — no further processing.", feedbackHop:true},
+  ]},
+  {id:'overdue', label:'Scenario E — Overdue — Regularized', steps:[
+    {node:"corebanking", note:"Loan is active in core banking."},
+    {node:"servicing", note:"EMI falls due."},
+    {node:"collection", note:"EMI missed — flagged Overdue. Collection contacts the customer.", feedback:true},
+    {node:"servicing", note:"Customer pays and regularizes — back to normal servicing.", feedbackHop:true},
+  ]},
+  {id:'recovery', label:'Scenario F — Escalated to Recovery', steps:[
+    {node:"corebanking", note:"Loan is active."},
+    {node:"servicing", note:"EMI falls due."},
+    {node:"collection", note:"Missed EMI — Collection follow-up begins."},
+    {node:"recovery", note:"Delinquency continues — escalated to Recovery."},
+    {node:"closure", note:"Collateral realized / settlement reached — case closed."},
+  ]},
+];
+
+const scenarioSelect = document.getElementById('scenarioSelect');
+SCENARIOS.forEach(s=>{
+  const opt = document.createElement('option');
+  opt.value = s.id; opt.textContent = s.label;
+  scenarioSelect.appendChild(opt);
+});
+
+let flowPlaying = false, flowTimer = null, flowStepIdx = 0, flowSpeed = 1;
+let activeScenario = SCENARIOS[0];
+
+function resetFlowVisuals(){
+  Object.values(flowNodeEls).forEach(el=> el.classList.remove('active','visited','feedback-hit'));
+  Object.values(edgeEls).forEach(e=> e.el.classList.remove('lit-main','lit-feedback'));
+  flowToken.classList.remove('on');
+  flowLogEl.innerHTML = '<span class="flow-log-empty">Choose a scenario above and press Run to see a case move through the departments — including any feedback loop.</span>';
+  flowCurrentNodeEl.textContent = 'Not started';
+  flowStepIdx = 0;
+  flowHopNum.textContent = '0';
+  flowHopTotal.textContent = activeScenario.steps.length;
+}
+
+function litEdgeFor(fromId, toId, isFeedback){
+  const key = fromId+'>'+toId;
+  if(edgeEls[key]) return edgeEls[key];
+  return null;
+}
+
+function playFlowStep(){
+  const steps = activeScenario.steps;
+  if(flowStepIdx >= steps.length){ stopFlow(); return; }
+  const step = steps[flowStepIdx];
+  const prevStep = flowStepIdx>0 ? steps[flowStepIdx-1] : null;
+  const xy = nodeXY(step.node);
+
+  // move token
+  flowToken.classList.add('on');
+  flowToken.style.left = xy.x+'px';
+  flowToken.style.top = xy.y+'px';
+
+  // light the edge used to arrive here
+  if(prevStep){
+    const edge = litEdgeFor(prevStep.node, step.node);
+    if(edge){ edge.el.classList.add(step.feedbackHop ? 'lit-feedback' : 'lit-main'); }
+  }
+
+  // node states
+  Object.values(flowNodeEls).forEach(el=> el.classList.remove('active'));
+  const nodeEl = flowNodeEls[step.node];
+  nodeEl.classList.add('active','visited');
+  if(step.feedback) nodeEl.classList.add('feedback-hit');
+
+  flowCurrentNodeEl.textContent = (FLOW_NODES.find(n=>n.id===step.node)||{}).label || step.node;
+
+  const line = document.createElement('div');
+  line.className = 'flow-log-line' + (step.feedback || step.feedbackHop ? ' is-feedback' : '');
+  document.querySelectorAll('.flow-log-line.is-latest').forEach(l=>l.classList.remove('is-latest'));
+  line.classList.add('is-latest');
+  if(flowLogEl.querySelector('.flow-log-empty')) flowLogEl.innerHTML = '';
+  line.innerHTML = `<b>Hop ${flowStepIdx+1}</b>${step.note}`;
+  flowLogEl.appendChild(line);
+  flowLogEl.scrollTop = flowLogEl.scrollHeight;
+
+  flowHopNum.textContent = flowStepIdx+1;
+  flowStepIdx++;
+
+  if(flowStepIdx >= steps.length){
+    setTimeout(()=>{ stopFlow(); }, 900/flowSpeed);
+  }
+}
+
+function scheduleFlow(){
+  clearTimeout(flowTimer);
+  if(!flowPlaying) return;
+  flowTimer = setTimeout(()=>{ playFlowStep(); scheduleFlow(); }, 1300/flowSpeed);
+}
+function startFlow(){
+  resetFlowVisuals();
+  flowPlaying = true;
+  document.getElementById('flowPlayBtn').textContent = '⏸ Pause';
+  playFlowStep();
+  scheduleFlow();
+}
+function stopFlow(){
+  flowPlaying = false;
+  document.getElementById('flowPlayBtn').textContent = '▶ Run Scenario';
+  clearTimeout(flowTimer);
+}
+
+document.getElementById('flowPlayBtn').addEventListener('click', ()=>{
+  if(flowPlaying){ stopFlow(); return; }
+  if(flowStepIdx >= activeScenario.steps.length || flowStepIdx===0){ startFlow(); }
+  else{ flowPlaying = true; document.getElementById('flowPlayBtn').textContent='⏸ Pause'; scheduleFlow(); }
+});
+document.getElementById('flowResetBtn').addEventListener('click', ()=>{ stopFlow(); resetFlowVisuals(); });
+document.getElementById('flowSpeedSelect').addEventListener('change', (e)=>{
+  flowSpeed = parseFloat(e.target.value);
+  if(flowPlaying) scheduleFlow();
+});
+scenarioSelect.addEventListener('change', (e)=>{
+  stopFlow();
+  activeScenario = SCENARIOS.find(s=>s.id===e.target.value);
+  resetFlowVisuals();
+});
+
+activeScenario = SCENARIOS[0];
+resetFlowVisuals();
+
+/* ================= STICKY NAV + SCROLL SPY ================= */
+const navLinks = Array.from(document.querySelectorAll('.navlink'));
+const statCells = Array.from(document.querySelectorAll('.stat-cell'));
+const navTargets = navLinks.map(l=>document.getElementById(l.dataset.target));
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 74;
+  window.scrollTo({top:y, behavior:'smooth'});
+}
+navLinks.forEach(l=> l.addEventListener('click', ()=> scrollToSection(l.dataset.target)));
+statCells.forEach(c=> c.addEventListener('click', ()=> scrollToSection(c.dataset.target)));
+
+function updateScrollSpy(){
+  let currentId = navTargets[0] ? navTargets[0].id : null;
+  const scrollPos = window.scrollY + 90;
+  navTargets.forEach(t=>{
+    if(t && t.offsetTop <= scrollPos) currentId = t.id;
+  });
+  navLinks.forEach(l=> l.classList.toggle('on', l.dataset.target===currentId));
+}
+window.addEventListener('scroll', updateScrollSpy, {passive:true});
+updateScrollSpy();
+</script>
+</body>
+</html>

@@ -19,6 +19,7 @@ const ROUTES = {
     RESUME: { id: 5, path: '/resume' },
     COVER_LETTER: { id: 6, path: '/cover-letter' },
     VIDEO_INTERVIEW: { id: 7, path: '/video-interview' },
+    BRAC_JOURNEY: { id: 8, path: '/business-automation' },
 };
 
 function Navbar() {
@@ -63,6 +64,9 @@ function Navbar() {
                         <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.VIDEO_INTERVIEW.path) }}>
                             Video Interview
                         </li>
+                        <li className={`nav-item btn btn-sm li-btn ${activeBtn == ROUTES.BRAC_JOURNEY.id ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute(ROUTES.BRAC_JOURNEY.path) }}>
+                            Business Automation
+                        </li>
                         {/* <li className={`nav-item btn btn-sm li-btn ${activeBtn == 6 ? 'li-btn-select' : ''}`} onClick={() => { navigateToRoute('/pdf-cv') }}>
                             PDF CV
                         </li> */}
@@ -101,6 +105,10 @@ function Navbar() {
                     <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.VIDEO_INTERVIEW.path) }}>
                         <img src={videointerviewIcon} title='Video Interview' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'border border-3 border-warning' : ''}`} />
                         <span className={`${activeBtn == ROUTES.VIDEO_INTERVIEW.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Video Interview</span>
+                    </span>
+                    <span className="d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={() => { navigateToRoute(ROUTES.BRAC_JOURNEY.path) }}>
+                        <img src={Technology} title='BRAC Journey' className={`menu-icon-all rounded-circle text-bg-light btn btn-sm  menu-icon ${activeBtn == ROUTES.BRAC_JOURNEY.id ? 'border border-3 border-warning' : ''}`} />
+                        <span className={`${activeBtn == ROUTES.BRAC_JOURNEY.id ? 'text-warning border p-2 p-2 border-warning' : ''}`}>Business Automation</span>
                     </span>
                 </div>
             </div>

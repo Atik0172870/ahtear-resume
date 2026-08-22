@@ -13,6 +13,7 @@ function LiveHandoffMap({ onJumpToDept }) {
   const [activeNodeId, setActiveNodeId] = useState(null);
   const [log, setLog] = useState([]);
   const logRef = useRef(null);
+  const flowmapOuterRef = useRef(null);
 
   const scenario = useMemo(() => SCENARIOS.find((s) => s.id === scenarioId), [scenarioId]);
 
@@ -71,6 +72,15 @@ function LiveHandoffMap({ onJumpToDept }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, flowStepIdx, flowSpeed, scenarioId]);
 
+  // Follow the moving token — horizontal-only, so it never bubbles into a
+  // vertical scroll of the page (flowmap-outer is the only scroller).
+  useEffect(() => {
+    const container = flowmapOuterRef.current;
+    if (!container || !tokenXY) return;
+    const target = tokenXY.x - container.clientWidth / 2;
+    container.scrollTo({ left: target, behavior: 'smooth' });
+  }, [tokenXY]);
+
   const handlePlayClick = () => {
     if (playing) { setPlaying(false); return; }
     if (flowStepIdx >= scenario.steps.length) resetFlowState();
@@ -80,6 +90,7 @@ function LiveHandoffMap({ onJumpToDept }) {
   const handleReset = () => {
     setPlaying(false);
     resetFlowState();
+    flowmapOuterRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
   };
 
   const activeNode = activeNodeId ? FLOW_NODES.find((n) => n.id === activeNodeId) : null;
@@ -106,7 +117,7 @@ function LiveHandoffMap({ onJumpToDept }) {
         <div className="progress-readout">Hop <b>{Math.min(flowStepIdx, scenario.steps.length)}</b> / {scenario.steps.length}</div>
       </div>
 
-      <div className="flowmap-outer">
+      <div className="flowmap-outer" ref={flowmapOuterRef}>
         <div className="flowmap-inner" style={{ width: mapWidth, height: 490 }}>
           <svg className="flow-svg" viewBox={`0 0 ${mapWidth} 490`}>
             <defs>

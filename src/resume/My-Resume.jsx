@@ -43,13 +43,10 @@ function ExperienceEntry({ entry }) {
       <div className="experience-entry__company">
         {entry.company}{' => '}
         {entry.companyLinks.map((link, i) => (
-          <>
-            <React.Fragment key={link.href}>
-              <a href={link.href} target="_blank" rel="noreferrer">{link.text}</a>
-              {/* {i < entry.companyLinks.length - 1 ? ', ' : ''} */}
-            </React.Fragment>
-             {' | '}{link.href} {i < entry.companyLinks.length - 1 ? '| ' : ''}
-          </>
+          <React.Fragment key={link.href}>
+            <a href={link.href} target="_blank" rel="noreferrer">{link.text}</a>
+            {' | '}{link.href} {i < entry.companyLinks.length - 1 ? '| ' : ''}
+          </React.Fragment>
         ))}
 
       </div>

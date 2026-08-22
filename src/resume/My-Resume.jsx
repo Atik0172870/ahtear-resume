@@ -2,13 +2,19 @@
 import { data, printResumePDF } from './resume-data';
 import profile_pic from '../assets/Ahtear_rahman.JPG';
 import print_icon from '../assets/icons8-print-16.png';
+import degree_icon from '../assets/mortarboard-education-svgrepo-com.svg';
 import React, { useRef, useState } from 'react';
 import './My-Resume.scss';
 
 const PAGE_1_EXPERIENCE_COUNT = 2;
 
-function SectionHeader({ children }) {
-  return <h2 className="resume-section-header">{children}</h2>;
+function SectionHeader({ icon, children }) {
+  return (
+    <h2 className="resume-section-header">
+      {icon ? <img src={icon} className="resume-section-header__icon" alt="" /> : null}
+      {children}
+    </h2>
+  );
 }
 
 function TechnologiesSection() {
@@ -35,25 +41,32 @@ function ExperienceEntry({ entry }) {
         <span className="experience-entry__date">{entry.dateRange}</span>
       </div>
       <div className="experience-entry__company">
-        {entry.company}{' '}
+        {entry.company}{' => '}
         {entry.companyLinks.map((link, i) => (
-          <React.Fragment key={link.href}>
-            <a href={link.href} target="_blank" rel="noreferrer">{link.text}</a>
-            {i < entry.companyLinks.length - 1 ? ', ' : ''}
-          </React.Fragment>
+          <>
+            <React.Fragment key={link.href}>
+              <a href={link.href} target="_blank" rel="noreferrer">{link.text}</a>
+              {/* {i < entry.companyLinks.length - 1 ? ', ' : ''} */}
+            </React.Fragment>
+             {' | '}{link.href} {i < entry.companyLinks.length - 1 ? '| ' : ''}
+          </>
         ))}
+
       </div>
       <div className="experience-entry__info">
         {entry.infoLines.map((line, i) => (
           <React.Fragment key={line}>
-            {line}
+            <span dangerouslySetInnerHTML={{ __html: line }} />
             {i < entry.infoLines.length - 1 ? <br /> : null}
           </React.Fragment>
         ))}
       </div>
+      {entry.bulletsHeader ? (
+        <div className="experience-entry__bullets-header">{entry.bulletsHeader}</div>
+      ) : null}
       <ul className="experience-entry__bullets">
         {entry.bullets.map((bullet) => (
-          <li key={bullet}>{bullet}</li>
+          <li key={bullet} dangerouslySetInnerHTML={{ __html: bullet }} />
         ))}
       </ul>
     </div>
@@ -112,6 +125,15 @@ function Resume() {
             <p className="resume-summary">{data.summary}</p>
           </section>
 
+          <section className="resume-section">
+            <SectionHeader>Key Achievements</SectionHeader>
+            <ul className="key-achievements-list">
+              {data.keyAchievements.map((item) => (
+                <li key={item} dangerouslySetInnerHTML={{ __html: item }} />
+              ))}
+            </ul>
+          </section>
+
           <TechnologiesSection />
 
           <section className="resume-section">
@@ -139,7 +161,7 @@ function Resume() {
           </section>
 
           <section className="resume-section">
-            <SectionHeader>Vendor Certification</SectionHeader>
+            <SectionHeader icon={degree_icon}>Vendor Certification</SectionHeader>
             <ol className="two-col-list">
               {data.certifications.map((cert) => (
                 <li key={cert.text}>
@@ -150,12 +172,17 @@ function Resume() {
           </section>
 
           <section className="resume-section">
-            <SectionHeader>Academic Qualification / Degree</SectionHeader>
-            <ol className="two-col-list">
-              {data.education.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ol>
+            <SectionHeader icon={degree_icon}>Academic Qualification / Degree</SectionHeader>
+            {data.education.map((group) => (
+              <div className="education-group" key={group.group}>
+                <h3 className="education-group__title">{group.group}</h3>
+                <ol className="two-col-list">
+                  {group.items.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ol>
+              </div>
+            ))}
           </section>
 
           <div className="split-section">
@@ -168,6 +195,17 @@ function Resume() {
               <p>{data.activities}</p>
             </section>
           </div>
+
+          <section className="resume-section">
+            <SectionHeader>Notable Personal Projects</SectionHeader>
+            <ul className="personal-projects-list">
+              {data.personalProjects.map((project) => (
+                <li key={project.name}>
+                  <a href={project.href} target="_blank" rel="noreferrer" className="fw-semibold">{project.name}</a>: {project.description}
+                </li>
+              ))}
+            </ul>
+          </section>
 
           <PageFooter pageNumber={2} totalPages={2} />
         </div>

@@ -48,7 +48,7 @@ function BusinessFlowSection({ onJumpToDept, onJumpToModule }) {
 
   // Start playing shortly after first mount, mirroring the original page.
   useEffect(() => {
-    const t = setTimeout(() => setPlaying(true), 600);
+    const t = setTimeout(() => setPlaying(false), 600);
     return () => clearTimeout(t);
   }, []);
 

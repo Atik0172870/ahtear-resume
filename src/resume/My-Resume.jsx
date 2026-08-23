@@ -161,9 +161,14 @@ function Resume() {
             <SectionHeader icon={degree_icon}>Vendor Certification</SectionHeader>
             <ol className="two-col-list">
               {data.certifications.map((cert) => (
-                <li key={cert.text}>
-                  {cert.text} <a href={cert.href} target="_blank" rel="noreferrer" className="cert-link">{cert.linkText}</a>
-                </li>
+                <>
+                  <li className='fw-semibold' key={cert.text}>
+                    {cert.text} 
+                    {/* <a href={cert.href} target="_blank" rel="noreferrer" className="cert-link">{cert.linkText}</a> */}
+                    {/* <span>{cert.href}</span> */}
+                  </li>
+                  <p className='m-0'>{cert.href}</p>
+                </>
               ))}
             </ol>
           </section>
@@ -175,7 +180,7 @@ function Resume() {
                 <h3 className="education-group__title">{group.group}</h3>
                 <ol className="two-col-list">
                   {group.items.map((line) => (
-                    <li key={line}>{line}</li>
+                    <li className='fw-medium' key={line}>{line}</li>
                   ))}
                 </ol>
               </div>

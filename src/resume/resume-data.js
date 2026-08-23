@@ -149,7 +149,7 @@ export const data = {
       items: [
         'M.Sc. in Computer Science & Engineering (MSCSE) | United International University (UIU) — Nov 2017',
         'Post Graduate Diploma in ICT (PGDICT) | Bangladesh Computer Council (BCC) — Nov 2016',
-        'Enterprise Systems Analysis & Development (ESAD in C# .NET) | IDB-BISEW — Nov 2015',
+        'Professional Diploma in Enterprise Systems Analysis & Development (ESAD in C# .NET) | IDB-BISEW — Nov 2015',
       ],
     },
     {
@@ -167,7 +167,7 @@ export const data = {
     { name: 'AI-DB-Chat', href: 'https://github.com/Atik0172870/AI-DB-Chat', description: 'AI-powered chat app (Gemini/Ollama) turning voice & text into structured reports.' },
     { name: 'Microservices-Kafka-ECommerce (.NET 8)', href: 'https://github.com/Atik0172870/Microservices-with-Kafka-ECommerce-Example-.NET-8-', description: 'Event-driven order, product & payment services over Kafka.' },
     { name: 'ApiGateway-Ocelot-JWT', href: 'https://github.com/Atik0172870/ApiGetwayWithOcelotAndJWT', description: 'Ocelot API gateway with JWT auth, load balancing & request aggregation.' },
-    { name: 'AI Workflow Automation (SME)', href: 'https://github.com/Atik0172870/AI-Powered-Workflow-Automation-Platform-for-SMEs-', description: 'React app automating SME approvals & notifications with AI.' },
+    // { name: 'AI Workflow Automation (SME)', href: 'https://github.com/Atik0172870/AI-Powered-Workflow-Automation-Platform-for-SMEs-', description: 'React app automating SME approvals & notifications with AI.' },
   ],
 };
 

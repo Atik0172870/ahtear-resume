@@ -39,7 +39,7 @@ export const data = {
   ],
   experienceEntries: [
     {
-      role: 'Senior Principal Software Engineer (Manager) | BRAC Bank PLC',
+      role: 'Senior Principal Software Engineer (Tech Lead) | BRAC Bank PLC',
       dateRange: '17/08/2025 – Present | Dhaka, Bangladesh',
       company: 'Brac Bank PLC.',
       companyLinks: [{ text: 'bracbank.com', href: 'https://www.bracbank.com/' }],
@@ -147,17 +147,17 @@ export const data = {
     {
       group: 'Computer Science & IT Qualifications',
       items: [
-        'M.Sc. in Computer Science & Engineering (MSCSE) | United International University (UIU) — Nov 2017',
-        'Post Graduate Diploma in ICT (PGDICT) | Bangladesh Computer Council (BCC) — Nov 2016',
-        'Professional Diploma in Enterprise Systems Analysis & Development (ESAD in C# .NET) | IDB-BISEW — Nov 2015',
+        'M.Sc. in Computer Science & Engineering (MSCSE) | United International University (UIU) — 2017',
+        'Post Graduate Diploma in ICT (PGDICT) | Bangladesh Computer Council (BCC) — 2016',
+        'Professional Diploma in Enterprise Systems Analysis & Development (ESAD in C# .NET) | IDB-BISEW — 2015',
       ],
     },
     {
       group: 'Business Administration & Business Management',
       items: [
-        'Master of Business Administration (MBA) | University of Dhaka (DU) — Mar 2018',
-        'Master of Business Studies (MBS) | Dhaka College (National University) — Dec 2015',
-        'Bachelor of Business Studies (BBS) | Dhaka College (National University) — May 2014',
+        'Master of Business Administration (MBA) | University of Dhaka (DU) — 2018',
+        'Master of Business Studies (MBS) | Dhaka College (National University) — 2015',
+        'Bachelor of Business Studies (BBS) | Dhaka College (National University) — 2014',
       ],
     },
   ],

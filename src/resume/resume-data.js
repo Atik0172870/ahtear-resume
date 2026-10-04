@@ -155,9 +155,9 @@ export const data = {
     {
       group: 'Business Administration & Business Management',
       items: [
-        'Master of Business Administration (MBA) | University of Dhaka (DU) — 2018',
-        'Master of Business Studies (MBS) | Dhaka College (National University) — 2015',
-        'Bachelor of Business Studies (BBS) | Dhaka College (National University) — 2014',
+        'Master of Business Administration (MBA) | University of Dhaka (DU) — 2014',
+        'Master of Business Studies (MBS) | Dhaka College (National University) — 2012',
+        'Bachelor of Business Studies (BBS) | Dhaka College (National University) — 2011',
       ],
     },
   ],
